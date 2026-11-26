@@ -1,0 +1,22 @@
+name = "GRHPseudo"
+defaultTargets = ["GRHPseudo"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# Mathlib pinned to the exact commit used by the compact GRH edition.
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+# Compact edition of the Lean proof of GRH for Dirichlet L-functions,
+# github.com/lsernau/grh-lean @ 72fead102f663d5c7a407964a13dc0cf9d977207, subdirectory grh-compact.
+# Checked out by ../verification/fetch_deps.sh; a path dependency so its build is reused.
+[[require]]
+name = "GRH"
+path = "../vendor/grh-lean/grh-compact"
+
+[[lean_lib]]
+name = "GRHPseudo"
