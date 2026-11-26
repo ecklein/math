@@ -20,3 +20,5 @@ path = "../vendor/grh-lean/grh-compact"
 
 [[lean_lib]]
 name = "GRHPseudo"
+# The default target excludes modules importing the full GRH proof; build those with
+# `lake build GRHPseudo.MainTheorems.Unconditional` after building the GRH dependency.

@@ -14,3 +14,5 @@
 | `lean/GRHPseudo/AnalyticNumberTheory/LogDerivBound.lean` | AIOvernight/rh-prime-error, `RHPrimeError/LogDeriv.lean` (lemmas `borelCaratheodory_closedBall`, `norm_deriv_div_le_of_forall_mem_ball_ne_zero`) | namespace, imports |
 | `lean/GRHPseudo/AnalyticNumberTheory/LGrowth.lean` | lsernau/grh-lean @ 72fead10, `grh/src/Lib/Analytic/PrimeNumberTheorem/LFunctionGrowth.lean` | namespace; main lemma specialised to χ ≠ 1 |
 | `lean/GRHPseudo/AnalyticNumberTheory/LogDerivGRH.lean`, `norm_LSeries_le_two` | same file, `norm_LSeries_char_le` | generalised to coefficients of norm ≤ 1 |
+| `lean/GRHPseudo/Vendor/Schoenfeld/{Perron,Kernel,Weighted}.lean` | AndrewVSutherland/schoenfeld-rh-lean @ 0e52d7b1, `SchoenfeldRH/Lemmas/p6/Perron.lean`, `Explicit/Kernel.lean`, `Explicit/Weighted.lean` | import paths only |
+| `lean/GRHPseudo/AnalyticNumberTheory/PrimeCharSum.lean`, `integrable_log_mul_inv_one_add_sq` | amrehan/grh-miller v1.0.0, `GRHMiller/Ankeny.lean` | none |

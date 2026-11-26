@@ -40,8 +40,8 @@ only `1/δ`. This is the version to use if the sampler weights primes by `1` rat
 rh-prime-error lemma. Axioms: propext, Classical.choice, Quot.sound.
 
 ### A4. Smoothed Perron identity (unconditional)
-*Formal route:* use weight `(1 − n/N)` and kernel `N^s/(s(s+1))`, via schoenfeld-rh-lean's
-Mathlib-only `perron_weighted_mu` (to be vendored). Status: open.
+*Formal route:* weight `(1 − n/N)`, kernel `N^s (1/s − 1/(s+1))`, via schoenfeld-rh-lean's
+Mathlib-only `perron_weighted_mu`, vendored in `lean/GRHPseudo/Vendor/Schoenfeld/`. **lean-done.**
 For `k ≥ 2`, `c > 1`, `x ≥ 1`, and `a_n` with `Σ |a_n| n^{-c} < ∞`:
 `Σ_{n ≤ x} a_n log^k(x/n) = (k!/2πi) ∫_{(c)} F(s) x^s s^{-k-1} ds`, `F(s) = Σ a_n n^{-s}`.
 The integral converges absolutely for `k ≥ 1`; `k = 2` makes the contour shift clean.
@@ -54,19 +54,28 @@ strip because `χ ≠ 1` and GRH. Horizontal segments vanish (`|F| ≪ log(q|t|)
 Result, for `χ ≠ χ₀ mod q`, `x ≥ 3`, `δ = 1/log x`:
 `|Σ_{n ≤ x} Λ(n) χ(n) log²(x/n)| ≤ C √x (log x)² (log q + 1)`
 with `C` explicit (≈ `e · 12 · ∫ (log(|t|+3)+…) |1/2+δ+it|^{-3} dt / π`, to be computed).
-Status: open.
+**lean-done (conditional on `GRHHyp`)** in the formal weight:
+`GRHPseudo.norm_sum_vonMangoldt_char_le`:
+`‖Σ_{0<n<N} χ(n)Λ(n)(1 − n/N)‖ ≤ (48e/π) log²N √N (π log(2+8q) + J)` for all `q ≥ 1`, `χ ≠ 1`,
+`N ≥ 3`; `J = ∫ log(4+|t|)/(1+t²) dt ≈ 5.6262` (numerical). The contour shift is
+`GRHPseudo.integral_vertical_eq` (from Mathlib's rectangle theorem).
 
 ### A6. Main term (unconditional, elementary)
 `Σ_{n ≤ x, (n,q)=1} Λ(n) log²(x/n) ≥ 2x − C' √x log² x − log² x · log q` for `x ≥ x₀`.
 This needs a Chebyshev-type lower bound `ψ(y) ≥ y − O(√y log² y)` only in integrated form. The
 Schoenfeld repository proves `|ψ(x) − x| < √x log² x / (8π)` for `x ≥ 73.2` from RH; a weaker
-unconditional `ψ(y) ≥ c y` suffices if we accept constant-factor losses. Status: open.
+unconditional `ψ(y) ≥ c y` suffices if we accept constant-factor losses.
+**lean-done (elementary):** `massLower_le_mass`, with
+`massLower q N = (⌊N/2⌋ log 2 − log(⌊N/2⌋+1))/2 − log q · log₂N`, from Mathlib's `Chebyshev.psi_ge`.
+Non-units cost ≤ `log q · log₂N` (`sum_vonMangoldt_nonunit_le`).
 
 ## B. Pseudorandomness layer (finite, GRH-independent)
 
-B1. Bias of a weighted measure from A5 + A6: `λ_*(q, μ_x) ≤ C log² x (log q + 1) / √x`.
-B2. Bias ⇒ second eigenvalue of the weighted Cayley graph on `G_q` (exact identity: the
-eigenvalues are `μ̂(χ)`). Mathlib has orthogonality of Dirichlet characters.
+B1. Bias of a weighted measure from A5 + A6. **lean-done (conditional):**
+`GRHPseudo.bias_primeMeasure_le`; unconditional form `GRHPseudo.Main.bias_primeMeasure` (pending
+the GRH build).
+B2. Bias ⇒ second eigenvalue of the weighted Cayley graph on `G_q`. **lean-done** (eigenvector
+half): `charSum_eq_eigenvalue`. Completeness of characters as an eigenbasis is not yet stated.
 B3. Bias ⇒ density bounds for cosets of subgroups and for arbitrary sets (Parseval).
 Status: open.
 

@@ -1,6 +1,0 @@
-'GRHPseudo.norm_LFunction_le_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
-'GRHPseudo.one_half_le_norm_LFunction' depends on axioms: [propext, Classical.choice, Quot.sound]
-'GRHPseudo.norm_logDeriv_LFunction_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'GRHPseudo.inner_mul_inner_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'GRHPseudo.charSum_eq_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound]
-'GRHPseudo.bias_le_of_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]

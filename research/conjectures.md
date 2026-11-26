@@ -36,10 +36,16 @@ Without GRH, a zero at β + iγ with β > 1/2 contributes x^{β−1/2} to the bi
 Unconditional polylog-support statements are not known for G_q, since they would imply polylog
 least non-residue bounds.
 
-## T1-formal (the first end-to-end formal target). Crude explicit version
+## T1-formal (the first end-to-end formal target). Crude explicit version — **proved in Lean**
 For all q ≥ 1, χ ≠ 1 mod q, and integers N ≥ 3:
-`|Σ_{n<N} Λ(n) χ(n) (1 − n/N)| ≤ C √N (log N)² log(3q(…))`, with C explicit.
-Hence the measure ν_N(n) ∝ Λ(n)(1 − n/N) 1_{(n,q)=1} has `λ_*(q, ν_N) ≤ C' (log N)² log(qN)/√N`.
+`‖Σ_{0<n<N} χ(n)Λ(n)(1 − n/N)‖ ≤ (48e/π) log²N √N (π log(2+8q) + J)`, `J ≈ 5.6262`.
+Hence the measure ν_N(n) ∝ Λ(n)(1 − n/N) on n < N coprime to q has
+`λ_*(q, ν_N) ≤ charSumBound / massLower`, massLower ≈ (log 2/4) N − log q log₂ N.
+**Quantitative weakness:** certifying λ_* ≤ 1/2 at q = 2⁶⁴ needs N ≈ 9.7·10¹⁵ ≈ 5·10¹² log²q
+(`experiments/formal_bound_params.py`). The sharp T1(a) gives ≈ 4 log²q/ε² ≈ 7.9·10⁴. That
+factor of ~10¹¹ comes from three sources: the log²N factor (Borel–Carathéodory, 1/ε² with
+ε = 1/log N), the constant 48e/π, and the Chebyshev mass bound. It is the case for the
+explicit-formula route in phase 2.
 The route (Borel–Carathéodory, no explicit formula) is entirely on the pinned environment.
 See `proof_obligations.md` §A.
 

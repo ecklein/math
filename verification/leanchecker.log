@@ -1,0 +1,16 @@
+== leanchecker
+GRHPseudo.AnalyticNumberTheory.Contour: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.LGrowth: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.LogDerivBound: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.LogDerivGRH: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.PrimeCharSum: leanchecker exit 0
+GRHPseudo.GRH.Discharge: leanchecker exit 0
+GRHPseudo.GRH.Interface: leanchecker exit 0
+GRHPseudo.MainTheorems.Conditional: leanchecker exit 0
+GRHPseudo.MainTheorems.Unconditional: leanchecker exit 0
+GRHPseudo.Pseudorandomness.Bias: leanchecker exit 0
+GRHPseudo.Pseudorandomness.PrimeMeasure: leanchecker exit 0
+GRHPseudo.Pseudorandomness.RankTwo: leanchecker exit 0
+GRHPseudo.Vendor.Schoenfeld.Kernel: leanchecker exit 0
+GRHPseudo.Vendor.Schoenfeld.Perron: leanchecker exit 0
+GRHPseudo.Vendor.Schoenfeld.Weighted: leanchecker exit 0

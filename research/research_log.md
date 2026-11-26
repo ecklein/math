@@ -42,3 +42,18 @@
 - Then the bias theorem and its unconditional form via `GRHPseudo.grh` once the GRH build finishes.
 - T1(b) concrete L² instance and its equality case.
 - Resolve the Hanke-repository overlap question.
+
+## 2026-11-26 — session 1, continued
+
+**Lean, done (axioms: propext, Classical.choice, Quot.sound):**
+- Vendored Schoenfeld's Mathlib-only weighted Perron formula.
+- `integral_vertical_eq`: a vertical line shift from Mathlib's rectangle theorem, self-contained.
+- `norm_sum_vonMangoldt_char_le` (Theorem A), conditional on `GRHHyp`: (48e/π) log²N √N (π log(2+8q) + J), uniform in q and in χ ≠ 1.
+- `massLower_le_mass`: elementary mass lower bound via `Chebyshev.psi_ge`, plus a non-unit prime-power bound.
+- `bias_primeMeasure_le` (Theorem B, T1-formal), conditional.
+- `MainTheorems/Conditional.lean` and `MainTheorems/Unconditional.lean`; the latter needs the GRH build.
+
+**Finding.**
+- The formal constants are poor: certifying bias 1/2 at q = 2⁶⁴ needs N ≈ 10¹⁶.
+- The sharp T1(a) route would need about 8·10⁴. This motivates porting zeta-23-lean's explicit formula, or a sharper log-derivative argument, e.g. Hadamard three-circles in place of the 1/ε² loss.
+- J = ∫ log(4+|t|)/(1+t²) ≈ 5.6262 (numerical); π(log 4 + 1/√2) ≈ 6.577 is an easy analytic upper bound, not yet formalized.
