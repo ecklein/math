@@ -14,11 +14,13 @@ paper, experiments, and research notes. Projects are self-contained and independ
 ```
 math/
 ├── README.md            this file
+├── CLAUDE.md            research process and conventions for Claude Code (general, all projects)
 ├── LICENSE              MIT (original work; see "Licensing")
 ├── .gitignore           shared ignores (build outputs, vendored checkouts, virtualenvs)
 └── research/
     └── <project>/       one directory per project, fully self-contained
         ├── README.md        results, layout, how to reproduce
+        ├── CLAUDE.md        project state, commands, invariants, open tasks (kept up to date)
         ├── lean/            Lean 4 project with its own lakefile, lean-toolchain and Mathlib pin
         ├── paper/           LaTeX source and compiled PDF
         ├── experiments/     numerical experiments; scripts and the small result tables (out/) cited by the paper
