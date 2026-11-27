@@ -117,6 +117,9 @@ scripts and the small result tables (`experiments/out/*.tsv`) that the paper cit
 
 - The author of every paper is **Ethan Klein** (`\author{Ethan Klein}`). Add no other authors, affiliation or email
   unless asked; credit tools and libraries in the acknowledgements instead.
+- Every paper ends with a **"Use of AI"** paragraph: it names the model and version, says what the model did and what
+  the author did, says the author takes responsibility, and separates kernel-checked from human-reviewed claims.
+  Model the wording on `research/grh-pseudorandomness/paper/sections/limitations.tex`.
 - Use `paper/` with `main.tex` (amsart), `sections/*.tex` and `references.bib`. Commit the compiled
   `main.pdf`; ignore auxiliary files.
 - Every formal claim names its Lean declaration. Statements must match the Lean definitions exactly:

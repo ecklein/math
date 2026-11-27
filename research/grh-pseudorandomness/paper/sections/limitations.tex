@@ -39,5 +39,13 @@ does not contain a proof of the main inequality \cite{rubinsteinpage}.
 GRH for Dirichlet $L$-functions in Lean is due to Alpöge, with Claude \cite{alpoge2026,grhlean}. The explicit
 formula library is \cite{zeta23}; the positivity and gamma-side lemmas and the test function are from
 \cite{grhmiller}; the Perron formula is from \cite{schoenfeldlean}; the Borel--Carath\'eodory log-derivative
-lemma is from \cite{rhprimeerror}. All are Apache-2.0. The Lean code, experiments and this text were developed
-with the assistance of Claude (Anthropic).
+lemma is from \cite{rhprimeerror}. All are Apache-2.0.
+
+\paragraph{Use of AI.}
+This work was carried out with Claude Opus 5.5 (Anthropic), used through Claude Code. Claude proposed and checked
+candidate results, wrote the Lean formalization, the numerical experiments and drafts of the text, and searched the
+literature. The author chose the problems, directed the work and reviewed the results, and takes responsibility for
+all claims. The results marked formal are checked by the Lean kernel, with the axiom audit of
+Section~\ref{sec:formal}. Informal results, the exposition and the comparison with the literature rest on the
+author's review. Errors found during the work, including an incorrect optimality claim in an earlier draft, are
+recorded in the text and in the repository history.
