@@ -33,15 +33,25 @@ $\log_2\log q+2\log_2(1/\varepsilon)-O(\log\log(1/\varepsilon))$ \cite{alonroich
 factor $2$ in front of $\log_2\log q$ is the $(\log q)^2$ barrier of Section~\ref{sec:limits}.
 
 \paragraph{Non-units and $q$-obliviousness.}
-A single table that does not depend on $q$ is also possible, at the cost of a fixed seed. Sample $n$ from the unfiltered weights on
-$W$ and test $\gcd(n,q)=1$. Conditioned on success the output has exactly the filtered distribution above (up to the same $\eta$ and
-$\delta$ errors), and a draw fails with probability at most $\pi_q=U_q/\mathrm{Den}$, the relative mass of non-units. This is at most
-$U_B/\mathrm{den}_B\le37.15/555.8<0.067$ for Corollary~\ref{cor:cert}, and at most $U^\square_B/\mathrm{den}^\square_B\le6.81/143.9<0.048$ for
-Corollary~\ref{cor:convcert}, for every $q\le2^{64}$. There are two ways to use this. Rejection sampling (repeat until success)
-outputs the exact conditional distribution but uses a random number of draws, $1/(1-\pi_q)$ on average. A sampler with at most $r$
-attempts, which outputs $1$ if all fail, uses a fixed seed of $rs$ bits; its output is within $\pi_q^r$ of the conditional distribution in
-total variation, so its bias increases by at most $2\pi_q^r$, e.g.\ $2\cdot0.048^{5}<6\cdot10^{-7}$ with $r=5$. In either form one table serves
-all moduli $q\le2^{64}$.
+A single table that does not depend on $q$ is also possible. Let $p$ be the ideal unfiltered distribution on $W$ (exact weights,
+normalized) and $p_U$ its conditional distribution on units, which is the measure the theorems bound. Under $p$ a draw is a non-unit
+with probability $\pi_q=U_q/\mathrm{Den}$ at most. This is at most $U_B/\mathrm{den}_B\le37.15/555.8<0.067$ for Corollary~\ref{cor:cert},
+and at most $U^\square_B/\mathrm{den}^\square_B\le6.81/143.9<0.048$ for Corollary~\ref{cor:convcert}, for every $q\le2^{64}$.
+
+\emph{Ideal sampler.} Draw from $p$ and test $\gcd(n,q)=1$. Rejection (repeat until success) outputs exactly $p_U$, using
+$1/(1-\pi_q)$ draws on average. With at most $r$ attempts, outputting $1$ if all fail, the output is within $\pi_q^r$ of $p_U$ in total
+variation.
+
+\emph{Finite-bit sampler.} The implemented table is a distribution $\tilde p$ with $\mathrm{TV}(\tilde p,p)\le\tau$, where
+$\tau=\eta/(1-\eta)+\delta$ collects the weight and rounding errors above. Conditioning amplifies this error, and the approximation can
+also change the rejection rate. Under $\tilde p$ a draw fails with probability $\tilde\pi_q\le\pi_q+\tau$. For the conditional distributions,
+writing $A=\tilde p(\text{unit})\ge1-\pi_q-\tau$, one has $\norm{\tilde p_U-p_U}_1\le\norm{\tilde p-p}_1/A+\abs{A-p(\text{unit})}/A\le3\tau/A$, so
+\[
+  \mathrm{TV}(\tilde p_U,p_U)\le\frac{3\tau}{2(1-\pi_q-\tau)}.
+\]
+Rejection sampling from $\tilde p$ outputs exactly $\tilde p_U$. The bounded-attempt sampler is within $(\pi_q+\tau)^r$ of $\tilde p_U$, so its
+bias exceeds the certified bias by at most $3\tau/(1-\pi_q-\tau)+2(\pi_q+\tau)^r$. For example, with $\tau\le10^{-6}$ and $r=5$ this is below
+$4\cdot10^{-6}$ for Corollary~\ref{cor:convcert}. In either form one table serves all moduli $q\le2^{64}$.
 
 \paragraph{Expander walks.}
 By Corollary~\ref{cor:cert}, the random walk on $\Gq$ that multiplies by an independent sample at each step has

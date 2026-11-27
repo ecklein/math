@@ -134,3 +134,7 @@ The Lean results were unaffected (the reviewer's build, axiom audit and replay p
    degree ≈ 2 li(x), i.e. normalized O(x^{−1/2} log x log(qx)).
 Also: cite the corrected LLS Lemma 6.1 (v3 + corrigendum, new bib entry `llscorr2017`) and LLS §6.1's limitation remark; mention LLS's
 Γ(s + 1/2) kernel. Novelty framing narrowed (see `novelty_assessment.md`).
+- Follow-up (PR #5 review): the TV(K′) tail bound omitted the slope jumps at the two end nodes (an underestimate by up to 2×).
+  Fixed; the tail bounds are now ≤ 0.0004 (the "≤ 0.0002" above was too small); the truncated ratios are unchanged. The q-oblivious
+  sampler paragraph now separates the ideal sampler from the finite-bit one and propagates the table error τ through conditioning,
+  TV ≤ 3τ/(2(1 − π_q − τ)), and through the failure probability, π_q + τ per attempt.

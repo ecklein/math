@@ -150,7 +150,7 @@ Only $K\ge0$ is needed for the weights to form a measure. Over nonnegative $K$ s
 the last expression in \eqref{eq:leading} (normalized by $e^{T/2}$) is a linear program after discretization
 (\lean{kernel_lp.py}: piecewise-linear $K$, a polygonal model of $\abs{\cdot}$, solved with HiGHS). For each LP solution we report its
 ratio computed by trapezoid quadrature of $\abs{\hat K}$ on $[0,4000]$, together with the bound $\abs{\hat K(t)}\le\mathrm{TV}(K')/t^2$ for
-the omitted tail, which adds at most $0.0002$ to every entry. The quadrature error itself is not bounded, so these numbers are
+the omitted tail (with the slope jumps at the end nodes included in $\mathrm{TV}(K')$), which adds at most $0.0004$ to every entry. The quadrature error itself is not bounded, so these numbers are
 \emph{exploratory and not certified}. They suggest that the optimum lies strictly between the barrier and the convolution squares:
 \begin{center}
 \begin{tabular}{lccccc}

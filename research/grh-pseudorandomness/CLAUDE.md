@@ -79,7 +79,7 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   follows from theirs only with weak constants. Gaillard–Jindal (SLP squareness) is known under GRH, not ours.
 - **Non-positive-definite kernels (exploratory, uncertified, `experiments/kernel_lp.py`).** LP solutions give
   c ≈ 1.104, 1.047, 1.025, 1.006, 1.001 at a = 1, a*, 1.5, 2, 3 (truncated quadrature at T = 4000 plus a TV(K′) tail bound
-  ≤ 0.0002; quadrature error unbounded). Never call these "exact" or certified. For a < 1 the discretization is unreliable.
+  ≤ 0.0004, end-node slope jumps included; quadrature error unbounded). Never call these "exact" or certified. For a < 1 the discretization is unreliable.
 - **Prop 8 / rank-two lemma (fixed 2026-11-27).** State Prop 8 without dividing (∫k e^{u/2} ≤ (a + sinh a)k(0)); the ratio needs
   ∫k e^{u/2} > 0. The lemma's equality case needs α/‖α‖ ≠ −β/‖β‖, and only the inequality is formal.
 - **JMV normalization.** Their Thm 1.1 is unnormalized: O(x^{1/2} log(xq)), degree ≈ 2 li(x).

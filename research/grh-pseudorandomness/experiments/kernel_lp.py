@@ -19,7 +19,8 @@ report the ratio recomputed by trapezoid quadrature on [0, T] (truncated, NOT ce
 bound for the omitted tail: a piecewise-linear K vanishing at both ends has |K^(t)| <= TV(K')/t^2,
 so the tail is at most 2 TV(K')/(2 pi T). The quadrature error on [0, T] is not bounded.
 EXPLORATORY NUMERICS ONLY. (Corrected 2026-11-27: earlier versions called the recomputed value
-"exact" and used a much looser sinc^2 tail bound.)
+"exact" and used a much looser sinc^2 tail bound; a later version omitted the end-node slope jumps
+from TV(K').)
 """
 import math, sys
 import numpy as np
@@ -61,7 +62,9 @@ def truncated_R(U, k, h, T=4000.0, dt=0.01):
     env = h * np.sinc(t * h / (2 * np.pi)) ** 2
     z = env * (np.exp(1j * np.outer(t, U)) @ k)
     head = 2 * np.trapezoid(np.abs(z), t) / (2 * np.pi)
-    kk = np.concatenate([[0.0], k, [0.0]])
+    # K is extended by zero beyond the end nodes (where K = 0), so pad twice on each side: the outer
+    # second differences are the slope jumps at the end nodes, from slope 0 to the first/last segment.
+    kk = np.concatenate([[0.0, 0.0], k, [0.0, 0.0]])
     tv = np.sum(np.abs(np.diff(kk, 2))) / h          # total variation of K'
     tail = 2 * tv / T / (2 * np.pi)
     mass = np.sum(k * np.exp(U / 2)) * h * (math.sinh(h / 4) / (h / 4)) ** 2
