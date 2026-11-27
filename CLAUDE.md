@@ -109,12 +109,17 @@ Run this before claiming a result, and record each item in `verification/README.
 
 ## Experiments
 
-Use Python with the root `.venv` (numpy, sympy, pypdf). Prefer exact computation over sampling; for
+Use Python with the root `.venv` (numpy, sympy, scipy, pypdf; scipy's HiGHS `linprog` handles the extremal-kernel LPs). Prefer exact computation over sampling; for
 prime `q`, one FFT over the discrete-log table gives the bias against all characters at once. Commit
 scripts and the small result tables (`experiments/out/*.tsv`) that the paper cites.
 
 ## Papers
 
+- The author of every paper is **Ethan Klein** (`\author{Ethan Klein}`). Add no other authors, affiliation or email
+  unless asked; credit tools and libraries in the acknowledgements instead.
+- Every paper ends with a **"Use of AI"** paragraph: it names the model and version, says what the model did and what
+  the author did, says the author takes responsibility, and separates kernel-checked from human-reviewed claims.
+  Model the wording on `research/grh-pseudorandomness/paper/sections/limitations.tex`.
 - Use `paper/` with `main.tex` (amsart), `sections/*.tex` and `references.bib`. Commit the compiled
   `main.pdf`; ignore auxiliary files.
 - Every formal claim names its Lean declaration. Statements must match the Lean definitions exactly:

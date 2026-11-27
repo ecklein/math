@@ -1,16 +1,16 @@
 # Verification record
 
 Environment: macOS arm64, Lean v4.35.0 (`eb6cafb7`), Mathlib `56a00585`, grh-lean `72fead10`
-(compact edition). Date: 2026-11-26.
+(compact edition). Date: 2026-11-26; re-run 2026-11-27 after adding the convolution-square modules.
 
 | Check | Result | Log |
 |---|---|---|
 | `lake build` of grh-compact (local reproduction) | 9843/9843 jobs, 0 errors, 1 h 46 min | `vendor/grh-compact-build.log` (not committed) |
 | `#print axioms` on the five GRH theorems | `propext, Classical.choice, Quot.sound` | `grh-compact-axioms.log` |
 | `lake build GRHPseudo GRHPseudo.MainTheorems.Unconditional` | success | — |
-| `#print axioms` on 23 theorems incl. `GRHPseudo.Main.bias_le_half_of_le_two_pow_64`, `bias_sharp_closed`, `Sharp.bias_sharp`, `EF_lit_chi_L` | all `propext, Classical.choice, Quot.sound` | `axioms.log` |
+| `#print axioms` on 31 theorems incl. `GRHPseudo.Main.bias_le_half_of_le_two_pow_64`, `bias_le_half_of_le_two_pow_64_convSq`, `bias_convSq_closed`, `bias_sharp_closed`, `Sharp.bias_sharp`, `EF_lit_chi_L` | all `propext, Classical.choice, Quot.sound` | `axioms.log` |
 | Whole-environment axiom listing (`EnvAxioms.lean`) | only Lean core (`Init.Prelude`, `Init.Core`) | `env-axioms.log` |
-| `leanchecker` replay, every `GRHPseudo` module (27) | all 27 exit 0 | `leanchecker.log` |
+| `leanchecker` replay, every `GRHPseudo` module (32) | all 32 exit 0 | `leanchecker.log` |
 | `leanchecker` replay, ported `Zeta23` modules (120) | all 120 exit 0 | `leanchecker-zeta23.log` |
 | Port of zeta-23-lean to Mathlib 56a00585 | 4 rebuild rounds, final: 0 errors | `zeta23-port-build-{1..4}.log` |
 | Source scan for `sorry`, `admit`, `axiom`, `native_decide`, `implemented_by`, `@[extern]` | none in `GRHPseudo`; in `Zeta23` only inside comments/docstrings (two `axiom` lines are in a docstring code example of the vendored tactic file) | — |

@@ -1,19 +1,32 @@
-\section{Optimality of the kernel within the positivity method}\label{sec:optimality}
+\section{The leading constant of the method}\label{sec:optimality}
+
+\emph{Correction (2026-11-27).} An earlier draft of this paper stated that the $\cosh$ kernel is optimal
+``within the positivity method'' and that no kernel gives a leading constant below $c^*\approx1.2236$ there.
+That was wrong as framed. Proposition~\ref{prop:opt} is correct, but only for positive-definite kernels.
+Convolution squares (Proposition~\ref{prop:convsq}) use the same positivity step and do better. The sharp
+limit of the method is the constant~$1$ (Proposition~\ref{prop:barrier}).
 
 \subsection{Where the leading coefficient comes from}
-In the proof of Theorem~\ref{thm:sharp} with a general admissible kernel $k=f*\tilde f$, $f\in C^2_c$ real,
-$\operatorname{supp}f\subseteq[-a,a]$, only two terms are large. In the numerator the only term growing with
-$q$ is $k(0)\log(q/\pi)$, coming from $\operatorname{Re}\Gamma_{q,\kappa}(k)$ through Plancherel. In the
-denominator the only term growing with $x$ is $e^{y/2}\hat k(-\frac i2)=\sqrt x\int k(u)e^{u/2}du$. As $q\to\infty$
-and $x/\log^2q\to\infty$ with $a$ fixed, the method therefore gives
+Let $K$ be a real kernel and suppose $M$ is a positive-definite function with $\abs{\hat K}\le\hat M$ on $\R$.
+Under GRH the zeros $\frac12+i\gamma$ have $\gamma$ real, so the twist $K_y=K(\cdot-y)$ satisfies
+$\abs{\sum_\gamma\hat K_y(\gamma)}\le\sum_\gamma\hat M(\gamma)$, and the right side is evaluated by the explicit
+formula for $M$. This is the positivity step. For $K=f*\tilde f$ we may take $M=K$; this is the case formalized in
+Theorem~\ref{thm:sharp}. In general, only two terms of the resulting bound are large. In the numerator the only
+term growing with $q$ is $M(0)\log(q/\pi)$, from the gamma factor through Plancherel. In the denominator the only
+term growing with $x$ is $\sqrt x\int K(u)e^{u/2}du$. As $q\to\infty$ and $x/\log^2q\to\infty$ with $K$ fixed,
+the method therefore gives
 \begin{equation}\label{eq:leading}
-  \bias\le\bigl(\rho(f)+o(1)\bigr)\frac{\log q}{\sqrt x},\qquad
-  \rho(f)=\frac{k(0)}{\int k(u)e^{u/2}\,du}=\frac{\norm f_2^2}{\langle f,e^{t/2}\rangle\,\langle f,e^{-t/2}\rangle}.
+  \bias\le\bigl(\rho+o(1)\bigr)\frac{\log q}{\sqrt x},\qquad
+  \rho=\frac{M(0)}{\int K(u)e^{u/2}\,du}\ \ge\ \frac{\frac1{2\pi}\int\abs{\hat K}}{\int K(u)e^{u/2}\,du}.
 \end{equation}
-The second expression follows from $k(0)=\norm f^2$ and $\hat k(z)=\hat f(z)\overline{\hat f(\bar z)}$ at $z=-\frac i2$.
-For the bound to be meaningful we need both inner products of the same sign, which we may assume positive.
+The last expression is also the leading coefficient in \cite[Lemma~6.1]{lls2015}, which bounds the zero sum by
+$\sum_\gamma\abs{\hat K(\gamma)}$ and zero counting instead of by positivity. For $K=f*\tilde f$ with $f$ real,
+$\rho=\norm f_2^2/(\langle f,e^{t/2}\rangle\langle f,e^{-t/2}\rangle)$, since $K(0)=\norm f^2$ and
+$\hat K(z)=\hat f(z)\overline{\hat f(\bar z)}$. If $\operatorname{supp}K\subseteq(-\infty,T]$, the measure is
+supported on $n\le X=xe^{T}$, and the support-normalized constant is $c=e^{T/2}\rho$: then
+$\bias\le(c+o(1))\log q/\sqrt X$.
 
-\subsection{The extremal problem}
+\subsection{Positive-definite kernels}
 \begin{lemma}[formal; \lean{GRHPseudo.inner_mul_inner_le}]\label{lem:ranktwo}
 In a real inner product space, for all $f,\alpha,\beta$,
 \[
@@ -29,45 +42,110 @@ Equality requires $f\perp u-v$ and $f\parallel u+v$; note that $u+v\perp u-v$.
 
 \begin{proof}[Proof of Proposition~\ref{prop:opt}]
 Work in $L^2[-a,a]$ with $\alpha=e^{t/2}$ and $\beta=e^{-t/2}$. Then $\norm\alpha^2=\norm\beta^2=\int_{-a}^ae^t\,dt=2\sinh a$ and
-$\langle\alpha,\beta\rangle=2a$. Lemma~\ref{lem:ranktwo} gives $\rho(f)\ge1/(\sinh a+a)$, with equality iff
+$\langle\alpha,\beta\rangle=2a$. Lemma~\ref{lem:ranktwo} gives $\rho\ge1/(\sinh a+a)$, with equality iff
 $f\propto e^{t/2}+e^{-t/2}=2\cosh(t/2)$ on $[-a,a]$. The factorization statement is the theorem of Boas and Kac
 and of Krein: a continuous positive-definite function supported in $[-2a,2a]$ is $f*\tilde f$ for some
-$f\in L^2[-a,a]$ \cite{boaskac1945,ehmgneitingrichards2004}. Hence the bound covers every kernel to which
-the positivity step applies, namely those with $\hat k\ge0$ on $\R$.
+$f\in L^2[-a,a]$ \cite{boaskac1945,ehmgneitingrichards2004}. Hence the bound covers every positive-definite
+kernel, i.e.\ every kernel that is its own majorant.
 \end{proof}
 
-\begin{proof}[Proof of Corollary~\ref{cor:asymp}]
-\emph{Part 1.} A kernel supported in $[-2a,2a]$ and twisted by $y$ yields a measure supported in
-$[xe^{-2a},xe^{2a}]$. With $X=xe^{2a}$ we have $\sqrt x=e^{-a}\sqrt X$, so \eqref{eq:leading} and
-Proposition~\ref{prop:opt} give leading term $\ge c(a)\log q/\sqrt X$ with $c(a)=e^a/(a+\sinh a)$.
+A positive-definite kernel supported in $[-2a,2a]$ has $T=2a$, so its support-normalized constant is at least
+$e^a/(a+\sinh a)$, whose minimum over $a$ is $c^*=2/a_*^2\approx1.2236$ (Corollary~\ref{cor:asymp}). Positive-definite
+kernels are even. Since the main term weights the window by $e^{u/2}$, an even kernel wastes the lower half of it.
 
-Minimizing: $(\log c)'(a)=1-(1+\cosh a)/(a+\sinh a)$ vanishes iff $a+\sinh a=1+\cosh a$, i.e.\
-$a-1=\cosh a-\sinh a=e^{-a}$. There
+\subsection{Convolution squares}
+\begin{proposition}[informal]\label{prop:convsq}
+Let $f\ge0$ be real, integrable and supported in $[T/2-L/2,\,T/2]$, and let $K=f*f$. Then $K\ge0$, $\operatorname{supp}K\subseteq[T-L,T]$,
+and $M=f*\tilde f$ is a positive-definite majorant: $\abs{\hat K}=\abs{\hat f}^2=\hat M$. Hence the positivity step applies to
+$K$ unchanged, with
+\[
+  \rho=\frac{\norm f_2^2}{\langle f,e^{t/2}\rangle^2},\qquad
+  c=e^{T/2}\rho\ \ge\ \frac1{1-e^{-L/2}},
+\]
+with equality iff $f\propto e^{t/2}$ on its support interval.
+\end{proposition}
+\begin{proof}
+$\hat K=\hat f^2$ and $\hat M=\abs{\hat f}^2$. Next, $M(0)=\norm f^2$ and $\int K(u)e^{u/2}du=\hat K(\frac i2)=(\int f(t)e^{t/2}dt)^2$.
+By Cauchy--Schwarz, $\langle f,e^{t/2}\rangle^2\le\norm f^2\int_{T/2-L/2}^{T/2}e^t\,dt=\norm f^2e^{T/2}(1-e^{-L/2})$, with equality iff
+$f\propto e^{t/2}$ there.
+\end{proof}
+
+At window length $L=4a$, the length of a positive-definite kernel supported in $[-2a,2a]$, this improves on the $\cosh$ kernel:
+$1/(1-e^{-2a})$ against $e^a/(a+\sinh a)$, i.e.\ $1.157$ against $1.250$ at $a=1$, $1.084$ against $1.224$ at $a=a_*$, and $1.019$
+against $1.313$ at $a=2$. As $L\to\infty$ the constant tends to~$1$, while the positive-definite constant grows. In the
+proof of Theorem~\ref{thm:sharp} only the two-sided zero-sum estimate changes: the zero sum of $K_y$ is bounded by that
+of $M$ rather than by its own. Theorem~\ref{thm:convclosed} and Corollary~\ref{cor:convcert} are the formal, explicit
+version for a smoothed $f=e^{t/2}\mathbf 1_{[-A,0]}$; the Cauchy--Schwarz optimality statement itself is not formalized.
+
+\subsection{The barrier}
+\begin{proposition}[informal]\label{prop:barrier}
+Let $K\in L^1(\R)$ be real and continuous, with $\hat K\in L^1(\R)$ and $\operatorname{supp}K\subseteq(-\infty,0]$. Then
+\[
+  \int_\R K(u)e^{u/2}\,du=\frac1{2\pi}\int_\R\hat K(t)\,\frac{\frac12+it}{\frac12-it}\,dt,
+  \qquad\text{so}\qquad
+  \Bigl\lvert\int_\R K(u)e^{u/2}\,du\Bigr\rvert\le\frac1{2\pi}\int_\R\abs{\hat K(t)}\,dt .
+\]
+Equality holds for $K(u)=\abs u\,e^{u/2}\mathbf 1_{u\le0}$. Consequently every kernel and every majorant in
+\eqref{eq:leading} give support-normalized constant $c\ge1$.
+\end{proposition}
+\begin{proof}
+By Fourier inversion (with $\hat K(t)=\int K(u)e^{itu}du$), $K(u)=\frac1{2\pi}\int\hat K(t)e^{-itu}dt$ for all $u$. Integrating against $e^{u/2}$ over $u\le0$ and
+using Fubini (justified by $\int_{-\infty}^0e^{u/2}du<\infty$ and $\hat K\in L^1$) gives
+$\int_{-\infty}^0K(u)e^{u/2}du=\frac1{2\pi}\int\hat K(t)(\frac12-it)^{-1}dt$. Since $K$ is continuous and vanishes on
+$(0,\infty)$, $0=K(0)=\frac1{2\pi}\int\hat K(t)\,dt$. Subtracting, and using
+$(\frac12-it)^{-1}-1=(\frac12+it)/(\frac12-it)$, which has modulus~$1$, proves the identity and the inequality. For
+$K=\abs ue^{u/2}\mathbf 1_{u\le0}$ we have $\hat K(t)=(\frac12+it)^{-2}$, so the integrand is $(\frac14+t^2)^{-1}>0$, and both sides
+equal~$1$. For the consequence, translate a kernel supported in $(-\infty,T]$ to $(-\infty,0]$; then
+$\int K(u)e^{u/2}du\le e^{T/2}\frac1{2\pi}\int\abs{\hat K}\le e^{T/2}M(0)$, i.e.\ $c\ge1$.
+\end{proof}
+
+The extremal kernel is itself a convolution square, $e*e$ with $e(t)=e^{t/2}\mathbf 1_{t\le0}$; its majorant is $e*\tilde e=e^{-\abs u/2}$.
+Twisted by $y=\log x$ it gives the weights $\Lambda(n)\log(x/n)/\sqrt x$ on $n\le x$, i.e.\ $\Lambda(n)/\sqrt n$ times
+$(n/x)^{1/2}\log(x/n)$. This is a classical Riesz-type weight (compare Bach \cite{bach1990} and \cite[Lemma~2.2]{lls2015}); it is the
+member $a=\frac12$ of the family $\Lambda(n)(n/x)^a\log(x/n)$ in Bach's method as presented in \cite{mcgowntrevino2021}.
+So the limiting constant $1$ is reached by a classical weight, and the windows of Proposition~\ref{prop:convsq} approach it as $L\to\infty$.
+The inequality is a sharp point evaluation for functions whose Fourier transform extends to the upper half-plane. In the one-sided
+least-non-residue problem, Carneiro, Milinovich, Quesada-Herrera and Ramos \cite{cmqr2024} find the limiting constant $C(\infty)=1$, with
+the same extremal function, by a different (dual) argument. We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
+that the constant $1$ is the exact limit of the explicit-formula method for prime-supported small-bias measures. This is a limit of
+the method, not a lower bound for the true bias.
+
+\begin{proof}[Proof of Corollary~\ref{cor:asymp}]
+\emph{Part 1} is Proposition~\ref{prop:barrier}. \emph{Part 2.} A positive-definite kernel supported in $[-2a,2a]$ has $T=2a$, so
+\eqref{eq:leading} and Proposition~\ref{prop:opt} give $c\ge e^a/(a+\sinh a)$. Minimizing:
+$(\log c)'(a)=1-(1+\cosh a)/(a+\sinh a)$ vanishes iff $a+\sinh a=1+\cosh a$, i.e.\ $a-1=\cosh a-\sinh a=e^{-a}$. There
 \[
   c(a)=\frac{e^a}{1+\cosh a}=\frac{2e^a}{(e^{a/2}+e^{-a/2})^2}=\frac2{(1+e^{-a})^2}=\frac2{a^2}.
 \]
-Since $c(a)\to\infty$ as $a\to0^+$ and $c(a)\to2$ as $a\to\infty$, while $c(a_*)<2$, the critical point $a_*$ is the
-global minimum.
-
-\emph{Part 2.} Replace the cutoff $\eta_{a_*}$ by smooth cutoffs converging to $\mathbf 1_{[-a_*,a_*]}$ in $L^2$. This
-makes $\rho(f)$ converge to $1/(a_*+\sinh a_*)$. For a fixed smooth kernel, every other term in
-Theorem~\ref{thm:sharp} is $O_a(1)$ in the numerator, and in the denominator it is $O_a(1)+O(\log q\log x/\sqrt x)$,
-which is $o(\sqrt x)$ once $x/\log^2q\to\infty$. The constant $c^{*2}=4/a_*^4=1.4972\ldots$ follows.
+Since $c(a)\to\infty$ as $a\to0^+$ and $c(a)\to2$ as $a\to\infty$, while $c(a_*)<2$, the critical point $a_*$ is the global
+minimum. \emph{Part 3.} Given $\delta>0$, choose $L$ with $1/(1-e^{-L/2})<1+\delta/2$ and a smooth $f\ge0$ supported in
+$[-L/2,0]$, close enough to $e^{t/2}\mathbf 1_{[-L/2,0]}$ in $L^2$ that $c<1+\delta$ in Proposition~\ref{prop:convsq}. For this fixed
+kernel every other term of the bound is $O_L(1)$ in the numerator, and $O_L(1)+O(\log q\log x/\sqrt x)$ in the denominator, which is
+$o(\sqrt x)$ once $x/\log^2q\to\infty$.
 \end{proof}
 
-\begin{remark}[Scope]
-Proposition~\ref{prop:opt} concerns positive-definite kernels, those with $\hat k\ge0$. These are the kernels for which
-the zero sum is controlled by positivity alone, with no zero counting; this is what makes our bounds explicit. The asymptotic
-argument of \cite[Lemma~6.1]{lls2015} bounds the zero sum by $\sum_\gamma\abs{K(i\gamma)}$ instead, so it admits general kernels, with
-leading coefficient $\frac1{2\pi}\int\abs{\hat k}/\int k(u)e^{u/2}du$. For such kernels we only have the trivial lower bound
-$\ge1/(4\sinh a)$, from $\abs{k}\le\frac1{2\pi}\int\abs{\hat k}$. Whether a non-positive-definite kernel beats $c^*$ in that asymptotic
-setting is open.
-\end{remark}
+\subsection{General nonnegative kernels: numerics}
+Only $K\ge0$ is needed for the weights to form a measure. Over nonnegative $K$ supported in a window of length $L$, the infimum of
+the last expression in \eqref{eq:leading} (normalized by $e^{T/2}$) is a linear program after discretization
+(\lean{kernel_lp.py}: piecewise-linear $K$, a polygonal model of $\abs{\cdot}$, solved with HiGHS; we report the exact ratio
+of each LP solution). It lies strictly between the barrier and the convolution squares:
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+$L$ & $4$ & $5.11$ & $6$ & $8$ & $12$\\
+\midrule
+positive-definite, $e^a/(a+\sinh a)$, $a=L/4$ & $1.250$ & $1.224$ & $1.235$ & $1.313$ & $1.543$\\
+convolution squares, $1/(1-e^{-L/2})$ & $1.157$ & $1.084$ & $1.052$ & $1.019$ & $1.003$\\
+nonnegative, LP (numerical) & $1.103$ & $1.047$ & $1.024$ & $1.006$ & $1.000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+These kernels are not convolution squares, so for them the zero sum has to be bounded through zero counting, as in \cite{lls2015},
+and not by positivity. We have not made that route explicit.
 
 \begin{remark}
-Lemma~\ref{lem:ranktwo} is formalized; its specialization to $L^2[-a,a]$, the factorization theorem and the
-asymptotic statement are not. The comparison with \cite{cmqr2024} is instructive: there the extremal problem is
-one-sided, with sign conditions on $k$ adapted to a single non-residue condition, and the optimum is
-$0.7615\ldots\log^2p$ for the least quadratic non-residue. Our problem bounds all characters simultaneously,
-in both directions, using only $\hat k\ge0$.
+Lemma~\ref{lem:ranktwo} is formalized. Its specialization to $L^2[-a,a]$, the factorization theorem, Propositions~\ref{prop:convsq}
+and~\ref{prop:barrier}, and the asymptotic statement are not. In the one-sided problem of \cite{cmqr2024} the sign conditions are
+adapted to a single non-residue condition, and the optimum for the least quadratic non-residue is $0.7615\ldots\log^2p$. Our problem
+bounds all characters simultaneously, in both directions.
 \end{remark}

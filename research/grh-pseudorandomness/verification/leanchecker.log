@@ -7,10 +7,15 @@ GRHPseudo.AnalyticNumberTheory.Sharp.Assembly: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.Certificate: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.Certificate64: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.ConstBounds: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.Sharp.ConvAssembly: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.Sharp.ConvCertificate: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.Sharp.ConvKernel: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.FiniteSums: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.GammaBounds: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.Sharp.GammaSharp: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.KernelBounds: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.MainTerm: leanchecker exit 0
+GRHPseudo.AnalyticNumberTheory.Sharp.Majorant: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.Twist: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.TwoSided: leanchecker exit 0
 GRHPseudo.GRH.Discharge: leanchecker exit 0

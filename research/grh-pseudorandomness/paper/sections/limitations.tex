@@ -11,8 +11,9 @@ with support $\asymp\log q\log X/\varepsilon^2$.
 
 \paragraph{What is formal and what is not.}
 Theorems~\ref{thm:A}, \ref{thm:sharp}, \ref{thm:closed} and Corollaries~\ref{cor:A}, \ref{cor:cert} are formal.
-Proposition~\ref{prop:opt} is formal only in its abstract core (Lemma~\ref{lem:ranktwo}). Corollary~\ref{cor:asymp}
-and Section~\ref{sec:complexity} are informal. Only one numerical instance of Theorem~\ref{thm:closed} is
+Proposition~\ref{prop:opt} is formal only in its abstract core (Lemma~\ref{lem:ranktwo}). Propositions~\ref{prop:convsq}
+and~\ref{prop:barrier}, Corollary~\ref{cor:asymp} and Section~\ref{sec:complexity} are informal. Of the convolution squares, only the
+family $f_A$ of Theorem~\ref{thm:convclosed} is formalized. Only one numerical instance of Theorem~\ref{thm:closed} is
 machine-checked. The closed form loses a factor of about $4$ in support relative to the quadrature constants
 (Table~\ref{tab:params}), mostly through the bound on $\mathrm{SP}(a)$ and the decay constants in $I_a(\beta)$.
 
@@ -23,10 +24,10 @@ does not contain a proof of the main inequality \cite{rubinsteinpage}.
 
 \paragraph{Open problems.}
 \begin{enumerate}
-\item Formalize Proposition~\ref{prop:opt} and Corollary~\ref{cor:asymp}, and certify further instances,
+\item Formalize Propositions~\ref{prop:opt}, \ref{prop:convsq} and~\ref{prop:barrier}, and certify further instances,
   e.g.\ $q\le2^{1024}$ or $\varepsilon=10^{-2}$.
-\item Beat the leading constant $c^*$, as a constant in front of $\log q/\sqrt X$, by leaving the positivity
-  method. Can sign information on $\hat k$ beyond $\hat k\ge0$ help, as in the one-sided problem of \cite{cmqr2024}?
+\item Determine the optimal nonnegative kernel on a window of finite length $L$. Numerically it beats convolution squares
+  (Section~\ref{sec:optimality}), but it then needs explicit zero counting for $L(s,\chi)$, uniform in $q$, in place of positivity.
 \item Extend to other groups whose characters are Dirichlet characters, such as quotients of $\Gq$ and abelian
   Galois groups over $\mathbb Q$. For nonabelian groups, e.g.\ $\mathrm{Aff}(\Z/q\Z)$, combine with zig-zag or
   semidirect-product arguments.
@@ -38,5 +39,13 @@ does not contain a proof of the main inequality \cite{rubinsteinpage}.
 GRH for Dirichlet $L$-functions in Lean is due to Alpöge, with Claude \cite{alpoge2026,grhlean}. The explicit
 formula library is \cite{zeta23}; the positivity and gamma-side lemmas and the test function are from
 \cite{grhmiller}; the Perron formula is from \cite{schoenfeldlean}; the Borel--Carath\'eodory log-derivative
-lemma is from \cite{rhprimeerror}. All are Apache-2.0. The Lean code, experiments and this text were developed
-with the assistance of Claude (Anthropic).
+lemma is from \cite{rhprimeerror}. All are Apache-2.0.
+
+\paragraph{Use of AI.}
+This work was carried out with Claude Opus 5.5 (Anthropic), used through Claude Code. Claude proposed and checked
+candidate results, wrote the Lean formalization, the numerical experiments and drafts of the text, and searched the
+literature. The author chose the problems, directed the work and reviewed the results, and takes responsibility for
+all claims. The results marked formal are checked by the Lean kernel, with the axiom audit of
+Section~\ref{sec:formal}. Informal results, the exposition and the comparison with the literature rest on the
+author's review. Errors found during the work, including an incorrect optimality claim in an earlier draft, are
+recorded in the text and in the repository history.

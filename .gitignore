@@ -1,4 +1,6 @@
-vendor/
+# pinned external checkouts (research/<project>/vendor/). Anchored: git on macOS is case-insensitive,
+# so a bare `vendor/` also matched the tracked Lean sources in lean/GRHPseudo/Vendor/.
+/research/*/vendor/
 .lake/
 __pycache__/
 *.olean
