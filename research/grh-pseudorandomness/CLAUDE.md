@@ -69,7 +69,7 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 - **Optimal constant (corrected 2026-11-27, paper fixed).** c* = 2/a*² ≈ 1.2236 is the optimum only among
   *positive-definite* kernels (the cosh kernel). Convolution squares f ⋆ f use the same positivity step and give
   c(L) = 1/(1 − e^{−L/2}) → 1 (Prop 14). c ≥ 1 holds for every kernel (Prop 15, via the identity
-  ∫K e^{u/2} = (1/2π)∫K̂(t)(1/2 − it)/(1/2 + it) dt for supp K ⊆ (−∞, 0]); equality for |u|e^{u/2}, i.e. the
+  ∫K e^{u/2} = (1/2π)∫K̂(t)(1/2 + it)/(1/2 − it) dt for supp K ⊆ (−∞, 0], with K̂(t) = ∫K e^{itu}); equality for |u|e^{u/2}, i.e. the
   classical weight Λ(n) log(x/n). Novelty of Prop 15: none claimed.
 - **Small-prime term.** It is SP(a) ≈ e^a·k(0), not 2a·k(0).
 - **Scope of kernel optimality.** Prop 8 holds among positive-definite kernels (k̂ ≥ 0) only.

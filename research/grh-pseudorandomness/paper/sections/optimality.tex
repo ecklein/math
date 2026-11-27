@@ -81,7 +81,7 @@ version for a smoothed $f=e^{t/2}\mathbf 1_{[-A,0]}$; the Cauchy--Schwarz optima
 \begin{proposition}[informal]\label{prop:barrier}
 Let $K\in L^1(\R)$ be real and continuous, with $\hat K\in L^1(\R)$ and $\operatorname{supp}K\subseteq(-\infty,0]$. Then
 \[
-  \int_\R K(u)e^{u/2}\,du=\frac1{2\pi}\int_\R\hat K(t)\,\frac{\frac12-it}{\frac12+it}\,dt,
+  \int_\R K(u)e^{u/2}\,du=\frac1{2\pi}\int_\R\hat K(t)\,\frac{\frac12+it}{\frac12-it}\,dt,
   \qquad\text{so}\qquad
   \Bigl\lvert\int_\R K(u)e^{u/2}\,du\Bigr\rvert\le\frac1{2\pi}\int_\R\abs{\hat K(t)}\,dt .
 \]
@@ -89,12 +89,12 @@ Equality holds for $K(u)=\abs u\,e^{u/2}\mathbf 1_{u\le0}$. Consequently every k
 \eqref{eq:leading} give support-normalized constant $c\ge1$.
 \end{proposition}
 \begin{proof}
-By Fourier inversion, $K(u)=\frac1{2\pi}\int\hat K(t)e^{itu}dt$ for all $u$. Integrating against $e^{u/2}$ over $u\le0$ and
+By Fourier inversion (with $\hat K(t)=\int K(u)e^{itu}du$), $K(u)=\frac1{2\pi}\int\hat K(t)e^{-itu}dt$ for all $u$. Integrating against $e^{u/2}$ over $u\le0$ and
 using Fubini (justified by $\int_{-\infty}^0e^{u/2}du<\infty$ and $\hat K\in L^1$) gives
-$\int_{-\infty}^0K(u)e^{u/2}du=\frac1{2\pi}\int\hat K(t)(\frac12+it)^{-1}dt$. Since $K$ is continuous and vanishes on
+$\int_{-\infty}^0K(u)e^{u/2}du=\frac1{2\pi}\int\hat K(t)(\frac12-it)^{-1}dt$. Since $K$ is continuous and vanishes on
 $(0,\infty)$, $0=K(0)=\frac1{2\pi}\int\hat K(t)\,dt$. Subtracting, and using
-$(\frac12+it)^{-1}-1=(\frac12-it)/(\frac12+it)$, which has modulus~$1$, proves the identity and the inequality. For
-$K=\abs ue^{u/2}\mathbf 1_{u\le0}$ we have $\hat K(t)=(\frac12-it)^{-2}$, so the integrand is $(\frac14+t^2)^{-1}>0$, and both sides
+$(\frac12-it)^{-1}-1=(\frac12+it)/(\frac12-it)$, which has modulus~$1$, proves the identity and the inequality. For
+$K=\abs ue^{u/2}\mathbf 1_{u\le0}$ we have $\hat K(t)=(\frac12+it)^{-2}$, so the integrand is $(\frac14+t^2)^{-1}>0$, and both sides
 equal~$1$. For the consequence, translate a kernel supported in $(-\infty,T]$ to $(-\infty,0]$; then
 $\int K(u)e^{u/2}du\le e^{T/2}\frac1{2\pi}\int\abs{\hat K}\le e^{T/2}M(0)$, i.e.\ $c\ge1$.
 \end{proof}

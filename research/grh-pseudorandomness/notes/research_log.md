@@ -112,3 +112,6 @@ Two Lean docstrings that referenced `research/proof_obligations.md` now say `not
 - Key ingredient besides the kernel: the sharper gamma bound (Plancherel + tail split at R), `Ilog_div_le_sharp`.
 - Numerics: exact closed form 65.64/145.26 = 0.452 at q = 2⁶⁴; exact bias of the new measure 0.037–0.055 for q ∈ {10007, …, 4000037} (`experiments/convsq_certificate_check.py`).
 - Audit: 31 theorems standard axioms; env core only; leanchecker over all 32 project modules (see `verification/leanchecker.log`).
+
+## 2026-11-27 — sign correction (PR #3 review)
+- The barrier identity was stated with the multiplier (1/2 − it)/(1/2 + it), which is right for K̂(t) = ∫K e^{−itu} but not for the paper's convention K̂(t) = ∫K e^{itu}. Under the paper's convention the multiplier is (1/2 + it)/(1/2 − it), and the extremal has K̂(t) = (1/2 + it)^{−2}. Corrected in Section 6, the introduction and CLAUDE.md; the entry above is left as written. The inequality c ≥ 1 is unaffected. Rechecked numerically with the paper's convention.
