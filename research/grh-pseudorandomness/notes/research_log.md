@@ -8,7 +8,7 @@
 - Created `lean/` with a path dependency on the compact edition. All ten package revisions match the compact edition's manifest exactly.
 
 **Audit.**
-- The GRH interface states zero location only (`research/grh_audit.md`).
+- The GRH interface states zero location only (`notes/grh_audit.md`; this directory was called `research/` before the restructure below).
 - No explicit prime/character-sum bound ships with it.
 
 **Literature.**
@@ -93,3 +93,9 @@ Every fix is marked `-- port (Mathlib 56a00585)`. A whole-environment axiom list
 - **Certificate numbers.** numB ≤ 236.6 and denB ≥ 555.8, so bias ≤ 0.4257.
 - **Unconditional statements.** `GRHPseudo.Main.bias_sharp_closed` and `GRHPseudo.Main.bias_le_half_of_le_two_pow_64`, discharged by `LFunction_eq_zero_re` and `riemannHypothesis` from the compact edition.
 - **Audit.** 23 audited theorems use the standard three axioms only; the environment has no axioms outside Lean core.
+
+## 2026-11-27 — repository restructure
+The repository `math` is now a research monorepo. This project moved from the repository root to
+`research/grh-pseudorandomness/`, and its former notes directory `research/` was renamed `notes/`. The Lean build was
+unaffected: after the move, `lake build --no-build` reported all theorem and certificate targets up to date.
+Two Lean docstrings that referenced `research/proof_obligations.md` now say `notes/proof_obligations.md`.

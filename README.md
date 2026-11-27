@@ -1,62 +1,63 @@
-# GRH-based pseudorandomness over (Z/qZ)^×
+# math
 
-Research project: explicit, formally verified pseudorandomness guarantees for prime-supported
-distributions on `G_q = (Z/qZ)^×`, building on the Lean proof of GRH for Dirichlet L-functions
-(Alpöge, with Claude). **Status:** Theorems A and B below are proved in Lean, unconditionally, via the GRH proof.
-The sharp-constant result T1(a)/(b) and the paper are in progress.
+A monorepo for mathematics research. Each project pairs machine-checked proofs (Lean 4) with a
+paper, experiments, and research notes. Projects are self-contained and independent of each other.
 
-## Formally verified results (`lean/GRHPseudo/MainTheorems/Unconditional.lean`)
-- **Theorem A** `GRHPseudo.Main.primeCharSum`: for every q ≥ 1, every nonprincipal Dirichlet
-  character χ mod q, and every N ≥ 3,
-  `‖Σ_{0<n<N} χ(n)Λ(n)(1 − n/N)‖ ≤ (48e/π) log²N √N (π log(2+8q) + J)`, `J ≈ 5.626`.
-- **Theorem B** `GRHPseudo.Main.bias_primeMeasure`: the sample space {n < N coprime to q} with
-  weights Λ(n)(1 − n/N) has bias ≤ `charSumBound q N / massLower q N` against every
-  nonprincipal χ mod q. That is an explicit bound on every nontrivial eigenvalue of the weighted
-  prime-power Cayley graph on (Z/qZ)^×.
+## Projects
 
-- **Theorem C (sharp)** `GRHPseudo.Sharp.bias_sharp`: the explicit formula plus positivity, with the
-  cosh kernel. For every q, every nonprincipal χ mod q, every a ≥ 0 and y > 2a, the sample space of
-  units n ≤ e^{y+2a} with weights Λ(n) k_a(log n − y)/√n has bias ≤ `sharpNum/sharpDen`. The leading
-  term is k_a(0) log q/(√x A(a)). The hypotheses (zeros on the line, RH) are supplied by the GRH proof.
+| Project | Topic | Status |
+|---|---|---|
+| [`research/grh-pseudorandomness`](research/grh-pseudorandomness/) | Explicit, formally verified spectral bounds for prime Cayley graphs on (ℤ/qℤ)^×, built on the Lean proof of GRH for Dirichlet L-functions | Lean results complete (unconditional, standard axioms only); paper draft complete ([PDF](research/grh-pseudorandomness/paper/main.pdf)) |
 
-Axioms: `propext, Classical.choice, Quot.sound` only (`verification/axioms.log`); the whole
-environment contains only Lean core axioms (`verification/env-axioms.log`).
+## Structure
 
-- **Certificate (unconditional)** `GRHPseudo.Main.bias_le_half_of_le_two_pow_64`: for every
-  1 ≤ q ≤ 2⁶⁴ and every nonprincipal χ mod q, the measure on units n ≤ 166253 with weights
-  Λ(n) k₁(log n − 2 log 150)/√n has bias ≤ 1/2. Equivalently, every nontrivial eigenvalue of that
-  weighted Cayley graph on (ℤ/qℤ)^× has modulus ≤ 1/2. The closed-form general version is
-  `GRHPseudo.Main.bias_sharp_closed`.
-
-**Constants.** For bias ≤ 1/2 at q ≤ 2⁶⁴: Theorem B needs N ≈ 10¹⁶; the machine-checked
-certificate uses support ≤ 1.7·10⁵. With numerically evaluated (not formal) constants, Theorem C
-gives ≈ 3.5·10⁴ (`experiments/sharp_certified.py`).
-
-## Layout
-- `research/` — audit (`grh_audit.md`), literature review, candidates (`conjectures.md`),
-  novelty assessment, proof obligations, failed approaches, research log.
-- `lean/` — Lean 4 project `GRHPseudo` (Lean v4.35.0, Mathlib `56a00585`, path dependency on
-  grh-lean @ `72fead10`, compact edition).
-  - `GRHPseudo/GRH/` — interface (`GRHHyp` = the GRH project's `DirichletLNonvanishingRightOfHalf`)
-    and the discharge module (`GRHPseudo.grh`, needs the full GRH build).
-  - `GRHPseudo/AnalyticNumberTheory/` — growth of L, Borel–Carathéodory, log-derivative bound.
-  - `GRHPseudo/Pseudorandomness/` — bias, Cayley eigenvalue identity, rank-two extremal inequality.
-- `lean/Zeta23/` — Weil explicit formula library (zeta-23-lean), ported to our Mathlib pin.
-- `experiments/` — exact bias computations via FFT over the discrete-log isomorphism.
-- `verification/` — dependency fetch script, axiom audits.
-- `paper/` — (not started).
-
-## Reproduce
-```sh
-verification/fetch_deps.sh
-(cd vendor/grh-lean/grh-compact && lake exe cache get && lake build)   # 1–2 h, 24 GB RAM
-cd lean && lake build GRHPseudo GRHPseudo.MainTheorems.Unconditional
-lake env lean ../verification/Axioms.lean
-python3 -m venv .venv && .venv/bin/pip install numpy sympy
-.venv/bin/python experiments/prime_bias.py --qs 10007 100003
+```
+math/
+├── README.md            this file
+├── LICENSE              MIT (original work; see "Licensing")
+├── .gitignore           shared ignores (build outputs, vendored checkouts, virtualenvs)
+└── research/
+    └── <project>/       one directory per project, fully self-contained
+        ├── README.md        results, layout, how to reproduce
+        ├── lean/            Lean 4 project with its own lakefile, lean-toolchain and Mathlib pin
+        ├── paper/           LaTeX source and compiled PDF
+        ├── experiments/     numerical experiments; scripts and the small result tables (out/) cited by the paper
+        ├── verification/    dependency fetch script, axiom audits, kernel-replay logs
+        ├── notes/           literature review, candidate results, proof obligations, research log
+        ├── ATTRIBUTION.md   third-party code and results used, with licenses
+        └── vendor/          (git-ignored) pinned external checkouts, created by verification/fetch_deps.sh
 ```
 
-## Trust
-Conditional results take `hGRH : GRHHyp` as a hypothesis. Unconditional versions are obtained only
-through `GRHPseudo.grh := LFunction_ne_zero_of_half_lt_re` from the compact edition, and inherit
-its trust base (see `research/grh_audit.md`). Adapted code is listed in `ATTRIBUTION.md`.
+Not every project needs every directory. A project with no formal component has no `lean/`, for example.
+
+## Conventions
+
+- **Self-contained projects.** All paths inside a project are relative to that project's directory. Its README
+  says how to reproduce everything from there. Projects may pin different Lean and Mathlib versions.
+- **Pinned dependencies.** Every external dependency is pinned to a commit. Large checkouts and build outputs
+  (`vendor/`, `.lake/`, `.venv/`, LaTeX auxiliary files) are not committed; each project's
+  `verification/fetch_deps.sh` recreates them.
+- **What counts as proved.** A result is called *formal* only if it builds without `sorry`, and its
+  `#print axioms` lists only `propext`, `Classical.choice` and `Quot.sound`. The audit logs are committed
+  under `verification/`. Papers name the Lean declaration behind each formal claim and mark everything else
+  as informal.
+- **Honest novelty.** Each project keeps a literature review and novelty assessment in `notes/`, and its
+  paper credits closely related prior work explicitly.
+- **Attribution.** Vendored or adapted code is listed in the project's `ATTRIBUTION.md` and keeps a provenance
+  header in each file.
+- **Branches.** Work happens on per-project branches (e.g. `grh-pseudorandomness`) and is merged into `main`.
+
+## Starting a new project
+
+1. Create `research/<project-name>/` with a `README.md` stating the question and the planned deliverables.
+2. Add only the subdirectories you need: `notes/` first, then `lean/` (`lake new`, pin the toolchain), `paper/`,
+   and `experiments/`.
+3. If it builds on external Lean projects, pin them in `verification/fetch_deps.sh` and depend on them via
+   `vendor/` paths.
+4. Add a row to the project table above.
+
+## Licensing
+
+Original work in this repository is under the MIT License (`LICENSE`). Third-party code vendored into a
+project keeps its original license, typically Apache-2.0 for the Lean projects used so far. It is listed in
+that project's `ATTRIBUTION.md`.

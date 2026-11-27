@@ -1,5 +1,5 @@
 #!/bin/sh
-# Fetch pinned dependencies. Run from the repository root.
+# Fetch pinned dependencies. Run from this project's root (research/grh-pseudorandomness/).
 set -eu
 GRH_REV=72fead102f663d5c7a407964a13dc0cf9d977207
 mkdir -p vendor

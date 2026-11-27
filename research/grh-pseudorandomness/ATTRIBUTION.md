@@ -6,7 +6,7 @@
   Copyright 2026 Anthropic, PBC). We use it only through `LFunction_ne_zero_of_half_lt_re`.
 - Classical inputs: Borel–Carathéodory; partial summation for Dirichlet series; the explicit
   formula and positivity method (Weil; Ankeny 1952; Bach 1990); Jao–Miller–Venkatesan (2009) for
-  GRH-based expansion of prime Cayley graphs. See `research/literature_review.md`.
+  GRH-based expansion of prime Cayley graphs. See `notes/literature_review.md`.
 
 ## Code adapted from other projects (all Apache-2.0)
 | Our file | Source | Changes |

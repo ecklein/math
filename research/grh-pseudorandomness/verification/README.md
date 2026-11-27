@@ -18,7 +18,7 @@ Environment: macOS arm64, Lean v4.35.0 (`eb6cafb7`), Mathlib `56a00585`, grh-lea
 Scope of `leanchecker`: it replays the declarations of the named module. Imported modules,
 including the GRH proof, are trusted via their `.olean` files, which were built locally from
 source. Kernel replay of the GRH proof itself was done by third parties (see
-`research/grh_audit.md`), not here.
+`notes/grh_audit.md`), not here.
 
 Not yet done:
 - Comparator run against a Mathlib-only challenge file of our main statements.

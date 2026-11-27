@@ -14,7 +14,7 @@ centred at `c = 2 + i Im s` of radius `3/2 − ε/2`. That disc lies in `Re z > 
 no zeros by GRH. On it `‖L‖ ≤ 1 + 4 N ‖z‖` (`norm_LFunction_le_linear`), and `‖L(c)‖ ≥ 1/2`
 because `L(c, χ) L(c, χμ) = 1` with `‖L(c, χμ)‖ ≤ ζ(2) ≤ 2`.
 
-This is proof obligation A3 of `research/proof_obligations.md`.
+This is proof obligation A3 of `notes/proof_obligations.md`.
 -/
 
 noncomputable section

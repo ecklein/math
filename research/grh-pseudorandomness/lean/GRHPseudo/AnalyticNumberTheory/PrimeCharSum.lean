@@ -16,7 +16,7 @@ Proof: weighted Perron at `Re s = 2` with kernel `N^s (1/s − 1/(s+1))` (vendor
 schoenfeld-rh-lean). Identify the Dirichlet series with `−L'/L` (Mathlib). Shift to
 `Re s = 1/2 + 1/log N`, where `−L'/L` is holomorphic by GRH (`integral_vertical_eq`). Then bound
 the integrand with the Borel–Carathéodory estimate `norm_logDeriv_LFunction_le`.
-Proof obligations A4–A5 of `research/proof_obligations.md`.
+Proof obligations A4–A5 of `notes/proof_obligations.md`.
 -/
 
 noncomputable section

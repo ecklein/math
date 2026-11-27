@@ -1,4 +1,4 @@
-"""Numerical sanity check of Theorem T1(a) (research/conjectures.md).
+"""Numerical sanity check of Theorem T1(a) (notes/conjectures.md).
 
 Kernel: f_a(v) = cosh(v/2) on [-a, a], k_a = f_a * f_a~, so
     k_a(u) = sinh(a - |u|/2) + (a - |u|/2) cosh(u/2),  |u| <= 2a,
