@@ -14,25 +14,44 @@ $k_a$, a smooth function of one real variable, computed once per point to any de
 certificate of Corollary~\ref{cor:cert}, $M=166254$ and $\abs W$ is about $1.5\cdot10^4$.
 
 \paragraph{Exact sampling and seed length.}
-To output a sample with $s$ uniform random bits, round the normalized weights to multiples of $2^{-s}$ and
-use inverse-CDF lookup in the precomputed table. If the rounding error in total variation is at most $\delta$,
-the bias increases by at most $2\delta$. Taking $s=\lceil\log_2\abs W\rceil+\lceil\log_2(1/\delta)\rceil$ suffices.
-With support $X\asymp\log^2q/\varepsilon^2$ (Corollary~\ref{cor:asymp}) this gives an $(\varepsilon+2\delta)$-biased
+The theorems bound the bias of the weights restricted to units and renormalized there. A sampler must therefore output exactly
+that conditional distribution, or a close approximation of it; a table built without reference to $q$ can return a non-unit. We
+use a table that depends on $q$: from the $q$-independent list $W$, keep the $n$ with $\gcd(n,q)=1$, renormalize, round the
+probabilities to multiples of $2^{-s}$, and sample by inverse-CDF lookup with $s$ uniform bits. Building it costs one gcd per element
+of $W$. Two approximations enter, and each costs at most twice its total-variation distance in bias. First, the weights are
+integrals and are computed numerically: if each is computed with relative error at most $\eta<1$, the normalized distribution moves by
+at most $\eta/(1-\eta)$ in total variation. Second, rounding to multiples of $2^{-s}$ moves it by at most $\delta$ once
+$s\ge\lceil\log_2\abs W\rceil+\lceil\log_2(1/\delta)\rceil$. The output is then $(\varepsilon+2\eta/(1-\eta)+2\delta)$-biased, where $\varepsilon$ is the
+certified bias.
+With support $X\asymp\log^2q/\varepsilon^2$ (Corollary~\ref{cor:asymp}) this gives an $(\varepsilon+2\eta/(1-\eta)+2\delta)$-biased
 generator for $\Gq$ with seed length
 \[
   s=2\log_2\log q+2\log_2(1/\varepsilon)+\log_2(1/\delta)+O(1)
 \]
-(the $O(1)$ absorbs the leading constant and the prime-power density). Each sample then costs one table lookup and one
-gcd with $q$. The lower bound for any $\varepsilon$-biased set in a group of order $\varphi(q)$ is
+(the $O(1)$ absorbs the leading constant and the prime-power density). Each sample then costs one table lookup. The lower bound for any $\varepsilon$-biased set in a group of order $\varphi(q)$ is
 $\log_2\log q+2\log_2(1/\varepsilon)-O(\log\log(1/\varepsilon))$ \cite{alonroichman1994,naornaor1993}. The
 factor $2$ in front of $\log_2\log q$ is the $(\log q)^2$ barrier of Section~\ref{sec:limits}.
 
 \paragraph{Non-units and $q$-obliviousness.}
-Sampling from $W$ without the coprimality filter gives a measure that does not depend on $q$ at all. The
-non-units of $W$ carry relative mass at most $U_q(a,y)/\mathrm{Den}$, which Theorem~\ref{thm:closed} bounds by
-$U_B/\mathrm{den}_B$. For $q\le2^{64}$ with the parameters of Corollary~\ref{cor:cert} this is at most
-$37.15/555.8<0.067$. So a single, $q$-oblivious table serves all moduli $q\le2^{64}$ simultaneously, at the
-cost of a small failure probability.
+A single table that does not depend on $q$ is also possible. Let $p$ be the ideal unfiltered distribution on $W$ (exact weights,
+normalized) and $p_U$ its conditional distribution on units, which is the measure the theorems bound. Under $p$ a draw is a non-unit
+with probability $\pi_q=U_q/\mathrm{Den}$ at most. This is at most $U_B/\mathrm{den}_B\le37.15/555.8<0.067$ for Corollary~\ref{cor:cert},
+and at most $U^\square_B/\mathrm{den}^\square_B\le6.81/143.9<0.048$ for Corollary~\ref{cor:convcert}, for every $q\le2^{64}$.
+
+\emph{Ideal sampler.} Draw from $p$ and test $\gcd(n,q)=1$. Rejection (repeat until success) outputs exactly $p_U$, using
+$1/(1-\pi_q)$ draws on average. With at most $r$ attempts, outputting $1$ if all fail, the output is within $\pi_q^r$ of $p_U$ in total
+variation.
+
+\emph{Finite-bit sampler.} The implemented table is a distribution $\tilde p$ with $\mathrm{TV}(\tilde p,p)\le\tau$, where
+$\tau=\eta/(1-\eta)+\delta$ collects the weight and rounding errors above. Conditioning amplifies this error, and the approximation can
+also change the rejection rate. Under $\tilde p$ a draw fails with probability $\tilde\pi_q\le\pi_q+\tau$. For the conditional distributions,
+writing $A=\tilde p(\text{unit})\ge1-\pi_q-\tau$, one has $\norm{\tilde p_U-p_U}_1\le\norm{\tilde p-p}_1/A+\abs{A-p(\text{unit})}/A\le3\tau/A$, so
+\[
+  \mathrm{TV}(\tilde p_U,p_U)\le\frac{3\tau}{2(1-\pi_q-\tau)}.
+\]
+Rejection sampling from $\tilde p$ outputs exactly $\tilde p_U$. The bounded-attempt sampler is within $(\pi_q+\tau)^r$ of $\tilde p_U$, so its
+bias exceeds the certified bias by at most $3\tau/(1-\pi_q-\tau)+2(\pi_q+\tau)^r$. For example, with $\tau\le10^{-6}$ and $r=5$ this is below
+$4\cdot10^{-6}$ for Corollary~\ref{cor:convcert}. In either form one table serves all moduli $q\le2^{64}$.
 
 \paragraph{Expander walks.}
 By Corollary~\ref{cor:cert}, the random walk on $\Gq$ that multiplies by an independent sample at each step has

@@ -2,7 +2,7 @@
 
 Project state and working notes. The general process is in `../../CLAUDE.md`. **Update this file
 whenever results, statements, commands, status or open tasks change.** Last updated: 2026-11-27
-(optimality claims corrected; convolution-square kernel formalized, new certificate n ≤ 48400).
+(external-review fixes to informal claims, branch `grh-paper-fixes`).
 
 ## What this project is
 Explicit, formally verified bias bounds (equivalently, second-eigenvalue bounds) for prime Cayley graphs
@@ -77,10 +77,13 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   character, with a 1 + o(1) factor. Our claim is fully explicit constants plus the certificate and the
   formalization. Ernvall-Hytönen–Palojärvi 2022 give explicit, q-uniform ψ(x;q,a) bounds; a bias bound
   follows from theirs only with weak constants. Gaillard–Jindal (SLP squareness) is known under GRH, not ours.
-- **Non-positive-definite kernels (numerical only, `experiments/kernel_lp.py`).** The best nonnegative
-  kernel gives c(a*) ≈ 1.047 and c(a) → ≈ 1.000 by a = 3, against the PD optimum c* ≈ 1.2236. The
-  optimizers are asymmetric. This is not yet a theorem; for a < 1 the discretization is unreliable.
-  The closest prior art is CMQR (one-sided problem, C(∞) = 1).
+- **Non-positive-definite kernels (exploratory, uncertified, `experiments/kernel_lp.py`).** LP solutions give
+  c ≈ 1.104, 1.047, 1.025, 1.006, 1.001 at a = 1, a*, 1.5, 2, 3 (truncated quadrature at T = 4000 plus a TV(K′) tail bound
+  ≤ 0.0004, end-node slope jumps included; quadrature error unbounded). Never call these "exact" or certified. For a < 1 the discretization is unreliable.
+- **Prop 8 / rank-two lemma (fixed 2026-11-27).** State Prop 8 without dividing (∫k e^{u/2} ≤ (a + sinh a)k(0)); the ratio needs
+  ∫k e^{u/2} > 0. The lemma's equality case needs α/‖α‖ ≠ −β/‖β‖, and only the inequality is formal.
+- **JMV normalization.** Their Thm 1.1 is unnormalized: O(x^{1/2} log(xq)), degree ≈ 2 li(x).
+- **LLS Lemma 6.1** was corrected (arXiv v3; corrigendum Math. Comp. 86 (2017)); cite the corrected version.
 - **The formal kernels.** Both use transition width 1/64. Cosh kernel: leading coefficient 1.2626 at a*,
   1.2964 at a = 1. Conv-square kernel: (1 − e^{−A})/(e^{−1/64} − e^{−A+1/64})² = 1.162 at A = 9/4, normalized
   by the top x of its support (which is x itself, not x e^{2a}).
@@ -95,7 +98,7 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 - **Formal core only:** Prop 8 (the abstract rank-two inequality `inner_mul_inner_le`).
 - **Informal:** the L²[−a,a] instance of Prop 8, the factorization theorem, Props 12–13 (convolution squares, barrier), Cor 9, and the
   sampling/complexity section.
-- **Paper:** a complete 19-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
+- **Paper:** a complete 20-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
   is not in the paper yet.
 - **Git:** merged to `main` via PRs #1–#3 (2026-11-27). PR #3 (`conv-square-kernel`, merge commit `e0bfa3d`) brought
   the optimality correction, the conv-square certificate, the vendored sources, the author name and the Use of AI statement.

@@ -69,6 +69,9 @@ route is moments of the large sieve over (q, χ) in the style of Duke–Kowalski
 the (log Q)² scale with an ε^{−4} loss. This would make the story "GRH is needed only for the worst-case
 moduli". The prior-art check found no small-bias or expander version stated, though the method is
 classical. **Value: medium**, as a section or short companion paper; informal at first.
+**Update (2026-11-27): precursor exists.** JMV §1 already notes unconditional expansion outside a sparse set of moduli via the
+large sieve (Garaev, Thm 3). Pursue only with a quantitatively stronger target (exceptional-set size, support exponent, explicit
+constants). **Value lowered to low–medium.**
 
 ### 3. Explicit nonabelian expanders: the affine group Aff(ℤ/pℤ)
 Generators: multiplication by small primes, and translation by ±1. The semidirect-product/zig-zag theorem
@@ -141,3 +144,15 @@ stays the zero sum of f ⋆ f̃.
 The explicit theorem and certificate were re-based on the convolution-square kernel K_A = f_A ⋆ f_A (paper Thm 10,
 Cor 11; formal). Support for bias ≤ 1/2 at q ≤ 2⁶⁴ is now n ≤ 48400 (was 166253). The paper's optimality claims are
 corrected (Section 6, with a dated note).
+
+## External review (2026-11-27): suggested priorities
+1. **Finite-window extremal problem with rigorous certificates.** C(L) = inf over nonnegative K on [−L, 0] of
+   (1/2π)∫|K̂| / ∫K e^{u/2}. Questions: is C(L) > 1 for every finite L, the size of C(L) − 1, existence of optimizers. First goal:
+   certified primal (upper) and dual (lower) bounds at one L showing a strict improvement over convolution squares. Our LP numbers
+   (`kernel_lp.py`) are exploratory only: truncated quadrature, uncertified. Strongest potential for new mathematics.
+2. **Optimize the actual finite certificate**, and build a reusable Lean theorem that accepts a kernel certificate, with an optimizer
+   that emits independently checked certificates.
+3. **Executable sampler with a proved guarantee**: rational weights, finite bits, unit filtering, explicit error and failure bounds,
+   then formal operator-norm and mixing consequences.
+4. **One distribution for all moduli**: support/entropy needed for a single integer distribution whose conditioning on units is
+   small-biased for every q ≤ Q, against q-dependent weights; adversarial moduli.

@@ -90,3 +90,9 @@ confirmed. Nothing marked [S] or [M] may be cited in the paper until opened and 
 2. No formalized uniform bound on prime character sums Σ Λ(n)χ(n)w(n) (two-sided). grh-miller
    formalizes only the one-sided consequence.
 3. No formal statement linking GRH to a pseudorandomness property in both directions.
+
+## Added 2026-11-27 (after external review)
+- **[O]** Lamzouri–Li–Soundararajan, arXiv:1309.3595v3 (8 Dec 2016): corrected Lemma 6.1 (same leading term), §6.1 limitation of the method, §6.2–6.3 kernels (indicator square; Γ(s+1/2)), Lemma 2.2 (S(x,χ) = Σ Λ(n)χ(n) log(x/n)). Text extracted from the PDF.
+- **[S]** Lamzouri–Li–Soundararajan, Corrigendum, Math. Comp. 86 (2017), no. 307, 2551–2554, doi:10.1090/mcom/3261: Crossref metadata only; content taken from v3.
+- **[O]** Jao–Miller–Venkatesan, arXiv:0811.0647v2 (HTML), J. Number Theory 129 (2009) 1491–1504: Thm 1.1 (unnormalized eigenvalues O(n x^{1/2} log(xq)), degree 2 li(x) + O(·)); §1 remark on unconditional expansion for almost all q via Garaev.
+- **[S]** Garaev, Character sums in short intervals and the multiplication table modulo a large prime, Monatsh. Math. 148 (2006) 127–138, Thm 3: seen only as JMV's reference.

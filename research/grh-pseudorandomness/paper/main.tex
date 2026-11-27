@@ -45,7 +45,8 @@ $\max_{\chi\ne\chi_0}\abs{\mathbb{E}_{n\sim\mu}\chi(n)}$, taken over the nontriv
 characters modulo $q$, is the largest nontrivial eigenvalue of the weighted Cayley graph
 it defines on $(\Z/q\Z)^\times$. Under the generalized Riemann hypothesis (GRH) for Dirichlet
 $L$-functions, Jao, Miller and Venkatesan showed that the primes $p\le x$ yield such
-expanders with eigenvalues $O(x^{-1/2}\log(qx))$, with unspecified constants.
+expanders, with nontrivial adjacency eigenvalues $O(x^{1/2}\log(qx))$ against degree about $2\operatorname{li}(x)$, so
+normalized eigenvalues $O(x^{-1/2}\log x\log(qx))$, with unspecified constants.
 GRH for Dirichlet $L$-functions now has a machine-checked proof in Lean~4 (Alpöge, with Claude).
 Building on that proof, we give fully explicit, unconditional bounds of this type. All of them are
 formally verified, with no axioms beyond those of Lean's core.
