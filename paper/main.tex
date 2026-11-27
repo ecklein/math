@@ -1,0 +1,80 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=green!35!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Gq}{G_q}
+\newcommand{\bias}{\operatorname{bias}}
+\newcommand{\lean}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+\title[Explicit, verified spectral bounds for prime Cayley graphs]{Explicit and formally verified spectral bounds\\ for prime Cayley graphs on $(\Z/q\Z)^\times$}
+
+\author{[Author names to be added]}
+
+\date{Draft of 27 November 2026}
+
+\begin{abstract}
+Let $q\ge 1$ and let $\mu$ be a probability measure on integers coprime to $q$. Its bias
+$\max_{\chi\ne\chi_0}\abs{\mathbb{E}_{n\sim\mu}\chi(n)}$, taken over the nontrivial Dirichlet
+characters modulo $q$, is the largest nontrivial eigenvalue of the weighted Cayley graph
+it defines on $(\Z/q\Z)^\times$. Under the generalized Riemann hypothesis (GRH) for Dirichlet
+$L$-functions, Jao, Miller and Venkatesan showed that the primes $p\le x$ yield such
+expanders with eigenvalues $O(x^{-1/2}\log(qx))$, with unspecified constants.
+GRH for Dirichlet $L$-functions now has a machine-checked proof in Lean~4 (Alpöge, with Claude).
+Building on that proof, we give fully explicit, unconditional bounds of this type. All of them are
+formally verified, with no axioms beyond those of Lean's core.
+
+The main result uses a prime-power measure weighted by a $\cosh$-based test function, and controls it
+through the Weil explicit formula and a positivity argument. Its bias is at most an explicit
+expression whose leading term is $k_a(0)\log q/(\sqrt{x}\,\int k_a(u)e^{u/2}\,du)$. As a
+machine-checked instance: \emph{for every modulus $q\le 2^{64}$ and every nontrivial character $\chi$
+modulo $q$, a fixed measure on prime powers $n\le 166253$ has bias at most $1/2$.} We also show that the
+$\cosh$ kernel is exactly optimal within the positivity method. Optimizing its width gives bias
+$\le(c^*+o(1))\log q/\sqrt X$ for support up to $X$, where $c^*=2/a_*^2\approx1.2236$ and $a_*\approx1.2785$ is the
+root of $a=1+e^{-a}$; no kernel does better within this method.
+A cruder bound, obtained via Borel--Carath\'eodory and valid for all $q$, is also formalized.
+Along the way we ported a 120-module Lean library for the Weil explicit formula to the Mathlib
+version of the GRH proof.
+\end{abstract}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/related}
+\input{sections/results}
+\input{sections/proofs}
+\input{sections/optimality}
+\input{sections/complexity}
+\input{sections/experiments}
+\input{sections/formalization}
+\input{sections/limitations}
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,91 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection{Pseudorandomness from primes}
+Fix a modulus $q\ge 1$ and write $\Gq=(\Z/q\Z)^\times$. A probability measure $\mu$ on positive
+integers coprime to $q$ pushes forward to a probability measure on $\Gq$. We measure how
+pseudorandom it is against the class of \emph{multiplicative characters} of $\Gq$, which are the
+nontrivial Dirichlet characters $\chi$ modulo $q$:
+\[
+  \bias(\mu)=\max_{\chi\ne\chi_0 \bmod q}\Bigl\lvert\sum_n \mu(n)\chi(n)\Bigr\rvert .
+\]
+This is statistical pseudorandomness for a fixed test class. It is not cryptographic
+indistinguishability. It is also a spectral quantity: the characters of $\Gq$ are eigenfunctions of the
+averaging operator $Tf(g)=\sum_n\mu(n)f(gn)$ of the weighted Cayley graph $\mathrm{Cay}(\Gq,\mu)$, with
+eigenvalues $\sum_n\mu(n)\chi(n)$ (Lemma~\ref{lem:eigen}). Small bias therefore means a uniform
+spectral gap. Through the usual consequences of expansion (mixing of random walks, hitting and
+Chernoff bounds for expander walks, coset hitting), it yields samplers on $\Gq$ that require
+neither the factorization of $q$ nor knowledge of the group structure of $\Gq$.
+
+Natural measures of this kind are supported on primes. Under the generalized Riemann hypothesis for
+Dirichlet $L$-functions, the primes $p\le x$ form an expanding generating set of $\Gq$ once $x$ is a
+little larger than $(\log q)^2$. This is the case $K=\mathbb{Q}$ of Jao, Miller and Venkatesan
+\cite{jmv2009}, whose nontrivial eigenvalues are $O(x^{1/2}\log(xq))$ with absolute but unspecified
+constants. Unconditionally, no polylogarithmic-support construction of this kind is known for $\Gq$.
+One would imply a polylogarithmic bound for the least character non-residue, which is far beyond
+current unconditional methods.
+
+\subsection{The new input}
+The Riemann hypothesis and GRH for all Dirichlet $L$-functions have recently been proved in Lean~4
+\cite{alpoge2026,grhlean}. The proof has been independently built, replayed by several kernels and
+compared against its statement files \cite{sutherlandgrh,sutherlandshortgrh,rubinsteinpage}. The Lean
+development is the proof: the accompanying paper reduces the main inequality to stated hypotheses
+rather than proving it \cite{rubinsteinpage}. The formal statement we use is
+\[
+  L(s,\chi)\ne0\quad\text{for all $q\ge1$, all $\chi$ mod $q$, and all } \operatorname{Re}s>\tfrac12,
+\]
+except at the pole $s=1$ of the principal character. Results that were conditional on GRH for
+Dirichlet $L$-functions are thus unconditional, provided one accepts the Lean proof. This covers
+neither Hecke $L$-functions of general number fields nor Artin $L$-functions, so the class-group and
+isogeny-graph expanders of \cite{jmv2009} remain conditional.
+
+\subsection{Results}
+We prove explicit, fully formalized spectral bounds for prime Cayley graphs on $\Gq$.
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{A uniform prime character-sum bound} (Theorem~\ref{thm:A}). For all $q\ge1$, all
+  $\chi\ne\chi_0$ and all $N\ge3$,
+  \[
+    \Bigl\lvert\sum_{0<n<N}\chi(n)\Lambda(n)\bigl(1-\tfrac nN\bigr)\Bigr\rvert
+    \le \frac{48e}{\pi}(\log N)^2\sqrt N\,\bigl(\pi\log(2+8q)+J\bigr),
+  \]
+  where $J=\int_\R\log(4+|t|)(1+t^2)^{-1}\,dt\le6$. The proof uses only nonvanishing of $L(s,\chi)$
+  right of the critical line, Borel--Carath\'eodory and one contour shift. It needs no zero counting
+  and no explicit formula.
+\item \textbf{A sharp explicit bias bound} (Theorems~\ref{thm:sharp} and~\ref{thm:closed}). For a
+  $\cosh$-based test function $f_a$ with kernel $k_a=f_a*\tilde f_a$, and weights
+  $w(n)=\Lambda(n)k_a(\log n-y)n^{-1/2}$ on units $n\le e^{y+2a}$, we bound the bias by an explicit
+  closed-form ratio $\mathrm{num}_B/\mathrm{den}_B$ for all $q$, $a\ge1$ and $y>2a$. The leading term
+  is $(a+\sinh a)\log q/(\sqrt{x}\,(\sinh a'+a')^2)$ with $x=e^y$ and $a'=a-1/64$. The proof runs the
+  Weil explicit formula for $L(s,\chi)$ and for $\zeta(s)$ through a two-sided positivity argument.
+\item \textbf{A machine-checked certificate} (Corollary~\ref{cor:cert}). \emph{For every
+  $1\le q\le2^{64}$ and every nontrivial $\chi$ modulo $q$, the measure above with $a=1$ and
+  $y=2\log150$ has bias at most $1/2$.} It is supported on prime powers $n\le166253$ coprime to $q$.
+  The same guarantee from Theorem~\ref{thm:A} would need $N\approx10^{16}$.
+\item \textbf{Optimality of the kernel within the method} (Proposition~\ref{prop:opt}). Among all
+  kernels $k=f*\tilde f$ with $\operatorname{supp}f\subseteq[-a,a]$, the leading coefficient
+  $k(0)/\int k(u)e^{u/2}du$ produced by the positivity method is at least $1/(a+\sinh a)$, with
+  equality exactly for $f\propto\cosh(t/2)\mathbf 1_{[-a,a]}$. Optimizing over $a$ gives
+  $\bias\le(c^*+o(1))\log q/\sqrt X$ for support up to $X$, with $c^*=\min_a e^a/(a+\sinh a)=2/a_*^2\approx1.2236$
+  attained at the root $a_*\approx1.2785$ of $a=1+e^{-a}$. No kernel gives a smaller leading constant
+  within the positivity method.
+\end{enumerate}
+
+\subsection{What is new, and what is not}
+The shape of Theorem~\ref{thm:A}, and of the leading term in Theorem~\ref{thm:sharp}, is classical
+under GRH: compare Bach \cite{bach1990} and Lamzouri--Li--Soundararajan \cite{lls2015} for one-sided
+statements, and \cite{jmv2009} for the spectral one. We claim novelty for the following, with the
+caveat that a literature search cannot establish uniqueness:
+(i) fully explicit \emph{two-sided} spectral bounds for prime Cayley graphs on $\Gq$, uniform in $q$
+and in $\chi$ (primitive or not);
+(ii) the exact optimum of the leading constant within the positivity method (Proposition~\ref{prop:opt});
+(iii) the end-to-end formal verification of (i) and of a concrete certificate, with GRH entering as a
+proved theorem rather than an assumption.
+The prior results closest to ours are discussed in Section~\ref{sec:related}. In particular, Bach's
+constant~$2$ for the least non-residue is already formalized \cite{grhmiller}, and so is the Weil
+explicit formula \cite{zeta23}. Our two-sided bounds use the same positivity inequality as
+\cite{grhmiller}, in a different (spectral) way.
+
+\subsection{Scope}
+We do not improve the exponent $2$ in the $(\log q)^2$ support barrier (Section~\ref{sec:limits}):
+doing so is at least as hard as improving the GRH bound for the least prime non-residue. We make no
+cryptographic claims. Empirical statistics in Section~\ref{sec:experiments} are evidence about typical
+behaviour; they are not proofs.

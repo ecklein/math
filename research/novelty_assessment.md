@@ -19,8 +19,9 @@ Semantic Scholar via web search, plus GitHub. MathSciNet and zbMATH were not acc
 
 **What would be new.**
 - (a) A fully explicit **two-sided** bound on |E_μ χ| valid for every nonprincipal χ mod every q,
-  i.e. an explicit second-eigenvalue bound for weighted prime Cayley graphs. The leading
-  constant is 2 in the support-normalised form (2 + o(1)) log q / √X.
+  i.e. an explicit second-eigenvalue bound for weighted prime Cayley graphs. In the
+  support-normalised form the leading constant is c* = 2/a*² ≈ 1.2236 (a* ≈ 1.2785 the root of
+  a = 1 + e^{−a}). An earlier draft said 2, which is only the a → ∞ limit.
 - (b) The exact optimum of the leading constant over all admissible positive-definite kernels
   with prescribed support, by reduction to a rank-two extremal problem. The extremal
   kernel is cosh(v/2)-based. That test function is the one Ankeny/Bach-type arguments use
@@ -33,7 +34,7 @@ vanishes to leading order when the twist lies outside the kernel's support. Seco
 untwisted zero sum is controlled by the same explicit formula at x = 1. These are standard
 moves, so honestly (a) is **routine-but-unrecorded**. (b) is short, and to our knowledge new in
 this spectral setting. CMQR solve a different extremal problem (one-sided, with sign constraints
-on k̂ − ...), with a different answer (0.7615 vs our 2-type constant), so (b) does not follow
+on k̂ − ...), with a different answer (0.7615 vs our 1.2236), so (b) does not follow
 from them.
 
 **Counterexamples / lower bounds checked.**

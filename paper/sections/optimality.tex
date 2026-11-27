@@ -1,0 +1,64 @@
+\section{Optimality of the kernel within the positivity method}\label{sec:optimality}
+
+\subsection{Where the leading coefficient comes from}
+In the proof of Theorem~\ref{thm:sharp} with a general admissible kernel $k=f*\tilde f$, $f\in C^2_c$ real,
+$\operatorname{supp}f\subseteq[-a,a]$, only two terms are large. In the numerator the only term growing with
+$q$ is $k(0)\log(q/\pi)$, coming from $\operatorname{Re}\Gamma_{q,\kappa}(k)$ through Plancherel. In the
+denominator the only term growing with $x$ is $e^{y/2}\hat k(-\frac i2)=\sqrt x\int k(u)e^{u/2}du$. As $q\to\infty$
+and $x/\log^2q\to\infty$ with $a$ fixed, the method therefore gives
+\begin{equation}\label{eq:leading}
+  \bias\le\bigl(\rho(f)+o(1)\bigr)\frac{\log q}{\sqrt x},\qquad
+  \rho(f)=\frac{k(0)}{\int k(u)e^{u/2}\,du}=\frac{\norm f_2^2}{\langle f,e^{t/2}\rangle\,\langle f,e^{-t/2}\rangle}.
+\end{equation}
+The second expression follows from $k(0)=\norm f^2$ and $\hat k(z)=\hat f(z)\overline{\hat f(\bar z)}$ at $z=-\frac i2$.
+For the bound to be meaningful we need both inner products of the same sign, which we may assume positive.
+
+\subsection{The extremal problem}
+\begin{lemma}[formal; \lean{GRHPseudo.inner_mul_inner_le}]\label{lem:ranktwo}
+In a real inner product space, for all $f,\alpha,\beta$,
+\[
+  \langle f,\alpha\rangle\langle f,\beta\rangle\le\tfrac12\bigl(\norm\alpha\norm\beta+\langle\alpha,\beta\rangle\bigr)\norm f^2 .
+\]
+If $\norm\alpha\norm\beta>0$, equality holds iff $f$ is a multiple of $\alpha/\norm\alpha+\beta/\norm\beta$.
+\end{lemma}
+\begin{proof}
+Put $u=\alpha/\norm\alpha$ and $v=\beta/\norm\beta$. Then
+$4\langle f,u\rangle\langle f,v\rangle=\langle f,u+v\rangle^2-\langle f,u-v\rangle^2\le\norm f^2\norm{u+v}^2=2(1+\langle u,v\rangle)\norm f^2$.
+Equality requires $f\perp u-v$ and $f\parallel u+v$; note that $u+v\perp u-v$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:opt}]
+Work in $L^2[-a,a]$ with $\alpha=e^{t/2}$ and $\beta=e^{-t/2}$. Then $\norm\alpha^2=\norm\beta^2=\int_{-a}^ae^t\,dt=2\sinh a$ and
+$\langle\alpha,\beta\rangle=2a$. Lemma~\ref{lem:ranktwo} gives $\rho(f)\ge1/(\sinh a+a)$, with equality iff
+$f\propto e^{t/2}+e^{-t/2}=2\cosh(t/2)$ on $[-a,a]$. The factorization statement is the theorem of Boas and Kac
+and of Krein: a continuous positive-definite function supported in $[-2a,2a]$ is $f*\tilde f$ for some
+$f\in L^2[-a,a]$ \cite{boaskac1945,ehmgneitingrichards2004}. Hence the bound covers every kernel to which
+the positivity step applies, namely those with $\hat k\ge0$ on $\R$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:asymp}]
+\emph{Part 1.} A kernel supported in $[-2a,2a]$ and twisted by $y$ yields a measure supported in
+$[xe^{-2a},xe^{2a}]$. With $X=xe^{2a}$ we have $\sqrt x=e^{-a}\sqrt X$, so \eqref{eq:leading} and
+Proposition~\ref{prop:opt} give leading term $\ge c(a)\log q/\sqrt X$ with $c(a)=e^a/(a+\sinh a)$.
+
+Minimizing: $(\log c)'(a)=1-(1+\cosh a)/(a+\sinh a)$ vanishes iff $a+\sinh a=1+\cosh a$, i.e.\
+$a-1=\cosh a-\sinh a=e^{-a}$. There
+\[
+  c(a)=\frac{e^a}{1+\cosh a}=\frac{2e^a}{(e^{a/2}+e^{-a/2})^2}=\frac2{(1+e^{-a})^2}=\frac2{a^2}.
+\]
+Since $c(a)\to\infty$ as $a\to0^+$ and $c(a)\to2$ as $a\to\infty$, while $c(a_*)<2$, the critical point $a_*$ is the
+global minimum.
+
+\emph{Part 2.} Replace the cutoff $\eta_{a_*}$ by smooth cutoffs converging to $\mathbf 1_{[-a_*,a_*]}$ in $L^2$. This
+makes $\rho(f)$ converge to $1/(a_*+\sinh a_*)$. For a fixed smooth kernel, every other term in
+Theorem~\ref{thm:sharp} is $O_a(1)$ in the numerator, and in the denominator it is $O_a(1)+O(\log q\log x/\sqrt x)$,
+which is $o(\sqrt x)$ once $x/\log^2q\to\infty$. The constant $c^{*2}=4/a_*^4=1.4972\ldots$ follows.
+\end{proof}
+
+\begin{remark}
+Lemma~\ref{lem:ranktwo} is formalized; its specialization to $L^2[-a,a]$, the factorization theorem and the
+asymptotic statement are not. The comparison with \cite{cmqr2024} is instructive: there the extremal problem is
+one-sided, with sign conditions on $k$ adapted to a single non-residue condition, and the optimum is
+$0.7615\ldots\log^2p$ for the least quadratic non-residue. Our problem bounds all characters simultaneously,
+in both directions, using only $\hat k\ge0$.
+\end{remark}

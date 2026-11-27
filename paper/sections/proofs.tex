@@ -1,0 +1,99 @@
+\section{Proofs}\label{sec:proofs}
+
+Each proof below follows the Lean development. We name the modules (under
+\lean{lean/GRHPseudo/AnalyticNumberTheory/}) so the reader can compare.
+
+\subsection{Theorem~\ref{thm:A}: Borel--Carath\'eodory and one contour shift}
+\emph{Step 1: growth of $L$.} For $\chi\ne\chi_0$ modulo $N$ and $\operatorname{Re}s\ge\frac12$,
+$\abs{L(s,\chi)}\le1+4N\abs s$ (\lean{norm_LFunction_le_linear}). The proof is partial summation: the partial sums of
+$\chi$ are bounded by $2N$. The resulting integral is analytic for $\operatorname{Re}s>0$, and the identity
+theorem extends the formula from $\operatorname{Re}s>1$. This is adapted from the readable GRH edition.
+
+\emph{Step 2: the GRH step.} Since $L(c,\chi)L(c,\chi\mu)=1$ and $\abs{L(c,\chi\mu)}\le\zeta(2)\le2$, we
+have $\abs{L(c,\chi)}\ge\frac12$ at $c=2+it$. On the disc about $c$ of radius $\frac32-\frac\varepsilon2$,
+$L$ has no zeros by \eqref{eq:grh}. The Borel--Carath\'eodory bound for logarithmic derivatives then gives, for
+$0<\varepsilon\le1$ and $\frac12+\varepsilon\le\operatorname{Re}s\le2$,
+\[
+  \Bigl\lvert\frac{L'}{L}(s,\chi)\Bigr\rvert\le\frac{48}{\varepsilon^2}\log\bigl(2(1+4q(\abs{\operatorname{Im}s}+4))\bigr)
+  \qquad(\text{\lean{norm_logDeriv_LFunction_le}}).
+\]
+
+\emph{Step 3: Perron and shift.} The weighted Perron formula with kernel $N^s(1/s-1/(s+1))$ (from
+\cite{schoenfeldlean}) expresses the sum in Theorem~\ref{thm:A} as a vertical integral of
+$-L'/L(s)\,N^s(1/s-1/(s+1))$ on $\operatorname{Re}s=2$. We shift it to $\operatorname{Re}s=\frac12+1/\log N$
+with a rectangle-contour lemma (\lean{integral_vertical_eq}); the horizontal edges decay like $1/\abs T$.
+Then we bound the integrand using $\abs{1/s-1/(s+1)}\le2/(1+t^2)$ and $N^{1/2+1/\log N}=e\sqrt N$.
+
+\emph{Corollary~\ref{cor:A}.} The mass is at least $\psi(\lfloor N/2\rfloor)/2$ (Mathlib's \lean{Chebyshev.psi_ge}).
+Removing non-units costs at most $\log q\,\lfloor\log_2N\rfloor$, since each non-unit prime power $p^k<N$ has
+$p\mid q$ and $k\le\log_2N$.
+
+\subsection{Theorem~\ref{thm:sharp}}
+\emph{Two-sided positivity} (\lean{Sharp/TwoSided.lean}).
+\begin{lemma}\label{lem:twosided}
+Let $\chi$ be primitive modulo $q>1$ of parity $\kappa$, let $f\in C^2_c(\R)$, $k=f*\tilde f$, $y\in\R$, and
+$k_y=k(\cdot-y)$. Then
+\[
+  \abs{P_\chi(k_y)}\le\abs{\Gamma_{q,\kappa}(k_y)}+\operatorname{Re}\bigl(\Gamma_{q,\kappa}(k)-P_\chi(k)\bigr).
+\]
+\end{lemma}
+\begin{proof}
+We have $\hat k_y(z)=e^{izy}\hat k(z)$. By GRH every $\gamma_\rho$ is real, so each term of the zero sum
+in \eqref{eq:EFchi} for $k_y$ equals $m_\rho e^{i\gamma_\rho y}\abs{\hat f(\gamma_\rho)}^2$. The zero sum
+for $k_y$ therefore has modulus at most $S=\sum_\rho m_\rho\abs{\hat f(\gamma_\rho)}^2$, which is the
+zero sum for $k$ itself. Apply \eqref{eq:EFchi} to both $k_y$ and $k$.
+\end{proof}
+
+\emph{Finite sums} (\lean{Sharp/FiniteSums.lean}). Since $k_a(u)=0$ for $\abs u>2a$ and $y>2a$, the conjugate
+leg $k_a(-\log n-y)$ vanishes for every $n$. The prime side of $k_{a,y}$ is then the finite sum
+$\sum_{n<M}\Lambda(n)n^{-1/2}\chi(n)k_a(\log n-y)$.
+
+\emph{Gamma sides} (\lean{Sharp/GammaBounds.lean}). We need the following facts.
+\begin{enumerate}[leftmargin=2em]
+\item $\abs{\operatorname{Re}\psi(\frac14+\frac\kappa2+\frac{ir}2)}\le\log(4+\abs r)+5$. The upper side is from
+  \cite{grhmiller}. The lower side uses $\operatorname{Re}\psi(\alpha+it)=-\gamma-\alpha/(\alpha^2+t^2)+\sum_n(\ldots)$ with
+  nonnegative terms, which is proved in \cite{zeta23}, and $\gamma<\frac23$.
+\item \emph{The $\log q$ term vanishes for the twisted kernel}: by Fourier inversion at $-y$,
+  $\frac1{2\pi}\int\hat k_y(r)\,dr=k(-y)=0$. Hence $\abs{\Gamma_{q,\kappa}(k_y)}\le I(5)/(2\pi)$. This is what keeps the
+  coefficient of $\log q$ equal to $k(0)$ rather than $2k(0)$.
+\item Plancherel, $\frac1{2\pi}\int\abs{\hat f}^2=k(0)$, gives
+  $\operatorname{Re}\Gamma_{q,\kappa}(k)\le k(0)\log(q/\pi)+I(\frac12)/(2\pi)$.
+\item For $\zeta$: $\abs{\Gamma_\zeta(k_y)}\le I(5+\log\pi)/(2\pi)$ and $\operatorname{Re}\Gamma_\zeta(k)\le I(\frac12)/(2\pi)$.
+\end{enumerate}
+
+\emph{Main term} (\lean{Sharp/MainTerm.lean}). By the same argument with \eqref{eq:EFzeta} and RH,
+$P_\zeta(k_y)=\mathrm{Pole}(k_y)+\Gamma_\zeta(k_y)-E$ with $\abs E\le\operatorname{Re}(\mathrm{Pole}(k)-P_\zeta(k)+\Gamma_\zeta(k))$.
+Moreover $\mathrm{Pole}(k_y)=e^{-y/2}\hat k(\frac i2)+e^{y/2}\hat k(-\frac i2)$. Since $k_a\ge0$, both
+$\operatorname{Re}\hat k_a(\frac i2)\ge0$ and $\operatorname{Re}P_\zeta(k_a)\ge0$.
+
+\emph{Assembly} (\lean{Sharp/Assembly.lean}). Let $\chi^*$ be the primitive character modulo the conductor
+$q^*\mid q$ that induces $\chi$; then $q^*>1$ since $\chi\ne\chi_0$. On units modulo $q$ we have $\chi=\chi^*$,
+so the character sum over $S_q(a,y)$ differs from $P_{\chi^*}(k_{a,y})$ by at most $U_q(a,y)$. We also use
+$\log(q^*/\pi)\le\log(q/\pi)$ and $-\operatorname{Re}P_{\chi^*}(k_a)\le\mathrm{SP}(a)$. The mass over all $n<M$ is
+$\operatorname{Re}P_\zeta(k_{a,y})$, and the mass over units is smaller by at most $U_q$. Combining gives the two
+inequalities of Theorem~\ref{thm:sharp}.
+
+\subsection{Theorem~\ref{thm:closed} and Corollary~\ref{cor:cert}}
+We need closed-form bounds on the constants of Theorem~\ref{thm:sharp} (\lean{Sharp/KernelBounds.lean},
+\lean{Sharp/ConstBounds.lean}).
+\begin{enumerate}[leftmargin=2em]
+\item $\abs{k_a(u)}\le\sinh(a-\frac u2)+(a-\frac u2)\cosh\frac u2\le K(a)$ for $0\le u\le2a$ (from \cite{grhmiller}); by symmetry
+  this holds for all $\abs u\le2a$. Also $k_a(0)\le\sinh a+a$.
+\item $A(a)=F_+F_-$ and $B(a)=2F_+F_-$, from $\widehat{f*\tilde f}(z)=\hat f(z)\overline{\hat f(\bar z)}$ at $z=\mp\frac i2$.
+  Since $f_a=\cosh(t/2)$ on $[-a',a']$ and $0\le f_a\le\cosh(t/2)\mathbf 1_{[-a,a]}$, and
+  $\int_{-c}^c\cosh(t/2)e^{\pm t/2}dt=\sinh c+c$, we get $\sinh a'+a'\le F_\pm\le\sinh a+a$.
+\item $I_a(\beta)\le C(a)(6+\beta\pi)$, from $\abs{\hat f_a}\le4\sinh\frac a2$, $\abs{r\hat f_a(r)}\le2\sinh\frac a2+2\cosh\frac a2$
+  and $J\le6$ (all from \cite{grhmiller}).
+\item $\Lambda(n)/\sqrt n\le\log n/\sqrt n\le2/e$, which gives $\mathrm{SP}(a)\le4K(a)e^{-1}(\lfloor e^{2a}\rfloor+1)$.
+\item On the support, $\sqrt n\ge e^{(y-2a)/2}$. Together with the non-unit prime-power bound this gives $U_q\le U_B$.
+\end{enumerate}
+For Corollary~\ref{cor:cert} (\lean{Sharp/Certificate64.lean}) take $a=1$ and $y=2\log150$, so $K(1)=e$ and
+$e^{y/2}=150$. Mathlib's certified bounds $2.7182818283<e<2.7182818286$, $3.141592<\pi<3.141593$ and
+$\log2<0.6931471808$ then give the following.
+\begin{itemize}[leftmargin=2em]
+\item $\log q\le44.3614197$.
+\item $e^{1/2}<1.6488$, hence $C(1)\le15.219$.
+\item $e^{63/64}\ge e\cdot\frac{63}{64}$ and $e^{-63/64}\le\frac{64}{63}e^{-1}$, hence $(\sinh a'+a')^2\ge4.5599$.
+\item $\lfloor e^2\rfloor\le7$, and $\lfloor22500e^2\rfloor+1<2^{18}$, so $\lfloor\log_2M\rfloor\le17$ and $U_B\le37.15$.
+\end{itemize}
+Altogether $\mathrm{num}_B\le236.6$ and $\mathrm{den}_B\ge555.8$.

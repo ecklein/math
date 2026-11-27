@@ -1,0 +1,47 @@
+\section{Related work}\label{sec:related}
+
+\paragraph{GRH-based expanders.}
+Jao, Miller and Venkatesan \cite{jmv2009} prove under GRH for Hecke $L$-functions that the Cayley graph of a
+ray class group with prime-ideal generators of norm at most $x$ has nontrivial eigenvalues
+$O(n\,x^{1/2}\log(xq))$, with absolute constants. Over $K=\mathbb Q$ this is the prime Cayley graph on
+$\Gq$, and only Dirichlet GRH is needed. Our Theorems~\ref{thm:sharp}--\ref{thm:closed} make this case
+fully explicit and formally verified. The class-group and isogeny-graph cases still require GRH for Hecke
+$L$-functions of imaginary quadratic fields, which is not covered by the available proof.
+
+\paragraph{Explicit GRH bounds for characters.}
+Under GRH, Bach \cite{bach1990} proved that a nontrivial $\chi$ modulo $m$ with $\chi(n)=1$ for all $n<x$
+forces $x<2\log^2m$, and Bach and Sorenson \cite{bachsorenson1996} gave explicit bounds for primes in
+residue classes. Lamzouri, Li and Soundararajan \cite{lls2015} showed that the least prime outside a proper
+subgroup of $\Gq$ is at most $(\log q+B(q))^2$ with $B(q)=o(\log\log q)$. Carneiro, Milinovich,
+Quesada-Herrera and Ramos \cite{cmqr2024} optimized the constant for the least quadratic non-residue via
+Fourier optimization, obtaining $\limsup n_p/\log^2p<0.7615$. All of these are \emph{one-sided} statements
+(existence of a non-residue, or of a prime outside a subgroup). A small bias, by contrast, is a uniform
+two-sided statement over all characters at once. The extremal problems differ accordingly
+(Section~\ref{sec:optimality}). Montgomery \cite{montgomery1971} showed under GRH that the least
+non-residue is $\Omega(\log q\log\log q)$ infinitely often; Graham and Ringrose \cite{grahamringrose1990}
+proved $\Omega(\log q\log\log\log q)$ unconditionally.
+
+\paragraph{Formalizations built on the GRH proof.}
+Bach's theorem with constant $2$ and Miller's primality test with Bach's bound are formalized in
+\cite{grhmiller}, using the Weil explicit formula of \cite{zeta23} and the positivity inequality that we
+also use. Sutherland's verification of Schoenfeld's RH bound \cite{schoenfeldlean}, and the
+rh-prime-error project \cite{rhprimeerror}, concern $\zeta$. We reuse code from all of these
+(Section~\ref{sec:formal}).
+
+\paragraph{Small-bias spaces and Cayley expanders.}
+Random multisets of $O(\log\abs G/\varepsilon^2)$ elements are $\varepsilon$-biased in any finite group
+\cite{alonroichman1994}. Explicit near-optimal constructions exist for $\mathbb F_2^n$ \cite{tashma2017}. For
+explicitly given abelian groups, Jalan and Moshkovitz \cite{jalanmoshkovitz2021} construct near-optimal
+expanders deterministically in time polynomial in $\abs G$. These constructions need the group structure
+and run in time $\operatorname{poly}(\abs G)=\operatorname{poly}(q)$. Prime-based sets need neither the
+factorization of $q$ nor a description of $\Gq$, and their elements are small integers independent of
+$q$; the price is support $\asymp(\log q)^2/\varepsilon^2$ rather than $\log q/\varepsilon^2$. For
+background on expanders see \cite{hlw2006}; for small-bias spaces, \cite{naornaor1993}.
+
+\paragraph{Algorithmic consequences already in the literature.}
+Squareness of integers given by straight-line programs is in coRP under GRH \cite{gaillardjindal2023}.
+As far as we can see, the GRH needed there is only for quadratic Dirichlet characters, so this becomes
+unconditional; we have not checked every detail.
+Identity testing for radical expressions with square roots \cite{bnsw2022} uses GRH for multiquadratic
+fields, whose Dedekind zeta functions are products of Dirichlet $L$-functions. We do not claim these;
+they illustrate that the relevant input is exactly~\eqref{eq:grh}.
