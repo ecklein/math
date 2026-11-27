@@ -26,8 +26,9 @@ does not contain a proof of the main inequality \cite{rubinsteinpage}.
 \begin{enumerate}
 \item Formalize Propositions~\ref{prop:opt}, \ref{prop:convsq} and~\ref{prop:barrier}, and certify further instances,
   e.g.\ $q\le2^{1024}$ or $\varepsilon=10^{-2}$.
-\item Determine the optimal nonnegative kernel on a window of finite length $L$. Numerically it beats convolution squares
-  (Section~\ref{sec:optimality}), but it then needs explicit zero counting for $L(s,\chi)$, uniform in $q$, in place of positivity.
+\item Determine the optimal nonnegative kernel on a window of finite length $L$. Exploratory, uncertified numerics suggest that
+  it beats convolution squares (Section~\ref{sec:optimality}); proving this needs certified primal and dual bounds. Using such a
+  kernel also needs explicit zero counting for $L(s,\chi)$, uniform in $q$, in place of positivity.
 \item Extend to other groups whose characters are Dirichlet characters, such as quotients of $\Gq$ and abelian
   Galois groups over $\mathbb Q$. For nonabelian groups, e.g.\ $\mathrm{Aff}(\Z/q\Z)$, combine with zig-zag or
   semidirect-product arguments.

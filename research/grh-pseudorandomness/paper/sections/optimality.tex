@@ -22,28 +22,34 @@ the method therefore gives
 The last expression is also the leading coefficient in \cite[Lemma~6.1]{lls2015}, which bounds the zero sum by
 $\sum_\gamma\abs{\hat K(\gamma)}$ and zero counting instead of by positivity. For $K=f*\tilde f$ with $f$ real,
 $\rho=\norm f_2^2/(\langle f,e^{t/2}\rangle\langle f,e^{-t/2}\rangle)$, since $K(0)=\norm f^2$ and
-$\hat K(z)=\hat f(z)\overline{\hat f(\bar z)}$. If $\operatorname{supp}K\subseteq(-\infty,T]$, the measure is
+$\hat K(z)=\hat f(z)\overline{\hat f(\bar z)}$. The method is useful only when $\int K(u)e^{u/2}du>0$, which we assume
+whenever we divide by it; this holds for every nonzero $K\ge0$. If $\operatorname{supp}K\subseteq(-\infty,T]$, the measure is
 supported on $n\le X=xe^{T}$, and the support-normalized constant is $c=e^{T/2}\rho$: then
 $\bias\le(c+o(1))\log q/\sqrt X$.
 
 \subsection{Positive-definite kernels}
-\begin{lemma}[formal; \lean{GRHPseudo.inner_mul_inner_le}]\label{lem:ranktwo}
+\begin{lemma}[inequality formal, \lean{GRHPseudo.inner_mul_inner_le}; equality case informal]\label{lem:ranktwo}
 In a real inner product space, for all $f,\alpha,\beta$,
 \[
   \langle f,\alpha\rangle\langle f,\beta\rangle\le\tfrac12\bigl(\norm\alpha\norm\beta+\langle\alpha,\beta\rangle\bigr)\norm f^2 .
 \]
-If $\norm\alpha\norm\beta>0$, equality holds iff $f$ is a multiple of $\alpha/\norm\alpha+\beta/\norm\beta$.
+Suppose $\norm\alpha\norm\beta>0$. If $\alpha/\norm\alpha\ne-\beta/\norm\beta$, equality holds iff $f$ is a multiple of
+$\alpha/\norm\alpha+\beta/\norm\beta$. If $\alpha/\norm\alpha=-\beta/\norm\beta$, equality holds iff $f\perp\alpha$.
 \end{lemma}
 \begin{proof}
 Put $u=\alpha/\norm\alpha$ and $v=\beta/\norm\beta$. Then
 $4\langle f,u\rangle\langle f,v\rangle=\langle f,u+v\rangle^2-\langle f,u-v\rangle^2\le\norm f^2\norm{u+v}^2=2(1+\langle u,v\rangle)\norm f^2$.
-Equality requires $f\perp u-v$ and $f\parallel u+v$; note that $u+v\perp u-v$.
+If $u+v\ne0$, equality requires $\langle f,u-v\rangle=0$ and equality in Cauchy--Schwarz, i.e.\ $f\parallel u+v$; conversely
+$f\parallel u+v$ gives both, since $u+v\perp u-v$. If $u+v=0$, both sides of the first identity are
+$-\langle f,u\rangle^2\le0=2(1+\langle u,v\rangle)\norm f^2$, with equality iff $f\perp u$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:opt}]
 Work in $L^2[-a,a]$ with $\alpha=e^{t/2}$ and $\beta=e^{-t/2}$. Then $\norm\alpha^2=\norm\beta^2=\int_{-a}^ae^t\,dt=2\sinh a$ and
-$\langle\alpha,\beta\rangle=2a$. Lemma~\ref{lem:ranktwo} gives $\rho\ge1/(\sinh a+a)$, with equality iff
-$f\propto e^{t/2}+e^{-t/2}=2\cosh(t/2)$ on $[-a,a]$. The factorization statement is the theorem of Boas and Kac
+$\langle\alpha,\beta\rangle=2a$, and $\alpha/\norm\alpha\ne-\beta/\norm\beta$ since both are positive functions. Since
+$\int k(u)e^{u/2}du=\langle f,\alpha\rangle\langle f,\beta\rangle$ and $k(0)=\norm f^2$, Lemma~\ref{lem:ranktwo} gives
+$\int k(u)e^{u/2}du\le(\sinh a+a)k(0)$, with equality iff $f\propto e^{t/2}+e^{-t/2}=2\cosh(t/2)$ on $[-a,a]$. Dividing is
+allowed exactly when the left side is positive; for $f\ge0$, $f\ne0$ both inner products are positive. The factorization statement is the theorem of Boas and Kac
 and of Krein: a continuous positive-definite function supported in $[-2a,2a]$ is $f*\tilde f$ for some
 $f\in L^2[-a,a]$ \cite{boaskac1945,ehmgneitingrichards2004}. Hence the bound covers every positive-definite
 kernel, i.e.\ every kernel that is its own majorant.
@@ -55,7 +61,7 @@ kernels are even. Since the main term weights the window by $e^{u/2}$, an even k
 
 \subsection{Convolution squares}
 \begin{proposition}[informal]\label{prop:convsq}
-Let $f\ge0$ be real, integrable and supported in $[T/2-L/2,\,T/2]$, and let $K=f*f$. Then $K\ge0$, $\operatorname{supp}K\subseteq[T-L,T]$,
+Let $f\in L^1(\R)\cap L^2(\R)$ be real, nonnegative, not a.e.\ zero, and supported in $[T/2-L/2,\,T/2]$, and let $K=f*f$. Then $K\ge0$, $\operatorname{supp}K\subseteq[T-L,T]$,
 and $M=f*\tilde f$ is a positive-definite majorant: $\abs{\hat K}=\abs{\hat f}^2=\hat M$. Hence the positivity step applies to
 $K$ unchanged, with
 \[
@@ -65,7 +71,7 @@ $K$ unchanged, with
 with equality iff $f\propto e^{t/2}$ on its support interval.
 \end{proposition}
 \begin{proof}
-$\hat K=\hat f^2$ and $\hat M=\abs{\hat f}^2$. Next, $M(0)=\norm f^2$ and $\int K(u)e^{u/2}du=\hat K(\frac i2)=(\int f(t)e^{t/2}dt)^2$.
+$\hat K=\hat f^2$ and $\hat M=\abs{\hat f}^2$. Next, $M(0)=\norm f^2$ and $\int K(u)e^{u/2}du=\hat K(-\frac i2)=\hat f(-\frac i2)^2=(\int f(t)e^{t/2}dt)^2$, which is positive since $f\ge0$ is not a.e.\ zero.
 By Cauchy--Schwarz, $\langle f,e^{t/2}\rangle^2\le\norm f^2\int_{T/2-L/2}^{T/2}e^t\,dt=\norm f^2e^{T/2}(1-e^{-L/2})$, with equality iff
 $f\propto e^{t/2}$ there.
 \end{proof}
@@ -106,7 +112,9 @@ member $a=\frac12$ of the family $\Lambda(n)(n/x)^a\log(x/n)$ in Bach's method a
 So the limiting constant $1$ is reached by a classical weight, and the windows of Proposition~\ref{prop:convsq} approach it as $L\to\infty$.
 The inequality is a sharp point evaluation for functions whose Fourier transform extends to the upper half-plane. In the one-sided
 least-non-residue problem, Carneiro, Milinovich, Quesada-Herrera and Ramos \cite{cmqr2024} find the limiting constant $C(\infty)=1$, with
-the same extremal function, by a different (dual) argument. We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
+the same extremal function, by a different (dual) argument. Lamzouri, Li and Soundararajan
+\cite[\S6.1]{lls2015} already note a limitation of their (one-sided) method, from the pointwise bound
+$\tilde K(u)\le\frac1{2\pi}\int\abs{K(it)}dt$. We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
 that the constant $1$ is the exact limit of the explicit-formula method for prime-supported small-bias measures. This is a limit of
 the method, not a lower bound for the true bias.
 
@@ -118,17 +126,32 @@ $(\log c)'(a)=1-(1+\cosh a)/(a+\sinh a)$ vanishes iff $a+\sinh a=1+\cosh a$, i.e
   c(a)=\frac{e^a}{1+\cosh a}=\frac{2e^a}{(e^{a/2}+e^{-a/2})^2}=\frac2{(1+e^{-a})^2}=\frac2{a^2}.
 \]
 Since $c(a)\to\infty$ as $a\to0^+$ and $c(a)\to2$ as $a\to\infty$, while $c(a_*)<2$, the critical point $a_*$ is the global
-minimum. \emph{Part 3.} Given $\delta>0$, choose $L$ with $1/(1-e^{-L/2})<1+\delta/2$ and a smooth $f\ge0$ supported in
-$[-L/2,0]$, close enough to $e^{t/2}\mathbf 1_{[-L/2,0]}$ in $L^2$ that $c<1+\delta$ in Proposition~\ref{prop:convsq}. For this fixed
-kernel every other term of the bound is $O_L(1)$ in the numerator, and $O_L(1)+O(\log q\log x/\sqrt x)$ in the denominator, which is
-$o(\sqrt x)$ once $x/\log^2q\to\infty$.
+minimum. \emph{Part 3.} Given $\delta\in(0,1]$, choose $L$ with $1/(1-e^{-L/2})<1+\delta/6$ and a smooth $f\ge0$ supported in
+$[-L/2,0]$, close enough to $e^{t/2}\mathbf 1_{[-L/2,0]}$ in $L^2$ that $c_K=M(0)/F<1+\delta/3$, where $F=\int K(u)e^{u/2}du$ and
+$K=f*f$ is supported in $[-L,0]$, so the top of the support is $X=x$. This kernel is now fixed; it does not depend on $q$, $\varepsilon$ or
+$X$. The proof of Theorem~\ref{thm:convclosed} applies verbatim to it and gives, for $X>e^{L}$,
+\[
+  \bias\le\frac{M(0)\log q+B_1+U}{\sqrt X\,F-B_2-U},\qquad U\le L\log q\,\frac{\log_2(X+1)}{\sqrt X},
+\]
+with $B_1,B_2$ depending only on $K$. Write $\sqrt X=\lambda\log q/\varepsilon$ with $\lambda\ge(1+\delta)^{1/2}$. Then
+$U\le L\varepsilon\log_2(X+1)/\lambda=O_K(\log\log q+\varepsilon\log(1/\varepsilon))=O_K(\log\log q)$, uniformly in $\varepsilon\in(0,1]$, since
+$\varepsilon\log(1/\varepsilon)\le1/e$. Hence
+\[
+  \bias\le\varepsilon\cdot\frac{M(0)\log q+O_K(\log\log q)}{\lambda F\log q-O_K(\log\log q)}
+  =\varepsilon\,\frac{c_K}{\lambda}\Bigl(1+O_K\Bigl(\frac{\log\log q}{\log q}\Bigr)\Bigr),
+\]
+again uniformly in $\varepsilon$, because $\varepsilon\le1$ multiplies the lower-order terms of the denominator. Since
+$c_K/\lambda<(1+\delta/3)(1+\delta)^{-1/2}<1$ for $\delta\in(0,1]$, the right side is at most $\varepsilon$ once $q\ge q_0(\delta)$. The converse
+follows from Part~1: the method's bound is at least $(1-o(1))\log q/\sqrt X\ge(1-o(1))\varepsilon(1-\delta)^{-1/2}$.
 \end{proof}
 
 \subsection{General nonnegative kernels: numerics}
 Only $K\ge0$ is needed for the weights to form a measure. Over nonnegative $K$ supported in a window of length $L$, the infimum of
 the last expression in \eqref{eq:leading} (normalized by $e^{T/2}$) is a linear program after discretization
-(\lean{kernel_lp.py}: piecewise-linear $K$, a polygonal model of $\abs{\cdot}$, solved with HiGHS; we report the exact ratio
-of each LP solution). It lies strictly between the barrier and the convolution squares:
+(\lean{kernel_lp.py}: piecewise-linear $K$, a polygonal model of $\abs{\cdot}$, solved with HiGHS). For each LP solution we report its
+ratio computed by trapezoid quadrature of $\abs{\hat K}$ on $[0,4000]$, together with the bound $\abs{\hat K(t)}\le\mathrm{TV}(K')/t^2$ for
+the omitted tail, which adds at most $0.0002$ to every entry. The quadrature error itself is not bounded, so these numbers are
+\emph{exploratory and not certified}. They suggest that the optimum lies strictly between the barrier and the convolution squares:
 \begin{center}
 \begin{tabular}{lccccc}
 \toprule
@@ -136,15 +159,16 @@ $L$ & $4$ & $5.11$ & $6$ & $8$ & $12$\\
 \midrule
 positive-definite, $e^a/(a+\sinh a)$, $a=L/4$ & $1.250$ & $1.224$ & $1.235$ & $1.313$ & $1.543$\\
 convolution squares, $1/(1-e^{-L/2})$ & $1.157$ & $1.084$ & $1.052$ & $1.019$ & $1.003$\\
-nonnegative, LP (numerical) & $1.103$ & $1.047$ & $1.024$ & $1.006$ & $1.000$\\
+nonnegative, LP (exploratory, uncertified) & $1.104$ & $1.047$ & $1.025$ & $1.006$ & $1.001$\\
 \bottomrule
 \end{tabular}
 \end{center}
 These kernels are not convolution squares, so for them the zero sum has to be bounded through zero counting, as in \cite{lls2015},
-and not by positivity. We have not made that route explicit.
+and not by positivity. We have not made that route explicit, and a rigorous strict improvement over convolution squares at a fixed
+$L$ would need certified upper and lower bounds for this extremal problem.
 
 \begin{remark}
-Lemma~\ref{lem:ranktwo} is formalized. Its specialization to $L^2[-a,a]$, the factorization theorem, Propositions~\ref{prop:convsq}
+The inequality of Lemma~\ref{lem:ranktwo} is formalized; its equality case is not. Its specialization to $L^2[-a,a]$, the factorization theorem, Propositions~\ref{prop:convsq}
 and~\ref{prop:barrier}, and the asymptotic statement are not. In the one-sided problem of \cite{cmqr2024} the sign conditions are
 adapted to a single non-residue condition, and the optimum for the least quadratic non-residue is $0.7615\ldots\log^2p$. Our problem
 bounds all characters simultaneously, in both directions.

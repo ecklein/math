@@ -115,3 +115,22 @@ Two Lean docstrings that referenced `research/proof_obligations.md` now say `not
 
 ## 2026-11-27 — sign correction (PR #3 review)
 - The barrier identity was stated with the multiplier (1/2 − it)/(1/2 + it), which is right for K̂(t) = ∫K e^{−itu} but not for the paper's convention K̂(t) = ∫K e^{itu}. Under the paper's convention the multiplier is (1/2 + it)/(1/2 − it), and the extremal has K̂(t) = (1/2 + it)^{−2}. Corrected in Section 6, the introduction and CLAUDE.md; the entry above is left as written. The inequality c ≥ 1 is unaffected. Rechecked numerically with the paper's convention.
+
+## 2026-11-27 — corrections after an external review of main @ 162027b
+The Lean results were unaffected (the reviewer's build, axiom audit and replay passed). Fixed on branch `grh-paper-fixes`:
+1. **Prop 8 was false as stated**: the denominator ∫k e^{u/2} can be negative (f = sinh(t/2) on [−1,1] gives −5.708 ≥ 0.460).
+   Now stated as ∫k e^{u/2} ≤ (a + sinh a)k(0); the ratio form only when the left side is positive (e.g. f ≥ 0, f ≠ 0). Checked numerically.
+2. **Rank-two lemma, equality case**: false when α/‖α‖ = −β/‖β‖ (then equality iff f ⊥ α). Fixed; the paper now labels only the
+   inequality formal (Lean proves only the inequality).
+3. **Prop 14**: wrote K̂(i/2) for ∫K e^{u/2}; correct is K̂(−i/2) under the paper's convention (Lean had it right). Added f ∈ L¹ ∩ L², f ≢ 0.
+4. **LP numerics** were called "exact" but used truncated quadrature with a separately reported, very loose tail bound (2.89 at a = 1).
+   `kernel_lp.py` now reports a truncated ratio (T = 4000) plus a TV(K′)/t² tail bound (≤ 0.0002); quadrature error unbounded.
+   The paper labels the LP row exploratory and uncertified (values 1.104, 1.047, 1.025, 1.006, 1.001).
+5. **Sampler** (§8): a q-independent table can return non-units. Now: a q-filtered renormalized table, or unfiltered sampling with
+   rejection or a bounded number of attempts (explicit failure term 2π_q^r), plus an error budget η/(1 − η) for numerically computed weights.
+6. **Cor 9 (achievability)**: the proof assumed X/log²q → ∞ but the conclusion used X ≍ log²q/ε². Restated (X ≥ (1+δ)log²q/ε²,
+   q ≥ q₀(δ), uniform in ε ∈ (0,1]) with a proof covering that regime; the kernel is fixed in terms of δ only.
+7. **Abstract, JMV**: attributed normalized eigenvalues O(x^{−1/2} log(qx)); JMV's Thm 1.1 is unnormalized O(x^{1/2} log(qx)) with
+   degree ≈ 2 li(x), i.e. normalized O(x^{−1/2} log x log(qx)).
+Also: cite the corrected LLS Lemma 6.1 (v3 + corrigendum, new bib entry `llscorr2017`) and LLS §6.1's limitation remark; mention LLS's
+Γ(s + 1/2) kernel. Novelty framing narrowed (see `novelty_assessment.md`).

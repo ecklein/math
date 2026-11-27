@@ -98,11 +98,12 @@ at most $1/2$. (The proof gives $\mathrm{num}_B\le236.6$ and $\mathrm{den}_B\ge5
 \subsection{The leading constant}
 
 \begin{proposition}[informal; abstract core formal: \lean{GRHPseudo.inner_mul_inner_le}]\label{prop:opt}
-Let $a>0$ and let $f\in L^2[-a,a]$ be real and nonzero, with $k=f*\tilde f$. Then
+Let $a>0$ and let $f\in L^2[-a,a]$ be real, with $k=f*\tilde f$. Then
 \[
-  \frac{k(0)}{\int_\R k(u)e^{u/2}\,du}\ \ge\ \frac1{a+\sinh a},
+  \int_\R k(u)e^{u/2}\,du\ \le\ (a+\sinh a)\,k(0),
 \]
-with equality if and only if $f$ is a nonzero multiple of $\cosh(t/2)\mathbf 1_{[-a,a]}$. By the
+with equality if and only if $f$ is a multiple of $\cosh(t/2)\mathbf 1_{[-a,a]}$. In particular, if
+$\int k(u)e^{u/2}du>0$ (for instance if $f\ge0$ and $f\ne0$), then $k(0)/\int k(u)e^{u/2}du\ge1/(a+\sinh a)$. By the
 Boas--Kac--Krein factorization \cite{boaskac1945,ehmgneitingrichards2004}, every continuous positive-definite
 $k$ supported in $[-2a,2a]$ is of this form.
 \end{proposition}
@@ -119,9 +120,10 @@ $X$ is the top of the support.
 \item \emph{(Barrier.)} Every kernel gives $c\ge1$ (Proposition~\ref{prop:barrier}).
 \item \emph{(Positive-definite kernels.)} A positive-definite kernel supported in an interval of length $4a$ gives
   $c\ge e^a/(a+\sinh a)\ge c^*=2/a_*^2=1.22363\ldots$, where $a_*=1.27846\ldots$ is the root of $a=1+e^{-a}$.
-\item \emph{(Achievability.)} For every $\delta>0$ there is a smooth nonnegative convolution-square kernel with
-  $\bias\le(1+\delta+o(1))\log q/\sqrt X$ as $q\to\infty$ and $X/\log^2q\to\infty$. Hence support
-  $X\ge(1+o(1))\log^2q/\varepsilon^2$ suffices for bias $\le\varepsilon$, and within the method nothing smaller does.
+\item \emph{(Achievability.)} For every $\delta\in(0,1]$ there are a fixed smooth nonnegative convolution-square kernel and a
+  $q_0(\delta)$ such that for all $q\ge q_0(\delta)$, all $\varepsilon\in(0,1]$ and all $X\ge(1+\delta)\log^2q/\varepsilon^2$, the
+  measure with support up to $X$ has $\bias\le\varepsilon$. Conversely, by Part~1, for $X\le(1-\delta)\log^2q/\varepsilon^2$ the bound
+  produced by the method exceeds $\varepsilon$ once $q$ is large.
 \end{enumerate}
 For the formally verified kernel $f_a$ (positive-definite, transition width $1/64$), Theorem~\ref{thm:closed} gives leading
 coefficient at most $e^a(\sinh a+a)/(\sinh a'+a')^2$, which equals $1.2626$ at $a=a_*$ and $1.2964$ at $a=1$.

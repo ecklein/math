@@ -77,10 +77,27 @@ result is known (F5).
 - **Ernvall-Hytönen–Palojärvi**, Math. Comp. 91 (2022). This is an explicit GRH bound for ψ(x;q,a), uniform in q. A bias bound follows mechanically but with much weaker constants at x ≈ (log q)^{2+δ}. They do not state it.
 - **Bach**, as presented by McGown–Treviño (Contemp. Math. 775, 2021, Lemma 7.2): the weight is Λ(n)(n/x)^a log(x/n). It is not cosh, and there is no optimality claim.
 - **Kernel optimality** (Proposition 8): no prior statement found. Its scope is positive-definite kernels only.
-- **Correction (2026-11-27).** c* is *not* the limit of the method. Convolution squares f ⋆ f (Prop 12) use the same positivity
-  step and give c(L) = 1/(1 − e^{−L/2}) → 1. Every kernel has c ≥ 1 (Prop 13, an elementary Fourier identity), with equality in
-  the limit for the classical weight Λ(n) log(x/n). Novelty of Prop 13: none claimed. It is a sharp point evaluation, and CMQR's
+- **Correction (2026-11-27).** c* is *not* the limit of the method. Convolution squares f ⋆ f (Prop 14) use the same positivity
+  step and give c(L) = 1/(1 − e^{−L/2}) → 1. Every kernel has c ≥ 1 (Prop 15, an elementary Fourier identity), with equality in
+  the limit for the classical weight Λ(n) log(x/n). Novelty of Prop 15: none claimed. It is a sharp point evaluation, and CMQR's
   one-sided C(∞) = 1 has the same extremal. The modest new content is the observation that convolution squares fit the positivity
   method and reach the limit, which makes explicit constants near 1 possible.
 - **Hanke repository**: not found publicly. The same-name repo by UyNewNas only defines GRH.
 - **Overall**: modest novelty. The explicit theorem is new as stated but close to known machinery (LLS §6). The optimality lemma appears new but is short. The end-to-end formal verification and certificate are the most distinctive part.
+
+## External review (2026-11-27) and follow-up checks
+An external review of `main` @ 162027b found errors in informal claims (fixed on branch `grh-paper-fixes`; see the research
+log) and sharpened the prior-art picture. Checked here:
+- **JMV** (arXiv HTML v2, read): Thm 1.1 bounds *unnormalized* nontrivial eigenvalues by O(n x^{1/2} log(xq)) with degree
+  2 li(x) + O(·); normalized, that is O(x^{−1/2} log x log(qx)). Our abstract had dropped the log x. JMV §1 also notes, citing
+  Garaev (Monatsh. Math. 148 (2006), Thm 3; reference seen only in their bibliography), that the large sieve gives unconditional
+  expansion outside a sparse set of moduli. **So direction 2 ("almost all moduli") has a clear precursor**; it needs a
+  quantitatively stronger target to be worth doing.
+- **LLS Lemma 6.1** was corrected (arXiv v3, 8 Dec 2016; corrigendum Math. Comp. 86 (2017) 2551–2554, doi:10.1090/mcom/3261,
+  Crossref-verified). The v3 statement still has leading term θ(1 + o(1))(log q/2π)∫|K(it)|dt, so our comparison stands against
+  the corrected lemma. LLS v3 §6.1 also records a limitation of their one-sided method via K̃(u) ≤ (1/2π)∫|K(it)|dt; the paper
+  now cites it next to Prop 15.
+- **CMQR**: the reviewer also identifies the same rational extremizer after a change of conventions (consistent with our note).
+- **Framing.** The project is an explicit, formally verified refinement of classical GRH constructions (JMV, LLS). Neither the
+  expander construction nor the limiting constant 1 should be advertised as new. The most distinctive parts are the explicit bounds
+  and the Lean certificates (n ≤ 48400 for all q ≤ 2⁶⁴); no matching prior result was found, which does not establish priority.

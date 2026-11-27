@@ -13,9 +13,13 @@ Discretization: k is piecewise linear on n+1 nodes with k = 0 at both endpoints.
 |k^(t)| is replaced by a variable s_j >= Re(e^{-i theta_l} k^(t_j)) for L angles theta_l, a
 polygonal lower model of |.| (relative error <= 1 - cos(pi/L)). The t-integral uses the trapezoid
 rule on [0, T], doubled for t < 0. The tail beyond T is bounded by the sinc^2 envelope and reported
-separately. The LP value is therefore a slight UNDER-estimate of the discrete optimum, by at most a
-factor cos(pi/L); we also report the exact R of the LP solution, recomputed on a finer grid.
-Numerics only.
+separately. Besides the polygonal factor cos(pi/L), the LP value carries quadrature and truncation
+errors, so it is neither an upper nor a lower bound in any certified sense. For each LP solution we
+report the ratio recomputed by trapezoid quadrature on [0, T] (truncated, NOT certified) and an upper
+bound for the omitted tail: a piecewise-linear K vanishing at both ends has |K^(t)| <= TV(K')/t^2,
+so the tail is at most 2 TV(K')/(2 pi T). The quadrature error on [0, T] is not bounded.
+EXPLORATORY NUMERICS ONLY. (Corrected 2026-11-27: earlier versions called the recomputed value
+"exact" and used a much looser sinc^2 tail bound.)
 """
 import math, sys
 import numpy as np
@@ -51,22 +55,25 @@ def solve(a, n=80, T=80.0, dt=0.05, L=16):
     return u, U, k, h, res.fun
 
 
-def exact_R(U, k, h, T=400.0, dt=0.01):
+def truncated_R(U, k, h, T=4000.0, dt=0.01):
+    """Ratio by trapezoid quadrature on [0, T] (truncated, uncertified) and a tail upper bound."""
     t = np.arange(0.0, T, dt)
     env = h * np.sinc(t * h / (2 * np.pi)) ** 2
     z = env * (np.exp(1j * np.outer(t, U)) @ k)
     head = 2 * np.trapezoid(np.abs(z), t) / (2 * np.pi)
-    tail = 2 * (h * np.sum(k)) * (4 / (h * h)) / T / (2 * np.pi)  # sinc^2 <= 4/(t h)^2
+    kk = np.concatenate([[0.0], k, [0.0]])
+    tv = np.sum(np.abs(np.diff(kk, 2))) / h          # total variation of K'
+    tail = 2 * tv / T / (2 * np.pi)
     mass = np.sum(k * np.exp(U / 2)) * h * (math.sinh(h / 4) / (h / 4)) ** 2
     return head / mass, tail / mass
 
 
 if __name__ == "__main__":
-    print("a\tR_LP\tR_exact(+tail)\tR_PD=1/(a+sinh a)\tc_LP=e^a R\tc_PD\tmass_frac_top_quarter")
+    print("a\tR_LP\tR_trunc(+tail bound)\tR_PD=1/(a+sinh a)\tc_trunc=e^a R\tc_tail=e^a tail\tc_PD\tmass_frac_top_quarter")
     for a in [float(x) for x in (sys.argv[1:] or ["0.75", "1.0", "1.2785", "1.5", "2.0", "3.0"])]:
         u, U, k, h, val = solve(a)
-        R, tail = exact_R(U, k, h)
+        R, tail = truncated_R(U, k, h)
         RPD = 1 / (a + math.sinh(a))
         top = np.sum(k[U > a]) / np.sum(k)
-        print(f"{a}\t{val:.4f}\t{R:.4f}(+{tail:.4f})\t{RPD:.4f}\t{math.exp(a)*R:.4f}\t{math.exp(a)*RPD:.4f}\t{top:.2f}")
+        print(f"{a}\t{val:.4f}\t{R:.4f}(+{tail:.5f})\t{RPD:.4f}\t{math.exp(a)*R:.4f}\t{math.exp(a)*tail:.5f}\t{math.exp(a)*RPD:.4f}\t{top:.2f}")
         np.savetxt(f"experiments/out/kernel_lp_a{a}.tsv", np.column_stack([U, k]), header="u k(u)")
