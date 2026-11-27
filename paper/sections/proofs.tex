@@ -49,7 +49,7 @@ leg $k_a(-\log n-y)$ vanishes for every $n$. The prime side of $k_{a,y}$ is then
 $\sum_{n<M}\Lambda(n)n^{-1/2}\chi(n)k_a(\log n-y)$.
 
 \emph{Gamma sides} (\lean{Sharp/GammaBounds.lean}). We need the following facts.
-\begin{enumerate}[leftmargin=2em]
+\begin{enumerate}
 \item $\abs{\operatorname{Re}\psi(\frac14+\frac\kappa2+\frac{ir}2)}\le\log(4+\abs r)+5$. The upper side is from
   \cite{grhmiller}. The lower side uses $\operatorname{Re}\psi(\alpha+it)=-\gamma-\alpha/(\alpha^2+t^2)+\sum_n(\ldots)$ with
   nonnegative terms, which is proved in \cite{zeta23}, and $\gamma<\frac23$.
@@ -76,7 +76,7 @@ inequalities of Theorem~\ref{thm:sharp}.
 \subsection{Theorem~\ref{thm:closed} and Corollary~\ref{cor:cert}}
 We need closed-form bounds on the constants of Theorem~\ref{thm:sharp} (\lean{Sharp/KernelBounds.lean},
 \lean{Sharp/ConstBounds.lean}).
-\begin{enumerate}[leftmargin=2em]
+\begin{enumerate}
 \item $\abs{k_a(u)}\le\sinh(a-\frac u2)+(a-\frac u2)\cosh\frac u2\le K(a)$ for $0\le u\le2a$ (from \cite{grhmiller}); by symmetry
   this holds for all $\abs u\le2a$. Also $k_a(0)\le\sinh a+a$.
 \item $A(a)=F_+F_-$ and $B(a)=2F_+F_-$, from $\widehat{f*\tilde f}(z)=\hat f(z)\overline{\hat f(\bar z)}$ at $z=\mp\frac i2$.
@@ -90,7 +90,7 @@ We need closed-form bounds on the constants of Theorem~\ref{thm:sharp} (\lean{Sh
 For Corollary~\ref{cor:cert} (\lean{Sharp/Certificate64.lean}) take $a=1$ and $y=2\log150$, so $K(1)=e$ and
 $e^{y/2}=150$. Mathlib's certified bounds $2.7182818283<e<2.7182818286$, $3.141592<\pi<3.141593$ and
 $\log2<0.6931471808$ then give the following.
-\begin{itemize}[leftmargin=2em]
+\begin{itemize}
 \item $\log q\le44.3614197$.
 \item $e^{1/2}<1.6488$, hence $C(1)\le15.219$.
 \item $e^{63/64}\ge e\cdot\frac{63}{64}$ and $e^{-63/64}\le\frac{64}{63}e^{-1}$, hence $(\sinh a'+a')^2\ge4.5599$.

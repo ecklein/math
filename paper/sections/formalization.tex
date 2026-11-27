@@ -5,17 +5,19 @@ The development lives in \lean{lean/} of the repository. It uses Lean v4.35.0 (c
 Mathlib commit \lean{56a00585}, the exact pins of the compact edition of the GRH proof,
 \lean{github.com/lsernau/grh-lean} at commit \lean{72fead10}, which is a path dependency \cite{grhlean}. All
 ten package revisions agree with that edition's manifest. GRH enters in exactly two places:
-\begin{itemize}[leftmargin=2em]
-\item \lean{GRHPseudo.grh := LFunction_ne_zero_of_half_lt_re}, of type \lean{DirichletLNonvanishingRightOfHalf}
+\begin{itemize}
+\item \lean{GRHPseudo.grh}, defined as \lean{LFunction_ne_zero_of_half_lt_re}, of type
+  \lean{DirichletLNonvanishingRightOfHalf}
   from the GRH project's \lean{Statements.lean}, which imports only Mathlib;
-\item \lean{GRHPseudo.Main.zerosOnLine := LFunction_eq_zero_re}, together with \lean{riemannHypothesis}.
+\item \lean{GRHPseudo.Main.zerosOnLine}, defined as \lean{LFunction_eq_zero_re}, together with
+  \lean{riemannHypothesis}.
 \end{itemize}
 Every other result is proved with these as explicit hypotheses, and the unconditional main theorems are
 one-line applications of them. We rebuilt the compact edition from source: 9843 jobs, no errors.
 
 \subsection{Architecture}
-\begin{center}
-\begin{tabular}{ll}
+\begin{center}\small
+\begin{tabular}{p{0.46\textwidth}p{0.46\textwidth}}
 \toprule
 Module & Content\\
 \midrule
@@ -41,7 +43,7 @@ The Weil explicit formula of \cite{zeta23} (120 modules, $43{,}000$ lines) targe
 Mathlib \lean{51e6992e}. We ported its closure to our pin. Only $12$ files needed changes, in $23$ hunks;
 the complete diff against upstream is \lean{verification/zeta23-port.diff}. The changes fall into a few
 kinds:
-\begin{itemize}[leftmargin=2em]
+\begin{itemize}
 \item a tactic file deleted from Mathlib (\lean{linear_combination'}), which we vendored from the old Mathlib;
 \item lemma renames (\lean{Finset.prod_le_prod} $\to$ \lean{prod_le_prod}$_0$, \lean{prod_le_one} $\to$ \lean{prod_le_one}$_0$);
 \item \lean{logDeriv_mul}/\lean{logDeriv_prod} applied to pointwise lambdas, which must now be folded first;
@@ -52,12 +54,12 @@ kinds:
 None of the changes alters a statement.
 
 \subsection{Verification}
-\begin{center}
-\begin{tabular}{ll}
+\begin{center}\small
+\begin{tabular}{p{0.58\textwidth}p{0.34\textwidth}}
 \toprule
 Check & Result\\
 \midrule
-\texttt{\#print axioms}, 23 theorems including all of Section~\ref{sec:results} & \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}\\
+\lean{#print axioms}, 23 theorems including all of Section~\ref{sec:results} & \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}\\
 all axioms in the environment (Mathlib, GRH proof, port, ours) & Lean core only\\
 \lean{leanchecker} replay, 27 project modules & all pass\\
 \lean{leanchecker} replay, 120 ported modules & all pass\\

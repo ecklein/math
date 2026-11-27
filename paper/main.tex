@@ -6,7 +6,6 @@
 \usepackage[margin=1.15in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs}
-\usepackage{enumitem}
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=green!35!black,urlcolor=blue!50!black]{hyperref}
 \usepackage{xcolor}
 
@@ -19,13 +18,16 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
+\setlength{\emergencystretch}{3em}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Gq}{G_q}
 \newcommand{\bias}{\operatorname{bias}}
-\newcommand{\lean}[1]{\texttt{\detokenize{#1}}}
+% Lean identifiers: typewriter, breakable after `.` `_` `/`
+\def\UrlBreaks{\do\.\do\_\do\/\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}
+\newcommand{\lean}{\nolinkurl}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 
@@ -34,6 +36,8 @@
 \author{[Author names to be added]}
 
 \date{Draft of 27 November 2026}
+
+\begin{document}
 
 \begin{abstract}
 Let $q\ge 1$ and let $\mu$ be a probability measure on integers coprime to $q$. Its bias
@@ -59,7 +63,6 @@ Along the way we ported a 120-module Lean library for the Weil explicit formula 
 version of the GRH proof.
 \end{abstract}
 
-\begin{document}
 \maketitle
 \tableofcontents
 

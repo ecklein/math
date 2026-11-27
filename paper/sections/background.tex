@@ -44,16 +44,16 @@ We use the explicit formula in the following form, proved in Lean in \cite{zeta2
 modulo $q>1$ of parity $\kappa\in\{0,1\}$ and $k\in C^2_c(\R)$, with $m_\rho$ the multiplicity of the
 nontrivial zero $\rho$, the zero sum converges absolutely and
 \begin{multline}\label{eq:EFchi}
-  \sum_\rho m_\rho\,\hat k(\gamma_\rho)
+  \sum_\rho m_\rho\,\hat k(\gamma_\rho)\\
   = -\sum_{n\ge1}\frac{\Lambda(n)}{\sqrt n}\Bigl(\chi(n)k(\log n)+\overline{\chi(n)}k(-\log n)\Bigr)\\
   +\frac1{2\pi}\int_\R \hat k(r)\Bigl(\operatorname{Re}\psi\bigl(\tfrac14+\tfrac\kappa2+\tfrac{ir}2\bigr)+\log\tfrac q\pi\Bigr)dr .
 \end{multline}
 We write $-P_\chi(k)+\Gamma_{q,\kappa}(k)$ for the right side. For $\zeta$,
-\begin{equation}\label{eq:EFzeta}
+\begin{multline}\label{eq:EFzeta}
   \sum_\rho m_\rho\,\hat k(\gamma_\rho)=\hat k(\tfrac i2)+\hat k(-\tfrac i2)
-  -\sum_{n\ge1}\frac{\Lambda(n)}{\sqrt n}\bigl(k(\log n)+k(-\log n)\bigr)
+  -\sum_{n\ge1}\frac{\Lambda(n)}{\sqrt n}\bigl(k(\log n)+k(-\log n)\bigr)\\
   +\frac1{2\pi}\int_\R\hat k(r)\bigl(\operatorname{Re}\psi(\tfrac14+\tfrac{ir}2)-\log\pi\bigr)dr ,
-\end{equation}
+\end{multline}
 which we write as $\mathrm{Pole}(k)-P_\zeta(k)+\Gamma_\zeta(k)$. The Lean statements are
 \lean{Zeta23.ThmE.EF_lit_chi_L} and \lean{Zeta23.WeilEF.EF_lit_zetaZeroConfig}; their right sides are the
 definitions \lean{literatureRHSchi} and \lean{literatureRHS}.
@@ -66,7 +66,8 @@ and $S\in C^\infty$ (Mathlib's \lean{Real.smoothTransition}). Following \cite{gr
 \]
 Thus $0\le f_a\le\cosh(t/2)$, $f_a(t)=\cosh(t/2)$ for $\abs t\le a-\tfrac1{64}$, and $f_a=0$ for $\abs t\ge a$.
 The kernel $k_a$ is real, nonnegative and even, and vanishes for $\abs u>2a$. We write $a'=a-\frac1{64}$ and
-\[
-  F_\pm(a)=\int_\R f_a(t)e^{\pm t/2}\,dt ,\qquad A(a)=\hat k_a(-\tfrac i2)=F_+(a)F_-(a),\qquad
-  B(a)=\hat k_a(\tfrac i2)+\hat k_a(-\tfrac i2)=2F_+F_- .
-\]
+\begin{gather*}
+  F_\pm(a)=\int_\R f_a(t)e^{\pm t/2}\,dt ,\\
+  A(a)=\hat k_a(-\tfrac i2)=F_+(a)F_-(a),\qquad
+  B(a)=\hat k_a(\tfrac i2)+\hat k_a(-\tfrac i2)=2F_+(a)F_-(a) .
+\end{gather*}

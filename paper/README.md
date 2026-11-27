@@ -2,16 +2,13 @@
 
 Draft. Sources: `main.tex`, `sections/*.tex`, `references.bib`.
 
-Build (any of):
+Build (BasicTeX / TeX Live 2026; only standard packages: amsart, lmodern, mathtools, booktabs, hyperref, xcolor):
 ```sh
-latexmk -pdf main.tex
-tectonic main.tex
 pdflatex main && bibtex main && pdflatex main && pdflatex main
 ```
-
-Not yet compiled: no TeX engine was available in the drafting environment. The source passed static
-checks: balanced environments, braces and `$`; every `\ref` has a `\label`; every `\cite` key is in
-`references.bib`. A first compile may still surface small issues.
+`latexmk -pdf main.tex` also works where latexmk is installed. The compiled `main.pdf` (15 pages) is
+committed. The last build had no errors, no undefined references or citations, and no overfull boxes;
+the only BibTeX warning is the missing pages of `cmqr2024`, which are not yet assigned.
 
 Every formal claim names its Lean declaration. Statements are in
 `../lean/GRHPseudo/MainTheorems/Unconditional.lean` and `../lean/GRHPseudo/AnalyticNumberTheory/Sharp/`.
