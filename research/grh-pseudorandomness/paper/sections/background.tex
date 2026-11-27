@@ -1,0 +1,73 @@
+\section{Setting and notation}\label{sec:background}
+
+\subsection{Bias and Cayley graphs}
+A \emph{weighted sample space} is a finite set $S\subset\N$ with weights $w:S\to[0,\infty)$ and mass
+$M=\sum_{n\in S}w(n)>0$. For a Dirichlet character $\chi$ modulo $q$ put
+\[
+  \bias_\chi(S,w)=\frac{\bigl\lvert\sum_{n\in S}w(n)\chi(n)\bigr\rvert}{M}.
+\]
+If every $n\in S$ is coprime to $q$, then $(S,w)$ defines the probability measure $\mu(g)=M^{-1}\sum_{n\equiv
+g}w(n)$ on $\Gq$, and $\bias_\chi(S,w)=\abs{\mathbb E_\mu\chi}$.
+
+\begin{lemma}[eigenvalues; \lean{GRHPseudo.charSum_eq_eigenvalue}]\label{lem:eigen}
+Let $T f(g)=\sum_{n\in S}w(n)f(gn)$ for $f:\Z/q\Z\to\C$. For every Dirichlet character $\chi$ modulo
+$q$ one has $T\chi=\bigl(\sum_{n\in S}w(n)\chi(n)\bigr)\chi$.
+\end{lemma}
+\begin{proof}
+$T\chi(g)=\sum_n w(n)\chi(g)\chi(n)$, since $\chi$ is completely multiplicative.
+\end{proof}
+
+Since the characters of $\Gq$ form an orthogonal basis of functions on $\Gq$, the bias of $\mu$ equals the
+second-largest eigenvalue modulus of the normalized weighted Cayley graph $\mathrm{Cay}(\Gq,\mu)$. We
+formalize only the eigenvector identity; the completeness statement is standard.
+
+\subsection{Dirichlet $L$-functions and the GRH theorem}
+For $\chi$ modulo $q$ we write $L(s,\chi)$ for Mathlib's \lean{DirichletCharacter.LFunction}. It is the
+analytic continuation of $\sum_{n\ge1}\chi(n)n^{-s}$ (with $\chi(n)=0$ for $\gcd(n,q)>1$), and it is entire
+for $\chi\ne\chi_0$. The GRH theorem we use is the compact edition's \lean{LFunction_ne_zero_of_half_lt_re}
+\cite{grhlean}:
+\begin{equation}\label{eq:grh}
+  \forall q\ge1,\ \forall\chi \bmod q,\ \forall s,\quad \operatorname{Re}s>\tfrac12,\ (\chi\ne\chi_0\text{ or } s\ne1)
+  \ \Longrightarrow\ L(s,\chi)\ne0 .
+\end{equation}
+We also use its consequences \lean{LFunction_eq_zero_re} (zeros with $0<\operatorname{Re}s<1$ lie on the line)
+and \lean{riemannHypothesis} (Mathlib's \lean{RiemannHypothesis}).
+
+\subsection{Fourier conventions and the explicit formula}
+For $f\in L^1(\R)$ and $z\in\C$ put $\hat f(z)=\int_\R f(u)e^{izu}\,du$ whenever the integral converges, and
+$\tilde f(u)=\overline{f(-u)}$. For $f\in C^2_c(\R)$ the Weil test function is $k=f*\tilde f$, i.e.\
+$k(u)=\int f(t)\overline{f(t-u)}\,dt$. Then $\hat k(r)=\abs{\hat f(r)}^2\ge0$ for real $r$, and
+$k(-u)=\overline{k(u)}$. For a zero $\rho$ we write $\gamma_\rho=(\rho-\tfrac12)/i$, which is real iff
+$\operatorname{Re}\rho=\tfrac12$.
+
+We use the explicit formula in the following form, proved in Lean in \cite{zeta23}. For $\chi$ primitive
+modulo $q>1$ of parity $\kappa\in\{0,1\}$ and $k\in C^2_c(\R)$, with $m_\rho$ the multiplicity of the
+nontrivial zero $\rho$, the zero sum converges absolutely and
+\begin{multline}\label{eq:EFchi}
+  \sum_\rho m_\rho\,\hat k(\gamma_\rho)\\
+  = -\sum_{n\ge1}\frac{\Lambda(n)}{\sqrt n}\Bigl(\chi(n)k(\log n)+\overline{\chi(n)}k(-\log n)\Bigr)\\
+  +\frac1{2\pi}\int_\R \hat k(r)\Bigl(\operatorname{Re}\psi\bigl(\tfrac14+\tfrac\kappa2+\tfrac{ir}2\bigr)+\log\tfrac q\pi\Bigr)dr .
+\end{multline}
+We write $-P_\chi(k)+\Gamma_{q,\kappa}(k)$ for the right side. For $\zeta$,
+\begin{multline}\label{eq:EFzeta}
+  \sum_\rho m_\rho\,\hat k(\gamma_\rho)=\hat k(\tfrac i2)+\hat k(-\tfrac i2)
+  -\sum_{n\ge1}\frac{\Lambda(n)}{\sqrt n}\bigl(k(\log n)+k(-\log n)\bigr)\\
+  +\frac1{2\pi}\int_\R\hat k(r)\bigl(\operatorname{Re}\psi(\tfrac14+\tfrac{ir}2)-\log\pi\bigr)dr ,
+\end{multline}
+which we write as $\mathrm{Pole}(k)-P_\zeta(k)+\Gamma_\zeta(k)$. The Lean statements are
+\lean{Zeta23.ThmE.EF_lit_chi_L} and \lean{Zeta23.WeilEF.EF_lit_zetaZeroConfig}; their right sides are the
+definitions \lean{literatureRHSchi} and \lean{literatureRHS}.
+
+\subsection{The test function}
+Let $S:\R\to[0,1]$ be the smooth transition function, with $S=0$ on $(-\infty,0]$, $S=1$ on $[1,\infty)$
+and $S\in C^\infty$ (Mathlib's \lean{Real.smoothTransition}). Following \cite{grhmiller}, put
+\[
+  \eta_a(t)=S\bigl(64(a-t)\bigr)\,S\bigl(64(a+t)\bigr),\qquad f_a(t)=\cosh(t/2)\,\eta_a(t),\qquad k_a=f_a*\tilde f_a .
+\]
+Thus $0\le f_a\le\cosh(t/2)$, $f_a(t)=\cosh(t/2)$ for $\abs t\le a-\tfrac1{64}$, and $f_a=0$ for $\abs t\ge a$.
+The kernel $k_a$ is real, nonnegative and even, and vanishes for $\abs u>2a$. We write $a'=a-\frac1{64}$ and
+\begin{gather*}
+  F_\pm(a)=\int_\R f_a(t)e^{\pm t/2}\,dt ,\\
+  A(a)=\hat k_a(-\tfrac i2)=F_+(a)F_-(a),\qquad
+  B(a)=\hat k_a(\tfrac i2)+\hat k_a(-\tfrac i2)=2F_+(a)F_-(a) .
+\end{gather*}

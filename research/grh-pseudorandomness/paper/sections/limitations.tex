@@ -1,0 +1,42 @@
+\section{Limitations and open problems}\label{sec:limits}
+
+\paragraph{The $(\log q)^2$ barrier.}
+Every prime-supported construction analysed through the explicit formula has guaranteed bias
+$\asymp\log q/\sqrt X$. The reason is that about $(\log q)/2\pi$ zeros per unit height can conspire;
+spreading the weight over scales changes this only by constants. An $\varepsilon$-biased prime set of size
+$(\log q)^{2-\delta}$ for all $q$ would improve the GRH bound for the least prime outside a subgroup, which is
+open \cite{lls2015,cmqr2024}. Montgomery's $\Omega(\log q\log\log q)$ \cite{montgomery1971} limits what is
+possible even in principle. Empirically, typical moduli behave like random sets (Section~\ref{sec:experiments}),
+with support $\asymp\log q\log X/\varepsilon^2$.
+
+\paragraph{What is formal and what is not.}
+Theorems~\ref{thm:A}, \ref{thm:sharp}, \ref{thm:closed} and Corollaries~\ref{cor:A}, \ref{cor:cert} are formal.
+Proposition~\ref{prop:opt} is formal only in its abstract core (Lemma~\ref{lem:ranktwo}). Corollary~\ref{cor:asymp}
+and Section~\ref{sec:complexity} are informal. Only one numerical instance of Theorem~\ref{thm:closed} is
+machine-checked. The closed form loses a factor of about $4$ in support relative to the quadrature constants
+(Table~\ref{tab:params}), mostly through the bound on $\mathrm{SP}(a)$ and the decay constants in $I_a(\beta)$.
+
+\paragraph{Trust.}
+Our unconditional theorems inherit the trust base of the Lean GRH proof. That proof has passed extensive
+machine checks, but at the time of writing no mathematician has read it through, and its companion paper
+does not contain a proof of the main inequality \cite{rubinsteinpage}.
+
+\paragraph{Open problems.}
+\begin{enumerate}
+\item Formalize Proposition~\ref{prop:opt} and Corollary~\ref{cor:asymp}, and certify further instances,
+  e.g.\ $q\le2^{1024}$ or $\varepsilon=10^{-2}$.
+\item Beat the leading constant $c^*$, as a constant in front of $\log q/\sqrt X$, by leaving the positivity
+  method. Can sign information on $\hat k$ beyond $\hat k\ge0$ help, as in the one-sided problem of \cite{cmqr2024}?
+\item Extend to other groups whose characters are Dirichlet characters, such as quotients of $\Gq$ and abelian
+  Galois groups over $\mathbb Q$. For nonabelian groups, e.g.\ $\mathrm{Aff}(\Z/q\Z)$, combine with zig-zag or
+  semidirect-product arguments.
+\item The class-group and isogeny-graph expanders of \cite{jmv2009} need GRH for Hecke $L$-functions of
+  imaginary quadratic fields, which remains open.
+\end{enumerate}
+
+\paragraph{Acknowledgements and attribution.}
+GRH for Dirichlet $L$-functions in Lean is due to Alpöge, with Claude \cite{alpoge2026,grhlean}. The explicit
+formula library is \cite{zeta23}; the positivity and gamma-side lemmas and the test function are from
+\cite{grhmiller}; the Perron formula is from \cite{schoenfeldlean}; the Borel--Carath\'eodory log-derivative
+lemma is from \cite{rhprimeerror}. All are Apache-2.0. The Lean code, experiments and this text were developed
+with the assistance of Claude (Anthropic).

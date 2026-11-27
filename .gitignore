@@ -1,0 +1,5 @@
+vendor/
+.lake/
+__pycache__/
+*.olean
+.venv/

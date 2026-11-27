@@ -1,0 +1,82 @@
+\section{The Lean formalization}\label{sec:formal}
+
+\subsection{Environment and dependency}
+The development lives in \lean{research/grh-pseudorandomness/lean/} of the accompanying repository. It uses Lean v4.35.0 (commit \lean{eb6cafb7}) and
+Mathlib commit \lean{56a00585}, the exact pins of the compact edition of the GRH proof,
+\lean{github.com/lsernau/grh-lean} at commit \lean{72fead10}, which is a path dependency \cite{grhlean}. All
+ten package revisions agree with that edition's manifest. GRH enters in exactly two places:
+\begin{itemize}
+\item \lean{GRHPseudo.grh}, defined as \lean{LFunction_ne_zero_of_half_lt_re}, of type
+  \lean{DirichletLNonvanishingRightOfHalf}
+  from the GRH project's \lean{Statements.lean}, which imports only Mathlib;
+\item \lean{GRHPseudo.Main.zerosOnLine}, defined as \lean{LFunction_eq_zero_re}, together with
+  \lean{riemannHypothesis}.
+\end{itemize}
+Every other result is proved with these as explicit hypotheses, and the unconditional main theorems are
+one-line applications of them. We rebuilt the compact edition from source: 9843 jobs, no errors.
+
+\subsection{Architecture}
+\begin{center}\small
+\begin{tabular}{p{0.46\textwidth}p{0.46\textwidth}}
+\toprule
+Module & Content\\
+\midrule
+\lean{GRH/Interface}, \lean{GRH/Discharge} & hypothesis interface; discharge by the GRH proof\\
+\lean{AnalyticNumberTheory/LGrowth} & $\abs{L(s,\chi)}\le1+4q\abs s$ on $\operatorname{Re}s\ge\frac12$\\
+\lean{AnalyticNumberTheory/LogDerivGRH} & $L'/L$ bound right of $\frac12$ (uses GRH)\\
+\lean{AnalyticNumberTheory/Contour}, \lean{PrimeCharSum} & line shift; Theorem~\ref{thm:A}\\
+\lean{Sharp/Twist}, \lean{TwoSided}, \lean{MainTerm} & Lemma~\ref{lem:twosided}; main term from RH\\
+\lean{Sharp/GammaBounds}, \lean{FiniteSums} & explicit gamma sides; finite prime sums\\
+\lean{Sharp/Assembly} & Theorem~\ref{thm:sharp}\\
+\lean{Sharp/KernelBounds}, \lean{ConstBounds}, \lean{Certificate} & Theorem~\ref{thm:closed}\\
+\lean{Sharp/Certificate64} & Corollary~\ref{cor:cert}\\
+\lean{Pseudorandomness/*} & bias, Lemma~\ref{lem:eigen}, Lemma~\ref{lem:ranktwo}, Corollary~\ref{cor:A}\\
+\lean{MainTheorems/Conditional}, \lean{Unconditional} & the statements of Section~\ref{sec:results}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Our own code is about $3000$ lines in $22$ files. A further $2200$ lines are vendored, with attribution, from
+\cite{grhmiller,schoenfeldlean,rhprimeerror} and the readable GRH edition.
+
+\subsection{Porting the explicit formula}
+The Weil explicit formula of \cite{zeta23} (120 modules, $43{,}000$ lines) targets Lean v4.33.0-rc2 and
+Mathlib \lean{51e6992e}. We ported its closure to our pin. Only $12$ files needed changes, in $23$ hunks;
+the complete diff against upstream is \lean{verification/zeta23-port.diff}. The changes fall into a few
+kinds:
+\begin{itemize}
+\item a tactic file deleted from Mathlib (\lean{linear_combination'}), which we vendored from the old Mathlib;
+\item lemma renames (\lean{Finset.prod_le_prod} $\to$ \lean{prod_le_prod}$_0$, \lean{prod_le_one} $\to$ \lean{prod_le_one}$_0$);
+\item \lean{logDeriv_mul}/\lean{logDeriv_prod} applied to pointwise lambdas, which must now be folded first;
+\item \lean{positivity} no longer seeing through \lean{id}, and one \lean{fun_prop} measurability goal;
+\item \lean{field_simp} normal forms;
+\item \lean{autoImplicit} enabled for this library, as upstream.
+\end{itemize}
+None of the changes alters a statement.
+
+\subsection{Verification}
+\begin{center}\small
+\begin{tabular}{p{0.58\textwidth}p{0.34\textwidth}}
+\toprule
+Check & Result\\
+\midrule
+\lean{#print axioms}, 23 theorems including all of Section~\ref{sec:results} & \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}\\
+all axioms in the environment (Mathlib, GRH proof, port, ours) & Lean core only\\
+\lean{leanchecker} replay, 27 project modules & all pass\\
+\lean{leanchecker} replay, 120 ported modules & all pass\\
+source scan for \lean{sorry}, \lean{axiom}, \lean{native_decide} & none\\
+\bottomrule
+\end{tabular}
+\end{center}
+\lean{leanchecker} replays the declarations of each named module; imported modules, including the GRH proof,
+are trusted through their \lean{.olean} files, which we built from source. Kernel replay of the GRH proof
+itself, including Comparator, nanoda and lean4lean runs, was done by others
+\cite{sutherlandgrh,sutherlandshortgrh,rubinsteinpage}. We have not yet run Comparator against a
+Mathlib-only statement file for our theorems.
+
+\subsection{Faithfulness of statements}
+The definitions that occur in the main statements are short and appear in full in the source:
+\lean{bias}, \lean{charSum}, \lean{mass} (\lean{Pseudorandomness/Bias}); \lean{sampleSpace}, \lean{wt},
+\lean{cutoff}, \lean{kern}, \lean{testF} (\lean{Sharp/Assembly}); \lean{numB}, \lean{denB}, \lean{UB}, \lean{Kc},
+\lean{Cc} (\lean{Sharp/Certificate}, \lean{ConstBounds}); and \lean{y150} (\lean{Sharp/Certificate64}). The test
+function \lean{testFnN} is grh-miller's and is defined through Mathlib's \lean{Real.smoothTransition}. One
+convention differs from the paper: the Lean sample space is $\{0\le n<M\}$, whose term $n=0$ has $\Lambda(0)=0$.

@@ -1,0 +1,127 @@
+\section{Main results}\label{sec:results}
+
+Each statement below is labelled with the Lean declaration that proves it. ``Formal'' means machine-checked,
+with axioms \lean{propext}, \lean{Classical.choice} and \lean{Quot.sound} only, and with
+\eqref{eq:grh} discharged by the GRH proof (Section~\ref{sec:formal}). Statements marked ``informal'' are
+proved in this paper but are not formalized.
+
+\subsection{A uniform bound via Borel--Carath\'eodory}
+
+\begin{theorem}[formal; \lean{GRHPseudo.Main.primeCharSum}]\label{thm:A}
+For every $q\ge1$, every $\chi\ne\chi_0$ modulo $q$ (primitive or not) and every integer $N\ge3$,
+\[
+  \Bigl\lvert\sum_{0<n<N}\chi(n)\Lambda(n)\Bigl(1-\frac nN\Bigr)\Bigr\rvert\le\frac{48e}{\pi}(\log N)^2\sqrt N\,
+  \bigl(\pi\log(2+8q)+J\bigr),\qquad J=\int_\R\frac{\log(4+\abs t)}{1+t^2}\,dt .
+\]
+\end{theorem}
+
+\begin{corollary}[formal; \lean{GRHPseudo.Main.bias_primeMeasure}]\label{cor:A}
+Let $S$ be the set of $n\in(0,N)$ coprime to $q$, with weights $\Lambda(n)(1-n/N)$. For $N\ge3$ with
+$L:=\frac12\bigl(\lfloor N/2\rfloor\log2-\log(\lfloor N/2\rfloor+1)\bigr)-\log q\,\lfloor\log_2N\rfloor>0$, the
+bias of $S$ against every $\chi\ne\chi_0$ is at most the right side of Theorem~\ref{thm:A} divided by $L$.
+\end{corollary}
+
+The constants here are poor: to certify bias $\le1/2$ for $q\le2^{64}$ one needs $N\approx9.7\cdot10^{15}$
+(Table~\ref{tab:params}). The loss is intrinsic to the route. Borel--Carath\'eodory bounds $L'/L$
+pointwise on $\operatorname{Re}s=\frac12+1/\log N$ only by $O((\log N)^2\log q)$, whereas the explicit formula
+avoids pointwise bounds altogether.
+
+\subsection{The sharp bound}
+
+Fix $a\ge0$ and $y>2a$, put $x=e^y$ and $M=\lfloor e^{y+2a}\rfloor+1$, and define the sample space
+\[
+  S_q(a,y)=\{0\le n<M:\gcd(n,q)=1\},\qquad w_{a,y}(n)=\frac{\Lambda(n)\,k_a(\log n-y)}{\sqrt n}.
+\]
+Its weights are nonnegative and supported on prime powers in $[xe^{-2a},xe^{2a}]$. With $f=f_a$, put
+\begin{align*}
+  I_a(\beta)&=\int_\R\abs{\hat f_a(r)}^2\bigl(\log(4+\abs r)+\beta\bigr)\,dr,\qquad
+  \mathrm{SP}(a)=\sum_{n\le e^{2a}}\frac{\Lambda(n)}{\sqrt n}\bigl(\abs{k_a(\log n)}+\abs{k_a(-\log n)}\bigr),\\
+  U_q(a,y)&=\sum_{n<M,\ \gcd(n,q)>1}\abs{w_{a,y}(n)} ,
+\end{align*}
+and
+\begin{align*}
+  \mathrm{Num}&=k_a(0)\log\tfrac q\pi+\mathrm{SP}(a)+\frac{I_a(5)+I_a(\frac12)}{2\pi}+U_q(a,y),\\
+  \mathrm{Den}&=e^{y/2}A(a)-B(a)-\frac{I_a(5+\log\pi)+I_a(\frac12)}{2\pi}-U_q(a,y).
+\end{align*}
+
+\begin{theorem}[formal; \lean{GRHPseudo.Sharp.bias_sharp}, \lean{sharp_charSum_mass}]\label{thm:sharp}
+For every $q\ge1$, every $\chi\ne\chi_0$ modulo $q$, every $a\ge0$ and every $y>2a$:
+\[
+  \Bigl\lvert\sum_{n\in S_q(a,y)}w_{a,y}(n)\chi(n)\Bigr\rvert\le\mathrm{Num},\qquad
+  \sum_{n\in S_q(a,y)}w_{a,y}(n)\ge\mathrm{Den}.
+\]
+In particular, if $\mathrm{Den}>0$ then $\bias_\chi(S_q(a,y),w_{a,y})\le\mathrm{Num}/\mathrm{Den}$.
+\end{theorem}
+
+The leading term of $\mathrm{Num}/\mathrm{Den}$ is $k_a(0)\log q/(\sqrt x\,A(a))$. All remaining terms are
+either independent of $q$ or $O(\log q\log x/\sqrt x)$.
+
+\begin{remark}
+This leading term agrees with the asymptotic Lemma~6.1 of Lamzouri--Li--Soundararajan \cite{lls2015} (see
+Section~\ref{sec:related}). Theorem~\ref{thm:sharp} adds the following:
+\begin{itemize}
+\item every lower-order term is explicit, with no $o(1)$;
+\item the numerator bounds $\abs{\sum w\chi}$ itself, not just its real part, and holds for all $\chi\ne\chi_0$, primitive or not;
+\item the mass bound is explicit, obtained from the explicit formula for $\zeta$ under RH;
+\item the whole statement is machine-checked.
+\end{itemize}
+The explicit form makes small certificates possible: with an $o(1)$ one cannot conclude anything at any specific $q$.
+\end{remark}
+
+\subsection{Closed form}
+Let $K(a)=\sinh a+a\cosh a$, $C(a)=(4\sinh\frac a2)^2+(2\sinh\frac a2+2\cosh\frac a2)^2$,
+$U_B=K(a)e^{a-y/2}\log q\,\lfloor\log_2M\rfloor$, and
+\begin{align*}
+  \mathrm{num}_B&=(\sinh a+a)\log q+\frac{4K(a)}{e}\bigl(\lfloor e^{2a}\rfloor+1\bigr)
+     +\frac{C(a)\bigl(12+\frac{11}2\pi\bigr)}{2\pi}+U_B,\\
+  \mathrm{den}_B&=e^{y/2}\bigl(\sinh a'+a'\bigr)^2-2(\sinh a+a)^2-\frac{C(a)\bigl(12+(\frac{11}2+\log\pi)\pi\bigr)}{2\pi}-U_B .
+\end{align*}
+
+\begin{theorem}[formal; \lean{GRHPseudo.Main.bias_sharp_closed}]\label{thm:closed}
+For every $q\ge1$, $\chi\ne\chi_0$ modulo $q$, $a\ge1$ and $y>2a$ with $\mathrm{den}_B>0$,
+\[
+  \bias_\chi\bigl(S_q(a,y),w_{a,y}\bigr)\le\frac{\mathrm{num}_B}{\mathrm{den}_B}.
+\]
+\end{theorem}
+
+\begin{corollary}[formal; \lean{GRHPseudo.Main.bias_le_half_of_le_two_pow_64}]\label{cor:cert}
+Let $a=1$ and $y=2\log150$, so $x=22500$ and $S_q(1,y)$ consists of the integers below
+$\lfloor22500e^2\rfloor+1=166254$ coprime to $q$. For every $1\le q\le2^{64}$ and every nontrivial
+Dirichlet character $\chi$ modulo $q$,
+\[
+  \bias_\chi\bigl(S_q(1,y),w_{1,y}\bigr)\le\tfrac12 .
+\]
+Equivalently, every nontrivial eigenvalue of the weighted Cayley graph $\mathrm{Cay}(\Gq,w_{1,y})$ has modulus
+at most $1/2$. (The proof gives $\mathrm{num}_B\le236.6$ and $\mathrm{den}_B\ge555.8$, hence bias $\le0.4257$.)
+\end{corollary}
+
+\subsection{Optimality of the kernel and the asymptotic constant}
+
+\begin{proposition}[informal; abstract core formal: \lean{GRHPseudo.inner_mul_inner_le}]\label{prop:opt}
+Let $a>0$ and let $f\in L^2[-a,a]$ be real and nonzero, with $k=f*\tilde f$. Then
+\[
+  \frac{k(0)}{\int_\R k(u)e^{u/2}\,du}\ \ge\ \frac1{a+\sinh a},
+\]
+with equality if and only if $f$ is a nonzero multiple of $\cosh(t/2)\mathbf 1_{[-a,a]}$. By the
+Boas--Kac--Krein factorization \cite{boaskac1945,ehmgneitingrichards2004}, every continuous positive-definite
+$k$ supported in $[-2a,2a]$ is of this form.
+\end{proposition}
+
+The quantity in Proposition~\ref{prop:opt} is the coefficient of $\log q/\sqrt x$ that the positivity method
+produces from a kernel supported in $[-2a,2a]$ (Section~\ref{sec:optimality}). Normalizing by the top of the
+support and optimizing over $a$:
+
+\begin{corollary}[informal]\label{cor:asymp}
+Let $c(a)=e^a/(a+\sinh a)$. Its minimum over $a>0$ is $c^*=2/a_*^2=1.22363\ldots$, attained at the root
+$a_*=1.27846\ldots$ of $a=1+e^{-a}$.
+\begin{enumerate}
+\item \emph{(Lower bound within the method.)} For any kernel $k=f*\tilde f$ supported in $[-2a,2a]$, the leading
+  term of the positivity bound, normalized by the top of the support $X=xe^{2a}$, is at least
+  $c(a)\log q/\sqrt X\ge c^*\log q/\sqrt X$.
+\item \emph{(Achievability.)} For every $\delta>0$ there is a smooth admissible kernel with
+  $\bias\le(c^*+\delta+o(1))\log q/\sqrt X$ as $q\to\infty$ and $X/\log^2q\to\infty$. Hence support
+  $X\ge(c^{*2}+o(1))\log^2q/\varepsilon^2\approx1.497\log^2q/\varepsilon^2$ suffices for bias $\le\varepsilon$.
+\end{enumerate}
+For the formally verified kernel $f_a$ (transition width $1/64$), Theorem~\ref{thm:closed} gives leading
+coefficient at most $e^a(\sinh a+a)/(\sinh a'+a')^2$, which equals $1.2626$ at $a=a_*$ and $1.2964$ at $a=1$.
+\end{corollary}

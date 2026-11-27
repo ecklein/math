@@ -1,0 +1,31 @@
+name = "GRHPseudo"
+defaultTargets = ["GRHPseudo"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# Mathlib pinned to the exact commit used by the compact GRH edition.
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+# Compact edition of the Lean proof of GRH for Dirichlet L-functions,
+# github.com/lsernau/grh-lean @ 72fead102f663d5c7a407964a13dc0cf9d977207, subdirectory grh-compact.
+# Checked out by ../verification/fetch_deps.sh; a path dependency so its build is reused.
+[[require]]
+name = "GRH"
+path = "../vendor/grh-lean/grh-compact"
+
+[[lean_lib]]
+name = "GRHPseudo"
+# The default target excludes modules importing the full GRH proof; build those with
+# `lake build GRHPseudo.MainTheorems.Unconditional` after building the GRH dependency.
+
+# Weil explicit formula library, copied from github.com/anthropics/zeta-23-lean @ 16a5ce41
+# (zeta23/Zeta23, Apache-2.0), ported from Mathlib 51e6992e to 56a00585. See ATTRIBUTION.md.
+[[lean_lib]]
+name = "Zeta23"
+# upstream zeta-23-lean leaves `autoImplicit` at its default (true); some files rely on it
+leanOptions = { autoImplicit = true }
