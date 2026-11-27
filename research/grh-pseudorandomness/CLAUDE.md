@@ -2,7 +2,7 @@
 
 Project state and working notes. The general process is in `../../CLAUDE.md`. **Update this file
 whenever results, statements, commands, status or open tasks change.** Last updated: 2026-11-27
-(external-review fixes to informal claims, branch `grh-paper-fixes`).
+(external-review fixes to informal claims, merged via PR #5).
 
 ## What this project is
 Explicit, formally verified bias bounds (equivalently, second-eigenvalue bounds) for prime Cayley graphs
@@ -100,8 +100,9 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   sampling/complexity section.
 - **Paper:** a complete 20-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
   is not in the paper yet.
-- **Git:** merged to `main` via PRs #1–#3 (2026-11-27). PR #3 (`conv-square-kernel`, merge commit `e0bfa3d`) brought
-  the optimality correction, the conv-square certificate, the vendored sources, the author name and the Use of AI statement.
+- **Git:** merged to `main` via PRs #1–#5 (2026-11-27). PR #3 (merge `e0bfa3d`): optimality correction, conv-square
+  certificate, vendored sources, author name, Use of AI statement. PR #5 (merge `114d6b7`): fixes to informal claims after an
+  external review (Prop 8, rank-two lemma, Prop 14, LP labels, sampler, Cor 9, JMV normalization, LLS corrigendum).
 
 ## Open tasks (most useful first)
 See `notes/directions.md` for the ranked research directions.
