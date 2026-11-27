@@ -22,3 +22,10 @@ path = "../vendor/grh-lean/grh-compact"
 name = "GRHPseudo"
 # The default target excludes modules importing the full GRH proof; build those with
 # `lake build GRHPseudo.MainTheorems.Unconditional` after building the GRH dependency.
+
+# Weil explicit formula library, copied from github.com/anthropics/zeta-23-lean @ 16a5ce41
+# (zeta23/Zeta23, Apache-2.0), ported from Mathlib 51e6992e to 56a00585. See ATTRIBUTION.md.
+[[lean_lib]]
+name = "Zeta23"
+# upstream zeta-23-lean leaves `autoImplicit` at its default (true); some files rely on it
+leanOptions = { autoImplicit = true }

@@ -81,3 +81,24 @@ Status: open.
 
 ## C. Candidate-specific obligations
 To be filled after candidate selection (see `conjectures.md`, `novelty_assessment.md`).
+
+## D. Sharp route (explicit formula + positivity), for T1(a)
+
+Inputs: zeta-23-lean's `EF_lit_chi_L` (primitive χ, q > 1) and `EF_lit_zetaZeroConfig`, ported
+to our pin (`lean/Zeta23/`). grh-miller's `Ankeny.lean` supplies the positivity and gamma-side
+lemmas. GRH enters via `DirichletLZerosOnLine` (`LFunction_eq_zero_re`), RH via `riemannHypothesis`.
+
+D1. *Twist.* For `k_y(u) = k(u − y)`: `paperFT k_y z = exp(i z y) · paperFT k z`. Status: open.
+D2. *Two-sided positivity.* For primitive χ mod q > 1, real f ∈ C_c², supp f ⊆ [−a, a],
+    k = weilTest f f, y > 2a, under GRH:
+    `|Σ_n Λ(n) χ(n) k(log n − y)/√n| ≤ Re literatureRHSchi(k) + |twisted gamma term|`.
+    Proof: EF at k_y; the χ̄-leg vanishes since −log n − y < −2a; `|Σ m e^{iγy}|f̂|²| ≤ Σ m|f̂|²`
+    = EF at k. Status: open.
+D3. *Gamma side.* `Re literatureRHSchi(k) ≤ k(0) log(q/π) + 2 Σ_{n ≤ e^{2a}} Λ(n)|k(log n)|/√n
+    + G(f)`, with G explicit via `integral_normSq_paperFT_mul_le`. Status: open.
+D4. *Main term from RH.* `Σ_n Λ(n) k(log n − y)/√n ≥ e^{y/2} ∫ k(u)e^{u/2} du − (lower order)`,
+    via `EF_lit` for ζ, the same positivity, and the pole term `paperFT k_y (−i/2)`. Status: open.
+D5. *Imprimitive reduction.* On n coprime to q, χ = χ* (primitive inducing character, conductor
+    q* | q, q* > 1). Status: open.
+D6. *Assembly.* Bias of μ(n) ∝ Λ(n) k(log(n/x))/√n on units mod q, with the cosh test function
+    `testFnN a` (smoothed cutoff, transition width 1/64). Status: open.

@@ -16,3 +16,6 @@
 | `lean/GRHPseudo/AnalyticNumberTheory/LogDerivGRH.lean`, `norm_LSeries_le_two` | same file, `norm_LSeries_char_le` | generalised to coefficients of norm ≤ 1 |
 | `lean/GRHPseudo/Vendor/Schoenfeld/{Perron,Kernel,Weighted}.lean` | AndrewVSutherland/schoenfeld-rh-lean @ 0e52d7b1, `SchoenfeldRH/Lemmas/p6/Perron.lean`, `Explicit/Kernel.lean`, `Explicit/Weighted.lean` | import paths only |
 | `lean/GRHPseudo/AnalyticNumberTheory/PrimeCharSum.lean`, `integrable_log_mul_inv_one_add_sq` | amrehan/grh-miller v1.0.0, `GRHMiller/Ankeny.lean` | none |
+| `lean/Zeta23/**` (120 modules) | anthropics/zeta-23-lean @ 16a5ce41, `zeta23/Zeta23/` | ported from Mathlib 51e6992e to 56a00585: ~20 local fixes, each marked `-- port (Mathlib 56a00585)`; `autoImplicit = true` for this library as upstream |
+| `lean/Zeta23/FromPNTPlus/Tactic/LinearCombinationPrime.lean` | Mathlib @ 51e6992e, `Mathlib/Tactic/LinearCombinationPrime.lean` | removed from Mathlib before 56a00585; `module`/`public` markers dropped |
+| `lean/GRHPseudo/Vendor/GRHMiller/{Hypothesis,Ankeny}.lean` | amrehan/grh-miller v1.0.0 (e3e573a) | import paths only |

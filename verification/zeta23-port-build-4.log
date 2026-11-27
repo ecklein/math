@@ -1,0 +1,700 @@
+⚠ [2885/3245] Replayed Zeta23.FromPNTPlus.Rectangle
+warning: Zeta23/FromPNTPlus/Rectangle.lean: imports `Mathlib.Analysis.Complex.Convex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Rectangle.lean: imports `Mathlib.Analysis.InnerProductSpace.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Rectangle.lean: imports `Mathlib.Analysis.Normed.Order.Lattice` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Rectangle.lean: imports `Mathlib.Order.Interval.Set.Monotone` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2886/3245] Replayed Zeta23.FromPNTPlus.Tactic.LinearCombinationPrime
+warning: Zeta23/FromPNTPlus/Tactic/LinearCombinationPrime.lean: imports `Mathlib.Tactic.Ring` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2887/3245] Replayed Zeta23.FromPNTPlus.Tactic.AdditiveCombination
+warning: Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean: imports `Mathlib.Tactic.Abel` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2888/3245] Replayed Zeta23.FromPNTPlus.ResidueCalcOnRectangles
+warning: Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean: imports `Mathlib.Analysis.Complex.Convex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean: imports `Mathlib.Analysis.Complex.RemovableSingularity` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean: imports `Mathlib.Analysis.Meromorphic.NormalForm` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2889/3245] Replayed Zeta23.Analytic.RectangleLogDeriv
+warning: Zeta23/Analytic/RectangleLogDeriv.lean: imports `Mathlib.Analysis.Analytic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Analytic/RectangleLogDeriv.lean: imports `Mathlib.Analysis.Calculus.LogDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2943/3245] Replayed Zeta23.Defs
+warning: Zeta23/Defs.lean: imports `Mathlib.Analysis.CStarAlgebra.Classes` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Digamma` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.Analysis.SpecialFunctions.Pow.Complex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.MeasureTheory.Integral.Bochner.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.MeasureTheory.Measure.Lebesgue.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.Algebra.BigOperators.Finprod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.Data.Set.Card` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs.lean: imports `Mathlib.Data.Matrix.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2946/3245] Replayed Zeta23.GammaFacts
+warning: Zeta23/GammaFacts.lean: imports `Mathlib.Analysis.Calculus.Deriv.Star` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts.lean: imports `Mathlib.Analysis.Complex.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2958/3245] Replayed Zeta23.GammaFacts.Series
+warning: Zeta23/GammaFacts/Series.lean: imports `Mathlib.Analysis.Calculus.LogDerivUniformlyOn` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/Series.lean: imports `Mathlib.Analysis.Normed.Module.MultipliableUniformlyOn` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/Series.lean: imports `Mathlib.NumberTheory.Harmonic.EulerMascheroni` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/Series.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Beta` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/Series.lean: imports `Mathlib.Analysis.Complex.IntegerCompl` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/Series.lean: imports `Mathlib.Analysis.PSeries` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3120/3245] Replayed Zeta23.LinAlg.PosIndex
+warning: Zeta23/LinAlg/PosIndex.lean: imports `Mathlib.Analysis.Matrix.PosDef` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3122/3245] Replayed Zeta23.LinAlg.Sylvester
+warning: Zeta23/LinAlg/Sylvester.lean: imports `Mathlib.LinearAlgebra.FiniteDimensional.Lemmas` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3246/3648] Replayed Zeta23.LinAlg.VonNeumann
+warning: Zeta23/LinAlg/VonNeumann.lean: imports `Mathlib.Analysis.Convex.Birkhoff` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/LinAlg/VonNeumann.lean: imports `Mathlib.Algebra.Order.Rearrangement` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3247/3648] Replayed Zeta23.LinAlg.RankTrace
+warning: Zeta23/LinAlg/RankTrace.lean:73:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/LinAlg/RankTrace.lean:76:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/LinAlg/RankTrace.lean:97:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/LinAlg/RankTrace.lean:99:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3250/3648] Replayed Zeta23.LinAlg.Weyl
+warning: Zeta23/LinAlg/Weyl.lean: imports `Mathlib.Algebra.Order.Chebyshev` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3254/3648] Replayed Zeta23.Hypotheses
+warning: Zeta23/Hypotheses.lean: imports `Mathlib.Analysis.Calculus.ContDiff.Defs` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Hypotheses.lean: imports `Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3258/3648] Replayed Zeta23.Assembly
+warning: Zeta23/Assembly.lean: imports `Mathlib.Analysis.Matrix.Normed` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Assembly.lean: imports `Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Assembly.lean: imports `Mathlib.Analysis.Complex.ExponentialBounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Assembly.lean: imports `Mathlib.Analysis.Real.Pi.Bounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Assembly.lean:885:47: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/Assembly.lean:958:34: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/Assembly.lean:962:90: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [3447/3648] Replayed Zeta23.FromPNTPlus.Mertens
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.Algebra.Order.Field.GeomSum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.Analysis.SumIntegralComparisons` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.NumberTheory.Chebyshev` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.NumberTheory.Harmonic.EulerMascheroni` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.NumberTheory.LSeries.RiemannZeta` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.NumberTheory.Harmonic.GammaDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.Analysis.Asymptotics.Lemmas` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mertens.lean: imports `Mathlib.Algebra.Group.Submonoid.BigOperators` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3448/3648] Replayed Zeta23.Chebyshev
+warning: Zeta23/Chebyshev.lean: imports `Mathlib.NumberTheory.Chebyshev` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Chebyshev.lean: imports `Mathlib.NumberTheory.AbelSummation` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Chebyshev.lean: imports `Mathlib.Analysis.SpecialFunctions.Log.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Chebyshev.lean: imports `Mathlib.Analysis.PSeries` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Chebyshev.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Chebyshev.lean: imports `Mathlib.Analysis.Complex.ExponentialBounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3449/3648] Replayed Zeta23.Defs.LeafIntegrals
+warning: Zeta23/Defs/LeafIntegrals.lean: imports `Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs/LeafIntegrals.lean: imports `Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs/LeafIntegrals.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs/LeafIntegrals.lean: imports `Mathlib.Analysis.SpecialFunctions.ImproperIntegrals` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Defs/LeafIntegrals.lean: imports `Mathlib.MeasureTheory.Measure.Lebesgue.Integral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3451/3648] Replayed Zeta23.ExplicitFormula
+warning: Zeta23/ExplicitFormula.lean: imports `Mathlib.Analysis.Fourier.Inversion` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ExplicitFormula.lean: imports `Mathlib.Analysis.Fourier.Convolution` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ExplicitFormula.lean: imports `Mathlib.Analysis.Calculus.ContDiff.Convolution` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ExplicitFormula.lean: imports `Mathlib.Analysis.SpecialFunctions.ImproperIntegrals` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ExplicitFormula.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3452/3648] Replayed Zeta23.Poisson.PaperFT
+warning: Zeta23/Poisson/PaperFT.lean: imports `Mathlib.Analysis.Fourier.FourierTransform` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Poisson/PaperFT.lean: imports `Mathlib.MeasureTheory.Integral.IntegralEqImproper` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Poisson/PaperFT.lean: imports `Mathlib.Analysis.Calculus.Deriv.Support` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Poisson/PaperFT.lean: imports `Mathlib.Analysis.Calculus.ContDiff.Deriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3453/3648] Replayed Zeta23.ExplicitFormula.Bridge
+warning: Zeta23/ExplicitFormula/Bridge.lean: imports `Mathlib.Analysis.SpecialFunctions.JapaneseBracket` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3454/3648] Replayed Zeta23.FromPNTPlus.Auxiliary
+warning: Zeta23/FromPNTPlus/Auxiliary.lean: imports `Mathlib.Analysis.Complex.RealDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Auxiliary.lean: imports `Mathlib.Analysis.InnerProductSpace.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3456/3648] Replayed Zeta23.FromPNTPlus.Sobolev
+warning: Zeta23/FromPNTPlus/Sobolev.lean: imports `Mathlib.Analysis.Calculus.Deriv.Support` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Sobolev.lean: imports `Mathlib.Analysis.Distribution.SchwartzSpace.Deriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Sobolev.lean: imports `Mathlib.Order.Filter.ZeroAndBoundedAtFilter` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3457/3648] Replayed Zeta23.FromPNTPlus.Fourier
+warning: Zeta23/FromPNTPlus/Fourier.lean: imports `Mathlib.Analysis.Distribution.SchwartzSpace.Deriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Fourier.lean: imports `Mathlib.MeasureTheory.Integral.IntegralEqImproper` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Fourier.lean: imports `Mathlib.Topology.ContinuousMap.Bounded.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Fourier.lean: imports `Mathlib.Order.Filter.ZeroAndBoundedAtFilter` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Fourier.lean: imports `Mathlib.Analysis.Fourier.FourierTransformDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Fourier.lean:29:94: This simp argument is unused:
+  Circle.norm_coe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3458/3648] Replayed Zeta23.FromPNTPlus.Mathlib.Analysis.SpecialFunctions.Log.Basic
+warning: Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean: imports `Mathlib.Algebra.Order.Floor.Defs` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean: imports `Mathlib.Algebra.Order.Floor.Ring` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean: imports `Mathlib.Algebra.Order.Floor.Semiring` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean: imports `Mathlib.Analysis.SpecialFunctions.Log.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean: imports `Mathlib.Analysis.SpecialFunctions.Pow.Continuity` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3463/3648] Replayed Zeta23.Prelude.InstancePriorities
+warning: Zeta23/Prelude/InstancePriorities.lean: imports `Mathlib.Algebra.Lie.OfAssociative` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3490/3648] Replayed Zeta23.FromPNTPlus.StrongPNTPrefix
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Algebra.Lie.OfAssociative` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Analysis.CStarAlgebra.Classes` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Analysis.Complex.HasPrimitives` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Data.Rat.Cast.OfScientific` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Algebra.Order.Star.Real` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.RingTheory.SimpleRing.Principal` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Analysis.Complex.BorelCaratheodory` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Analysis.Analytic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean: imports `Mathlib.Analysis.Normed.Module.Connected` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:61:71: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:207:9: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+
+Hint: Replace the deprecated name:
+  s̵e̵t̵O̵f̵_̵s̵u̵b̵s̵e̵t̵_̵s̵e̵t̵O̵f̵o̲f̲P̲r̲e̲d̲_̲s̲u̲b̲s̲e̲t̲_̲o̲f̲P̲r̲e̲d̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:281:14: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:289:14: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:348:10: `Set.notMem_setOf_iff` has been deprecated: Use `Set.notMem_ofPred_iff` instead
+
+Hint: Replace the deprecated name:
+  n̵o̵t̵M̵e̵m̵_̵s̵e̵t̵O̵f̵_̵i̵f̵f̵n̲o̲t̲M̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲i̲f̲f̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:373:48: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:395:10: `Set.notMem_setOf_iff` has been deprecated: Use `Set.notMem_ofPred_iff` instead
+
+Hint: Replace the deprecated name:
+  n̵o̵t̵M̵e̵m̵_̵s̵e̵t̵O̵f̵_̵i̵f̵f̵n̲o̲t̲M̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲i̲f̲f̲
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:437:48: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [3787/3884] Replayed Zeta23.FromPNTPlus.ZetaBounds
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean: imports `Mathlib.MeasureTheory.Function.Floor` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean: imports `Mathlib.MeasureTheory.Order.Group.Lattice` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean: imports `Mathlib.NumberTheory.Harmonic.Bounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean: imports `Mathlib.NumberTheory.LSeries.Nonvanishing` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:859:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:952:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1092:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1099:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1105:56: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  p̵r̵e̵i̵m̵a̵g̵e̵_̵s̵e̵t̵O̵f̵_̵e̵q̵p̲r̲e̲i̲m̲a̲g̲e̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1115:56: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  p̵r̵e̵i̵m̵a̵g̵e̵_̵s̵e̵t̵O̵f̵_̵e̵q̵p̲r̲e̲i̲m̲a̲g̲e̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1119:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1135:54: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  p̵r̵e̵i̵m̵a̵g̵e̵_̵s̵e̵t̵O̵f̵_̵e̵q̵p̲r̲e̲i̲m̲a̲g̲e̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1157:22: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+
+Hint: Replace the deprecated name:
+  s̵e̵t̵O̵f̵_̵s̵u̵b̵s̵e̵t̵_̵s̵e̵t̵O̵f̵o̲f̲P̲r̲e̲d̲_̲s̲u̲b̲s̲e̲t̲_̲o̲f̲P̲r̲e̲d̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1169:15: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+
+Hint: Replace the deprecated name:
+  s̵e̵t̵O̵f̵_̵s̵u̵b̵s̵e̵t̵_̵s̵e̵t̵O̵f̵o̲f̲P̲r̲e̲d̲_̲s̲u̲b̲s̲e̲t̲_̲o̲f̲P̲r̲e̲d̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1169:59: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1185:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1835:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1837:45: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1840:28: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+
+Hint: Replace the deprecated name:
+  s̵e̵t̵O̵f̵_̵s̵u̵b̵s̵e̵t̵_̵s̵e̵t̵O̵f̵o̲f̲P̲r̲e̲d̲_̲s̲u̲b̲s̲e̲t̲_̲o̲f̲P̲r̲e̲d̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1844:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1900:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1906:20: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2091:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2884:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2896:41: `ENNReal.addLECancellable_iff_ne` has been deprecated: Use `ENNReal.addLECancellable_iff_ne_top` instead
+
+Hint: Replace the deprecated name:
+  ENNReal.addLECancellable_iff_ne_̲t̲o̲p̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2940:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2951:41: `ENNReal.addLECancellable_iff_ne` has been deprecated: Use `ENNReal.addLECancellable_iff_ne_top` instead
+
+Hint: Replace the deprecated name:
+  ENNReal.addLECancellable_iff_ne_̲t̲o̲p̲
+⚠ [3788/3884] Replayed Zeta23.FromPNTPlus.ZetaConj
+warning: Zeta23/FromPNTPlus/ZetaConj.lean: imports `Mathlib.Analysis.Calculus.Deriv.Star` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ZetaConj.lean: imports `Mathlib.Analysis.Normed.Module.Connected` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/FromPNTPlus/ZetaConj.lean: imports `Mathlib.NumberTheory.Harmonic.ZetaAsymp` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3789/3884] Replayed Zeta23.GammaFacts.Mu
+warning: Zeta23/GammaFacts/Mu.lean: imports `Mathlib.Analysis.Real.Pi.Bounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+info: Zeta23/GammaFacts/Mu.lean:137:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [3791/3884] Replayed Zeta23.GammaFacts.StirlingVert
+warning: Zeta23/GammaFacts/StirlingVert.lean: imports `Mathlib.NumberTheory.Harmonic.EulerMascheroni` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/StirlingVert.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/StirlingVert.lean: imports `Mathlib.Analysis.SumIntegralComparisons` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/GammaFacts/StirlingVert.lean: imports `Mathlib.Analysis.PSeries` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+info: Zeta23/GammaFacts/StirlingVert.lean:452:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [3793/3884] Replayed Zeta23.PiFacts
+warning: Zeta23/PiFacts.lean: imports `Mathlib.Analysis.Real.Pi.Bounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9088/9166] Replayed Zeta23.RvM.ZetaGrowth
+warning: Zeta23/RvM/ZetaGrowth.lean: imports `Mathlib.NumberTheory.ZetaValues` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/ZetaGrowth.lean: imports `Mathlib.Analysis.Real.Pi.Bounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9089/9166] Replayed Zeta23.RvM.BacklundDefs
+warning: Zeta23/RvM/BacklundDefs.lean: imports `Mathlib.NumberTheory.LSeries.RiemannZeta` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9090/9166] Replayed Zeta23.Statement
+warning: Zeta23/Statement.lean: imports `Mathlib.NumberTheory.LSeries.RiemannZeta` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement.lean: imports `Mathlib.Analysis.Analytic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement.lean:148:30: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9091/9166] Replayed Zeta23.Statement.Seam
+warning: Zeta23/Statement/Seam.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement/Seam.lean: imports `Mathlib.Analysis.Complex.ReImTopology` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement/Seam.lean: imports `Mathlib.Analysis.Normed.Module.Connected` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement/Seam.lean: imports `Mathlib.LinearAlgebra.Complex.FiniteDimensional` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement/Seam.lean: imports `Mathlib.NumberTheory.LSeries.Nonvanishing` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Statement/Seam.lean:59:13: `ENat.toNat_coe` has been deprecated: Use `ENat.toNat_natCast` instead
+
+Hint: Replace the deprecated name:
+  ENat.toNat_c̵o̵e̵n̲a̲t̲C̲a̲s̲t̲
+⚠ [9092/9166] Replayed Zeta23.ZetaReflect
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.Normed.Module.Connected` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.Analytic.Uniqueness` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.SpecialFunctions.Complex.Analytic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.Calculus.Deriv.Star` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ZetaReflect.lean:91:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9094/9166] Replayed Zeta23.RvM.Halving
+warning: Zeta23/RvM/Halving.lean:52:55: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/RvM/Halving.lean:62:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/RvM/Halving.lean:70:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9096/9166] Replayed Zeta23.RvM.ReZeroCount
+warning: Zeta23/RvM/ReZeroCount.lean:272:15: `ENat.toNat_coe` has been deprecated: Use `ENat.toNat_natCast` instead
+
+Hint: Replace the deprecated name:
+  ENat.toNat_c̵o̵e̵n̲a̲t̲C̲a̲s̲t̲
+⚠ [9097/9166] Replayed Zeta23.RvM.Backlund
+warning: Zeta23/RvM/Backlund.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/Backlund.lean:123:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [9099/9166] Replayed Zeta23.RvM.Defs
+warning: Zeta23/RvM/Defs.lean: imports `Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/Defs.lean: imports `Mathlib.Analysis.Calculus.LogDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9100/9166] Replayed Zeta23.WeilEF.XiLogDeriv
+warning: Zeta23/WeilEF/XiLogDeriv.lean: imports `Mathlib.NumberTheory.LSeries.RiemannZeta` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/WeilEF/XiLogDeriv.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Deligne` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/WeilEF/XiLogDeriv.lean: imports `Mathlib.Analysis.Calculus.LogDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/WeilEF/XiLogDeriv.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9102/9166] Replayed Zeta23.RvM.GammaSide
+warning: Zeta23/RvM/GammaSide.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/GammaSide.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Deligne` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/GammaSide.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Digamma` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/GammaSide.lean: imports `Mathlib.Analysis.SpecialFunctions.Pow.Deriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/RvM/GammaSide.lean: imports `Mathlib.Analysis.Real.Pi.Bounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9103/9166] Replayed Zeta23.RvM.NcountWindow
+warning: Zeta23/RvM/NcountWindow.lean:23:22: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9106/9166] Replayed Zeta23.Tail.Basic
+warning: Zeta23/Tail/Basic.lean: imports `Mathlib.Analysis.SpecialFunctions.Pow.Real` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9107/9166] Replayed Zeta23.Tail.Grid
+warning: Zeta23/Tail/Grid.lean: imports `Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail/Grid.lean: imports `Mathlib.Algebra.BigOperators.Fin` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9108/9166] Replayed Zeta23.Tail.Count
+warning: Zeta23/Tail/Count.lean: imports `Mathlib.Analysis.SpecialFunctions.Log.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail/Count.lean: imports `Mathlib.Algebra.BigOperators.Fin` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail/Count.lean: imports `Mathlib.Algebra.BigOperators.Field` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail/Count.lean: imports `Mathlib.Analysis.Complex.ExponentialBounds` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9109/9166] Replayed Zeta23.Tail.RankOne
+warning: Zeta23/Tail/RankOne.lean: imports `Mathlib.Analysis.Normed.Group.InfiniteSum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail/RankOne.lean: imports `Mathlib.Topology.Algebra.InfiniteSum.Real` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9110/9166] Replayed Zeta23.Tail
+warning: Zeta23/Tail.lean: imports `Mathlib.Topology.Instances.Matrix` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail.lean: imports `Mathlib.Order.Filter.AtTopBot.Field` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Tail.lean:290:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/Tail.lean:399:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9111/9166] Replayed Zeta23.ThmE.Hypotheses
+warning: Zeta23/ThmE/Hypotheses.lean: imports `Mathlib.NumberTheory.DirichletCharacter.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9112/9166] Replayed Zeta23.WeilEF.GammaRBracket
+warning: Zeta23/WeilEF/GammaRBracket.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Deligne` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/WeilEF/GammaRBracket.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Digamma` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9113/9166] Replayed Zeta23.WeilEF.VerticalLine
+warning: Zeta23/WeilEF/VerticalLine.lean: imports `Mathlib.NumberTheory.LSeries.Dirichlet` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/WeilEF/VerticalLine.lean: imports `Mathlib.Analysis.SpecialFunctions.JapaneseBracket` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9114/9166] Replayed Zeta23.WeilEF.Landau
+warning: Zeta23/WeilEF/Landau.lean:38:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/WeilEF/Landau.lean:38:23: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/WeilEF/Landau.lean:47:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/WeilEF/Landau.lean:47:23: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/WeilEF/Landau.lean:66:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/WeilEF/Landau.lean:66:21: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/WeilEF/Landau.lean:172:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/WeilEF/Landau.lean:172:25: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/WeilEF/Landau.lean:200:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/WeilEF/Landau.lean:200:25: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/WeilEF/Landau.lean:344:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: Zeta23/WeilEF/Landau.lean:440:64: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9115/9166] Replayed Zeta23.ThmE.Statement
+warning: Zeta23/ThmE/Statement.lean: imports `Mathlib.NumberTheory.LSeries.DirichletContinuation` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/Statement.lean: imports `Mathlib.Analysis.Analytic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9116/9166] Replayed Zeta23.ThmE.SeamL
+warning: Zeta23/ThmE/SeamL.lean: imports `Mathlib.NumberTheory.LSeries.Nonvanishing` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/SeamL.lean: imports `Mathlib.NumberTheory.MulChar.Lemmas` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/SeamL.lean: imports `Mathlib.Analysis.Complex.ReImTopology` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/SeamL.lean: imports `Mathlib.Analysis.Normed.Module.Connected` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/SeamL.lean: imports `Mathlib.LinearAlgebra.Complex.FiniteDimensional` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/SeamL.lean:89:43: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: Zeta23/ThmE/SeamL.lean:337:13: `ENat.toNat_coe` has been deprecated: Use `ENat.toNat_natCast` instead
+
+Hint: Replace the deprecated name:
+  ENat.toNat_c̵o̵e̵n̲a̲t̲C̲a̲s̲t̲
+⚠ [9119/9166] Replayed Zeta23.WeilEF.ZeroSummability
+warning: Zeta23/WeilEF/ZeroSummability.lean:189:4: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9120/9166] Replayed Zeta23.WeilEF.Contour
+warning: Zeta23/WeilEF/Contour.lean:69:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+ℹ [9123/9166] Replayed Zeta23.ThmE.GammaFactsChiProof
+info: Zeta23/ThmE/GammaFactsChiProof.lean:208:47: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/ThmE/GammaFactsChiProof.lean:272:17: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [9127/9166] Replayed Zeta23.WeilEF.Main
+info: Zeta23/WeilEF/Main.lean:38:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [9128/9166] Replayed Zeta23.WeilEF.Effective
+warning: Zeta23/WeilEF/Effective.lean: imports `Mathlib.NumberTheory.LSeries.HurwitzZetaValues` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/WeilEF/Effective.lean:624:30: This simp argument is unused:
+  Complex.div_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.neg_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/WeilEF/Effective.lean:669:14: This simp argument is unused:
+  Complex.norm_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/WeilEF/Effective.lean:717:19: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:717:23: Unused tactic linter: `first
+| assumption
+| positivity` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:759:19: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:759:23: Unused tactic linter: `first
+| assumption
+| positivity` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:717:23: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/WeilEF/Effective.lean:759:23: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/WeilEF/Effective.lean:912:13: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:912:17: Unused tactic linter: `linarith` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:912:17: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [9129/9166] Replayed Zeta23.XiPrime.Defs
+warning: Zeta23/XiPrime/Defs.lean: imports `Mathlib.NumberTheory.LSeries.RiemannZeta` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Defs.lean: imports `Mathlib.NumberTheory.ArithmeticFunction.Misc` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Defs.lean: imports `Mathlib.Analysis.Analytic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Defs.lean: imports `Mathlib.Analysis.Calculus.LogDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Defs.lean: imports `Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9130/9166] Replayed Zeta23.XiPrime.Statement
+warning: Zeta23/XiPrime/Statement.lean: imports `Mathlib.Order.Filter.AtTopBot.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Statement.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Statement.lean:365:69: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9131/9166] Replayed Zeta23.XiPrime.Seam
+warning: Zeta23/XiPrime/Seam.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Seam.lean: imports `Mathlib.Analysis.Calculus.Deriv.Shift` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/XiPrime/Seam.lean:172:8: `ENat.coe_toNat` has been deprecated: Use `ENat.natCast_toNat` instead
+
+Hint: Replace the deprecated name:
+  E̵N̵a̵t̵.̵c̵o̵e̵_̵t̵o̵N̵a̵t̵E̲N̲a̲t̲.̲n̲a̲t̲C̲a̲s̲t̲_̲t̲o̲N̲a̲t̲
+⚠ [9134/9172] Replayed Zeta23.XiPrime.ExplicitFormula.ZeroFree
+warning: Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean:553:23: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [9137/9172] Replayed Zeta23.PrimeSideA.Defs
+warning: Zeta23/PrimeSideA/Defs.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9140/9172] Replayed Zeta23.PrimeSideA.EndsE1
+warning: Zeta23/PrimeSideA/EndsE1.lean: imports `Mathlib.Analysis.SpecialFunctions.Integrals.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/PrimeSideA/EndsE1.lean:326:41: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [9146/9172] Replayed GRHPseudo.Vendor.GRHMiller.Hypothesis
+warning: GRHPseudo/Vendor/GRHMiller/Hypothesis.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9147/9172] Built Zeta23.Hypotheses.GzGp (5.3s)
+warning: Zeta23/Hypotheses/GzGp.lean: imports `Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Hypotheses/GzGp.lean: imports `Mathlib.MeasureTheory.Measure.Haar.NormedSpace` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Hypotheses/GzGp.lean: imports `Mathlib.Analysis.SpecialFunctions.ExpDeriv` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✔ [9148/9172] Built Zeta23.ThmE.TracesHypChi (5.3s)
+⚠ [9149/9172] Built Zeta23.Taper.Basic (5.5s)
+warning: Zeta23/Taper/Basic.lean: imports `Mathlib.Analysis.SpecialFunctions.SmoothTransition` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✔ [9150/9172] Built Zeta23.WeilEF.ZeroSummabilityGen (6.6s)
+✔ [9151/9172] Built Zeta23.ThmE.FoldChi (7.3s)
+⚠ [9152/9172] Built Zeta23.ThmE.GammaSideChi (7.4s)
+warning: Zeta23/ThmE/GammaSideChi.lean: imports `Mathlib.Analysis.Complex.CauchyIntegral` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/GammaSideChi.lean: imports `Mathlib.Analysis.SpecialFunctions.Gamma.Deligne` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9153/9172] Built Zeta23.ThmE.LGrowth (7.5s)
+warning: Zeta23/ThmE/LGrowth.lean: imports `Mathlib.Analysis.MellinTransform` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/ThmE/LGrowth.lean: imports `Mathlib.NumberTheory.LSeries.SumCoeff` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9154/9172] Built Zeta23.Taper.Strip (5.1s)
+warning: Zeta23/Taper/Strip.lean: imports `Mathlib.Algebra.Order.Star.Real` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Taper/Strip.lean: imports `Mathlib.MeasureTheory.Integral.Bochner.Set` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✔ [9155/9172] Built Zeta23.ThmE.LandauChi (8.1s)
+✔ [9156/9172] Built Zeta23.ThmE.AssemblyQ (12s)
+⚠ [9157/9172] Built Zeta23.ThmE.EFLitChi (19s)
+warning: Zeta23/ThmE/EFLitChi.lean:130:24: Variable name `q` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _q
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [9158/9172] Built Zeta23.ThmE.LocalCountChi (13s)
+⚠ [9159/9172] Built Zeta23.ThmE.VerticalLineChi (5.9s)
+warning: Zeta23/ThmE/VerticalLineChi.lean:144:71: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: Zeta23/ThmE/VerticalLineChi.lean:181:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+✔ [9160/9172] Built Zeta23.ThmE.GzGpChi (4.7s)
+⚠ [9161/9172] Built Zeta23.Taper.Norms (20s)
+warning: Zeta23/Taper/Norms.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9162/9172] Built Zeta23.ThmE.ContourChi (5.5s)
+warning: Zeta23/ThmE/ContourChi.lean:74:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+✔ [9163/9172] Built Zeta23.ThmE.FullLineChi (12s)
+⚠ [9164/9172] Built Zeta23.Taper.Decay (18s)
+warning: Zeta23/Taper/Decay.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Zeta23/Taper/Decay.lean:69:12: `mul_le_one₀` has been deprecated: No replacement, use constituent lemmas from proof.
+warning: Zeta23/Taper/Decay.lean:441:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/Taper/Decay.lean:442:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+✔ [9165/9172] Built Zeta23.ThmE.FullLineChiFold (5.9s)
+⚠ [9166/9172] Built Zeta23.ThmE.FullLineChiProof (8.4s)
+warning: Zeta23/ThmE/FullLineChiProof.lean:416:27: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: Zeta23/ThmE/FullLineChiProof.lean:418:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+✔ [9167/9172] Built Zeta23.ThmE.HorizontalChi (7.9s)
+✔ [9168/9172] Built Zeta23.ThmE.FullLineChiAssembly (5.4s)
+✔ [9169/9172] Built Zeta23.ThmE.MainChi (17s)
+⚠ [9170/9172] Built GRHPseudo.Vendor.GRHMiller.Ankeny (22s)
+warning: GRHPseudo/Vendor/GRHMiller/Ankeny.lean:545:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: GRHPseudo/Vendor/GRHMiller/Ankeny.lean:550:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+warning: GRHPseudo/Vendor/GRHMiller/Ankeny.lean:737:2: `mul_le_one₀` has been deprecated: No replacement, use constituent lemmas from proof.
+warning: GRHPseudo/Vendor/GRHMiller/Ankeny.lean:1085:4: Unused tactic linter: `congr 1` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: GRHPseudo/Vendor/GRHMiller/Ankeny.lean:1411:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: GRHPseudo/Vendor/GRHMiller/Ankeny.lean:1411:8: Unused tactic linter: `norm_num` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [9171/9172] Built GRHPseudo.AnalyticNumberTheory.Sharp.TwoSided (16s)
+✖ [9172/9172] Building GRHPseudo.AnalyticNumberTheory.Sharp.MainTerm (16s)
+trace: .> LEAN_PATH=/Users/ethanklein/math/lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/ethanklein/math/vendor/grh-lean/grh-compact/.lake/build/lib/lean:/Users/ethanklein/math/lean/.lake/build/lib/lean /Users/ethanklein/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean /Users/ethanklein/math/lean/GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.lean -o /Users/ethanklein/math/lean/.lake/build/lib/lean/GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.olean -i /Users/ethanklein/math/lean/.lake/build/lib/lean/GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.ilean -c /Users/ethanklein/math/lean/.lake/build/ir/GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.c --setup /Users/ethanklein/math/lean/.lake/build/ir/GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.setup.json --json
+error: GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.lean:58:26: Unknown identifier `EF_lit_zetaZeroConfig`
+error: GRHPseudo/AnalyticNumberTheory/Sharp/MainTerm.lean:58:9: Tactic `rcases` failed: `x✝ : ?m.88` is not an inductive datatype
+Some required targets logged failures:
+- GRHPseudo.AnalyticNumberTheory.Sharp.MainTerm
+error: build failed
+lake build $(tr '\n' ' ' < Zeta23/MODULES.txt)     133.15s user 178.56s system 222% cpu 2:20.02 total
+EXIT 1
