@@ -99,3 +99,16 @@ The repository `math` is now a research monorepo. This project moved from the re
 `research/grh-pseudorandomness/`, and its former notes directory `research/` was renamed `notes/`. The Lean build was
 unaffected: after the move, `lake build --no-build` reported all theorem and certificate targets up to date.
 Two Lean docstrings that referenced `research/proof_obligations.md` now say `notes/proof_obligations.md`.
+
+## 2026-11-27 — correction: the cosh kernel is not optimal within the positivity method
+- Numerics (`experiments/kernel_lp.py`, `barrier_check.py`) showed nonnegative non-even kernels beat c* ≈ 1.2236.
+- Convolution squares K = f ⋆ f have |K̂| = (f ⋆ f̃)^, so the positivity step applies with majorant f ⋆ f̃: c(L) = 1/(1 − e^{−L/2}).
+- Barrier: for K supported in (−∞, 0], ∫K e^{u/2} = (1/2π)∫K̂(t)(1/2 − it)/(1/2 + it) dt, so c ≥ 1; equality for |u|e^{u/2}, the weight Λ(n) log(x/n).
+- Paper corrected (abstract, intro, results Prop 8/Cor 9, Section 6 rewritten with Props 12–13, limitations, complexity, Table 2), with a dated correction note in Section 6. README numbering fixed (it had Thm 5/Cor 6/Prop 7/Cor 8; the paper numbers them 6/7/8/9).
+
+## 2026-11-27 — convolution-square kernel formalized
+- New modules `Sharp/{Majorant,GammaSharp,ConvKernel,ConvAssembly,ConvCertificate}` (~1400 lines).
+- Thm 10 (`Main.bias_convSq_closed`) and Cor 11 (`Main.bias_le_half_of_le_two_pow_64_convSq`): for all q ≤ 2⁶⁴, bias ≤ 1/2 with support n ≤ 48400 (was 166253). numB ≤ 65.7, denB ≥ 143.9.
+- Key ingredient besides the kernel: the sharper gamma bound (Plancherel + tail split at R), `Ilog_div_le_sharp`.
+- Numerics: exact closed form 65.64/145.26 = 0.452 at q = 2⁶⁴; exact bias of the new measure 0.037–0.055 for q ∈ {10007, …, 4000037} (`experiments/convsq_certificate_check.py`).
+- Audit: 31 theorems standard axioms; env core only; leanchecker over all 32 project modules (see `verification/leanchecker.log`).

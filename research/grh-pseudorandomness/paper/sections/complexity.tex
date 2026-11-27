@@ -22,7 +22,7 @@ generator for $\Gq$ with seed length
 \[
   s=2\log_2\log q+2\log_2(1/\varepsilon)+\log_2(1/\delta)+O(1)
 \]
-(the $O(1)$ absorbs $\log_2c^{*2}$ and the prime-power density). Each sample then costs one table lookup and one
+(the $O(1)$ absorbs the leading constant and the prime-power density). Each sample then costs one table lookup and one
 gcd with $q$. The lower bound for any $\varepsilon$-biased set in a group of order $\varphi(q)$ is
 $\log_2\log q+2\log_2(1/\varepsilon)-O(\log\log(1/\varepsilon))$ \cite{alonroichman1994,naornaor1993}. The
 factor $2$ in front of $\log_2\log q$ is the $(\log q)^2$ barrier of Section~\ref{sec:limits}.

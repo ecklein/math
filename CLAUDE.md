@@ -109,7 +109,7 @@ Run this before claiming a result, and record each item in `verification/README.
 
 ## Experiments
 
-Use Python with the root `.venv` (numpy, sympy, pypdf). Prefer exact computation over sampling; for
+Use Python with the root `.venv` (numpy, sympy, scipy, pypdf; scipy's HiGHS `linprog` handles the extremal-kernel LPs). Prefer exact computation over sampling; for
 prime `q`, one FFT over the discrete-log table gives the bias against all characters at once. Commit
 scripts and the small result tables (`experiments/out/*.tsv`) that the paper cites.
 

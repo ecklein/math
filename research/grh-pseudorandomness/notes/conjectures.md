@@ -24,7 +24,7 @@ for a ∈ [1, 2]), `P(a) = 2 k_a(0)^{-1} Σ_{n ≤ e^{2a}} Λ(n) k_a(log n) n^{-
 In support-normalised form, with X = x e^{2a}, a → ∞ and e^a = o(log q):
 `λ_*(q, μ) ≤ (2 + o(1)) log q / √X`. Equivalently, X ≥ (4 + o(1)) log² q / ε² gives ε-bias.
 
-**T1(b) (optimality within the positivity method).** For any admissible kernel k, i.e. k
+**T1(b) (optimality among positive-definite kernels; title corrected 2026-11-27: it is *not* optimal within the positivity method, since convolution squares do better; see `directions.md`).** For any admissible kernel k, i.e. k
 positive definite, C², supported on [−2a, 2a], the leading coefficient that the
 positivity-plus-explicit-formula method yields is `k(0) / ∫ k(u) e^{u/2} du`. This is
 ≥ 1/(a + sinh a), with equality iff k = c · k_a. The proof factors k = f ⋆ f̃ with

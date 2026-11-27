@@ -108,3 +108,9 @@ D7. *Layer 2.* **lean-done.**
   - `Certificate`: `bias_closed`, giving bias ≤ numB/denB in closed form.
   - `Certificate64`: bias ≤ 1/2 for every q ≤ 2⁶⁴, with a = 1 and y = 2 log 150 (support n ≤ 166253), using only Mathlib's certified bounds on e, π and log 2.
 
+D8. *Convolution-square kernel* (added 2026-11-27). **lean-done.**
+  - `Majorant`: positivity for any K ∈ C_c² with ‖K̂(r)‖ = ‖f̂(r)‖² (majorant M = f ⋆ f̃): two-sided bound, ζ main term, twisted gamma sides; `paperFT_convSq` (K = f ⋆ f ⇒ K̂ = f̂²).
+  - `GammaSharp`: I(B)/2π ≤ (log(4+R) + B)·M(0) + 4C²/(πR) when |r|‖f̂(r)‖ ≤ C.
+  - `ConvKernel`: f_A = e^{t/2}S(64(t+A))S(−64t); 0 ≤ K_A ≤ A e^{u/2}, supp K_A ⊆ [−2A, 0]; |M_A(u)| ≤ e^{−|u|/2}, M_A(0) ≤ 1 − e^{−A}; F₊ ∈ [e^{−1/64} − e^{−A+1/64}, 1], F₋ ≤ A; ∫|f_A'| ≤ 3.
+  - `ConvAssembly`: `Conv.bias_sharp`. `ConvCertificate`: `Conv.bias_closed`; certificate A = 9/4, R = 12, y = 2 log 220.
+D9. *Props 14–15* (Cauchy–Schwarz optimality of e^{t/2} among conv squares; the barrier c ≥ 1). **informal-done**, numerically checked (`experiments/barrier_check.py`).

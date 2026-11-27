@@ -54,13 +54,15 @@ The main result uses a prime-power measure weighted by a $\cosh$-based test func
 through the Weil explicit formula and a positivity argument. Its bias is at most an explicit
 expression whose leading term is $k_a(0)\log q/(\sqrt{x}\,\int k_a(u)e^{u/2}\,du)$. As a
 machine-checked instance: \emph{for every modulus $q\le 2^{64}$ and every nontrivial character $\chi$
-modulo $q$, a fixed measure on prime powers $n\le 166253$ has bias at most $1/2$.} We also show that the
-$\cosh$ kernel is exactly optimal within the positivity method. Optimizing its width gives bias
-$\le(c^*+o(1))\log q/\sqrt X$ for support up to $X$, where $c^*=2/a_*^2\approx1.2236$ and $a_*\approx1.2785$ is the
-root of $a=1+e^{-a}$; no kernel does better within this method.
-A cruder bound, obtained via Borel--Carath\'eodory and valid for all $q$, is also formalized.
-Along the way we ported a 120-module Lean library for the Weil explicit formula to the Mathlib
-version of the GRH proof.
+modulo $q$, a fixed measure on prime powers $n\le 48400$ has bias at most $1/2$.} This uses a
+convolution-square kernel (the $\cosh$ kernel needs $n\le166253$). We also determine the
+limit of the method. Among positive-definite kernels the $\cosh$ kernel is optimal, with support-normalized
+leading constant $c^*=2/a_*^2\approx1.2236$, where $a_*\approx1.2785$ is the root of $a=1+e^{-a}$. Convolution squares
+use the same positivity step and do better. An elementary Fourier identity shows that no kernel gets below $1$, and
+this barrier is attained in the limit by the classical weight $\Lambda(n)\log(x/n)$. So the method needs support
+$(1+o(1))\log^2q/\varepsilon^2$ for bias $\varepsilon$, and no less.
+A cruder Borel--Carath\'eodory bound is also formalized, and we ported a 120-module Lean library
+for the Weil explicit formula to the Mathlib version of the GRH proof.
 \end{abstract}
 
 \maketitle

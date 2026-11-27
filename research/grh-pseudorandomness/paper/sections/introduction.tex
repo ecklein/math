@@ -59,14 +59,17 @@ We prove explicit, fully formalized spectral bounds for prime Cayley graphs on $
 \item \textbf{A machine-checked certificate} (Corollary~\ref{cor:cert}). \emph{For every
   $1\le q\le2^{64}$ and every nontrivial $\chi$ modulo $q$, the measure above with $a=1$ and
   $y=2\log150$ has bias at most $1/2$.} It is supported on prime powers $n\le166253$ coprime to $q$.
-  The same guarantee from Theorem~\ref{thm:A} would need $N\approx10^{16}$.
-\item \textbf{Optimality of the kernel within the method} (Proposition~\ref{prop:opt}). Among all
-  kernels $k=f*\tilde f$ with $\operatorname{supp}f\subseteq[-a,a]$, the leading coefficient
-  $k(0)/\int k(u)e^{u/2}du$ produced by the positivity method is at least $1/(a+\sinh a)$, with
-  equality exactly for $f\propto\cosh(t/2)\mathbf 1_{[-a,a]}$. Optimizing over $a$ gives
-  $\bias\le(c^*+o(1))\log q/\sqrt X$ for support up to $X$, with $c^*=\min_a e^a/(a+\sinh a)=2/a_*^2\approx1.2236$
-  attained at the root $a_*\approx1.2785$ of $a=1+e^{-a}$. No kernel gives a smaller leading constant
-  within the positivity method.
+  The same guarantee from Theorem~\ref{thm:A} would need $N\approx10^{16}$. With a convolution-square kernel
+  (Theorem~\ref{thm:convclosed}, Corollary~\ref{cor:convcert}, also formal) the support drops to $n\le48400$.
+\item \textbf{The leading constant of the method} (Propositions~\ref{prop:opt}, \ref{prop:convsq}, \ref{prop:barrier}
+  and Corollary~\ref{cor:asymp}; informal). Write the leading term as $c\log q/\sqrt X$, with $X$ the top of the support.
+  Among positive-definite kernels $k=f*\tilde f$ with $\operatorname{supp}f\subseteq[-a,a]$, the $\cosh$ kernel
+  $f\propto\cosh(t/2)\mathbf 1_{[-a,a]}$ is optimal, and optimizing over $a$ gives $c^*=2/a_*^2\approx1.2236$, where
+  $a_*\approx1.2785$ is the root of $a=1+e^{-a}$. Convolution squares $f*f$, which are not even, satisfy the same
+  positivity step and give $c=1/(1-e^{-L/2})$ on a window of length $L$. Every kernel has $c\ge1$, by the identity
+  $\int K(u)e^{u/2}du=\frac1{2\pi}\int\hat K(t)\frac{1/2-it}{1/2+it}dt$ for $K$ supported in $(-\infty,0]$. The value $1$
+  is attained in the limit by the classical weight $\Lambda(n)\log(x/n)$. An earlier draft wrongly called $c^*$ optimal
+  within the positivity method; see Section~\ref{sec:optimality}.
 \end{enumerate}
 
 \subsection{What is new, and what is not}
@@ -78,8 +81,10 @@ primes in progressions, uniform in $q$, are in \cite{ehp2022}. We claim novelty 
 literature search cannot establish uniqueness:
 (i) bias (equivalently, second-eigenvalue) bounds for prime Cayley graphs on $\Gq$ with \emph{fully explicit}
 constants and no $o(1)$ terms, uniform in $q$ and in $\chi$ (primitive or not), sharp enough to give small concrete certificates
-such as Corollary~\ref{cor:cert};
-(ii) the exact optimum of the leading constant within the positivity method (Proposition~\ref{prop:opt});
+such as Corollaries~\ref{cor:cert} and~\ref{cor:convcert};
+(ii) the exact optimum of the leading constant among positive-definite kernels (Proposition~\ref{prop:opt}), and the
+observation that convolution squares reach the limiting constant~$1$ of the method; the barrier itself and the weight attaining it
+are classical in substance (Section~\ref{sec:optimality});
 (iii) the end-to-end formal verification of (i) and of a concrete certificate, with GRH entering as a
 proved theorem rather than an assumption.
 The prior results closest to ours are discussed in Section~\ref{sec:related}. In particular, Bach's

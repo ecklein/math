@@ -19,3 +19,4 @@
 | `lean/Zeta23/**` (120 modules) | anthropics/zeta-23-lean @ 16a5ce41, `zeta23/Zeta23/` | ported from Mathlib 51e6992e to 56a00585: ~20 local fixes, each marked `-- port (Mathlib 56a00585)`; `autoImplicit = true` for this library as upstream |
 | `lean/Zeta23/FromPNTPlus/Tactic/LinearCombinationPrime.lean` | Mathlib @ 51e6992e, `Mathlib/Tactic/LinearCombinationPrime.lean` | removed from Mathlib before 56a00585; `module`/`public` markers dropped |
 | `lean/GRHPseudo/Vendor/GRHMiller/{Hypothesis,Ankeny}.lean` | amrehan/grh-miller v1.0.0 (e3e573a) | import paths only |
+| `lean/GRHPseudo/AnalyticNumberTheory/Sharp/{Majorant,ConvKernel}.lean` (`norm_primeSide_twist_le_maj`, `primeSideZeta_twist_eq_maj`, `integral_abs_deriv_F_le`) | our `TwoSided`/`MainTerm`, and grh-miller's `integral_abs_deriv_testFN_le` (`GRHMiller/Ankeny.lean`) | proof structure adapted: majorant `‖K̂‖ = ‖f̂‖²` in place of `K = f ⋆ f̃`; new test function `e^{t/2}·S(64(t+A))·S(−64t)` |

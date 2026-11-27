@@ -31,3 +31,12 @@ import GRHPseudo.Pseudorandomness.RankTwo
 #print axioms GRHPseudo.Main.zerosOnLine
 #print axioms GRHPseudo.Main.bias_sharp_closed
 #print axioms GRHPseudo.Main.bias_le_half_of_le_two_pow_64
+-- convolution-square kernel (majorant positivity, sharper gamma bound, certificate n ≤ 48400)
+#print axioms GRHPseudo.Sharp.norm_primeSide_twist_le_maj
+#print axioms GRHPseudo.Sharp.primeSideZeta_twist_eq_maj
+#print axioms GRHPseudo.Sharp.Ilog_div_le_sharp
+#print axioms GRHPseudo.Sharp.Conv.bias_sharp
+#print axioms GRHPseudo.Sharp.Conv.bias_closed
+#print axioms GRHPseudo.Main.bias_convSq_sharp
+#print axioms GRHPseudo.Main.bias_convSq_closed
+#print axioms GRHPseudo.Main.bias_le_half_of_le_two_pow_64_convSq

@@ -95,7 +95,7 @@ Equivalently, every nontrivial eigenvalue of the weighted Cayley graph $\mathrm{
 at most $1/2$. (The proof gives $\mathrm{num}_B\le236.6$ and $\mathrm{den}_B\ge555.8$, hence bias $\le0.4257$.)
 \end{corollary}
 
-\subsection{Optimality of the kernel and the asymptotic constant}
+\subsection{The leading constant}
 
 \begin{proposition}[informal; abstract core formal: \lean{GRHPseudo.inner_mul_inner_le}]\label{prop:opt}
 Let $a>0$ and let $f\in L^2[-a,a]$ be real and nonzero, with $k=f*\tilde f$. Then
@@ -108,20 +108,65 @@ $k$ supported in $[-2a,2a]$ is of this form.
 \end{proposition}
 
 The quantity in Proposition~\ref{prop:opt} is the coefficient of $\log q/\sqrt x$ that the positivity method
-produces from a kernel supported in $[-2a,2a]$ (Section~\ref{sec:optimality}). Normalizing by the top of the
-support and optimizing over $a$:
+produces from a \emph{positive-definite} kernel supported in $[-2a,2a]$ (Section~\ref{sec:optimality}). It is not
+the limit of the method: non-even kernels whose Fourier transform is dominated by a positive-definite one do better.
+Normalizing by the top $X$ of the support:
 
 \begin{corollary}[informal]\label{cor:asymp}
-Let $c(a)=e^a/(a+\sinh a)$. Its minimum over $a>0$ is $c^*=2/a_*^2=1.22363\ldots$, attained at the root
-$a_*=1.27846\ldots$ of $a=1+e^{-a}$.
+Write the leading term of the positivity bound, or of the bound of \cite[Lemma~6.1]{lls2015}, as $c\log q/\sqrt X$, where
+$X$ is the top of the support.
 \begin{enumerate}
-\item \emph{(Lower bound within the method.)} For any kernel $k=f*\tilde f$ supported in $[-2a,2a]$, the leading
-  term of the positivity bound, normalized by the top of the support $X=xe^{2a}$, is at least
-  $c(a)\log q/\sqrt X\ge c^*\log q/\sqrt X$.
-\item \emph{(Achievability.)} For every $\delta>0$ there is a smooth admissible kernel with
-  $\bias\le(c^*+\delta+o(1))\log q/\sqrt X$ as $q\to\infty$ and $X/\log^2q\to\infty$. Hence support
-  $X\ge(c^{*2}+o(1))\log^2q/\varepsilon^2\approx1.497\log^2q/\varepsilon^2$ suffices for bias $\le\varepsilon$.
+\item \emph{(Barrier.)} Every kernel gives $c\ge1$ (Proposition~\ref{prop:barrier}).
+\item \emph{(Positive-definite kernels.)} A positive-definite kernel supported in an interval of length $4a$ gives
+  $c\ge e^a/(a+\sinh a)\ge c^*=2/a_*^2=1.22363\ldots$, where $a_*=1.27846\ldots$ is the root of $a=1+e^{-a}$.
+\item \emph{(Achievability.)} For every $\delta>0$ there is a smooth nonnegative convolution-square kernel with
+  $\bias\le(1+\delta+o(1))\log q/\sqrt X$ as $q\to\infty$ and $X/\log^2q\to\infty$. Hence support
+  $X\ge(1+o(1))\log^2q/\varepsilon^2$ suffices for bias $\le\varepsilon$, and within the method nothing smaller does.
 \end{enumerate}
-For the formally verified kernel $f_a$ (transition width $1/64$), Theorem~\ref{thm:closed} gives leading
+For the formally verified kernel $f_a$ (positive-definite, transition width $1/64$), Theorem~\ref{thm:closed} gives leading
 coefficient at most $e^a(\sinh a+a)/(\sinh a'+a')^2$, which equals $1.2626$ at $a=a_*$ and $1.2964$ at $a=1$.
+\end{corollary}
+
+\subsection{An explicit bound with a convolution-square kernel}
+Corollary~\ref{cor:asymp} says that a non-even kernel beats every positive-definite one. We have made this explicit
+and formal for one family. Let $A>0$, let $S$ be Mathlib's \lean{Real.smoothTransition}, and put
+\[
+  f_A(t)=e^{t/2}\,S\bigl(64(t+A)\bigr)\,S(-64t),\qquad K_A=f_A*f_A,\qquad M_A=f_A*\tilde f_A .
+\]
+So $f_A\ge0$ is supported in $[-A,0]$ and equals $e^{t/2}$ on $[-A+\frac1{64},-\frac1{64}]$, $K_A\ge0$ is supported in
+$[-2A,0]$, and $\abs{\hat K_A}=\abs{\hat f_A}^2=\hat M_A$ on $\R$ (Proposition~\ref{prop:convsq}). For $y>2A$ and $x=e^y$
+let $S^\square_q(y)=\{0\le n\le\lfloor x\rfloor:\gcd(n,q)=1\}$ with weights
+$w^\square_{A,y}(n)=\Lambda(n)K_A(\log n-y)n^{-1/2}$, which are supported on prime powers in $[xe^{-2A},x]$. For $R>0$
+put $G(B)=(\log(4+R)+B)(1-e^{-A})+36/(\pi R)$ and $U^\square_B=Ae^{-y/2}\log q\,\lfloor\log_2(\lfloor x\rfloor+1)\rfloor$, and
+\begin{align*}
+  \mathrm{num}^\square_B&=(1-e^{-A})\log q+\tfrac2e\bigl(\lfloor e^{A}\rfloor+1\bigr)+G(5)+G(\tfrac12)+U^\square_B,\\
+  \mathrm{den}^\square_B&=e^{y/2}\bigl(e^{-1/64}-e^{-A+1/64}\bigr)^2-2A-G(5+\log\pi)-G(\tfrac12)-U^\square_B .
+\end{align*}
+
+\begin{theorem}[formal; \lean{GRHPseudo.Main.bias_convSq_closed}]\label{thm:convclosed}
+For every $q\ge1$, $\chi\ne\chi_0$ modulo $q$, $A\ge\frac1{32}$, $R>0$ and $y>2A$ with $\mathrm{den}^\square_B>0$,
+\[
+  \bias_\chi\bigl(S^\square_q(y),w^\square_{A,y}\bigr)\le\frac{\mathrm{num}^\square_B}{\mathrm{den}^\square_B}.
+\]
+\end{theorem}
+
+The proof runs the argument of Theorem~\ref{thm:sharp} with the zero sum of the twisted $K_A$ bounded by that of $M_A$
+(\lean{norm_primeSide_twist_le_maj}, \lean{primeSideZeta_twist_eq_maj}); the intermediate bound with exact constants is
+\lean{GRHPseudo.Main.bias_convSq_sharp}. It also uses a sharper gamma-side estimate (\lean{Ilog_div_le_sharp}): if
+$f\in C^2_c$ and $\abs r\,\abs{\hat f(r)}\le C$, then for $B\ge0$ and $R>0$
+\[
+  \frac1{2\pi}\int_\R\abs{\hat f(r)}^2\bigl(\log(4+\abs r)+B\bigr)dr\le\bigl(\log(4+R)+B\bigr)(f*\tilde f)(0)+\frac{4C^2}{\pi R}.
+\]
+Here $C=3$, from $\int\abs{f_A'}\le3$. The leading coefficient of $\mathrm{num}^\square_B/\mathrm{den}^\square_B$, normalized by the top
+$x$ of the support, is $(1-e^{-A})/(e^{-1/64}-e^{-A+1/64})^2$, which equals $1.162$ at $A=\frac94$; for the formal $\cosh$ kernel
+the corresponding value at $a=1$ is $1.2964$.
+
+\begin{corollary}[formal; \lean{GRHPseudo.Main.bias_le_half_of_le_two_pow_64_convSq}]\label{cor:convcert}
+Let $A=\frac94$, $R=12$ and $y=2\log220$, so $x=48400$ and $S^\square_q(y)$ consists of the integers $n\le48400$ coprime to $q$.
+For every $1\le q\le2^{64}$ and every nontrivial Dirichlet character $\chi$ modulo $q$,
+\[
+  \bias_\chi\bigl(S^\square_q(y),w^\square_{9/4,y}\bigr)\le\tfrac12 .
+\]
+(The proof gives $\mathrm{num}^\square_B\le65.7$ and $\mathrm{den}^\square_B\ge143.9$, hence bias $\le0.4566$.) The support is $3.4$ times
+smaller than in Corollary~\ref{cor:cert}.
 \end{corollary}

@@ -76,6 +76,11 @@ result is known (F5).
   - Their §6.2 kernel is the indicator case f = 1_{[−α,α]}.
 - **Ernvall-Hytönen–Palojärvi**, Math. Comp. 91 (2022). This is an explicit GRH bound for ψ(x;q,a), uniform in q. A bias bound follows mechanically but with much weaker constants at x ≈ (log q)^{2+δ}. They do not state it.
 - **Bach**, as presented by McGown–Treviño (Contemp. Math. 775, 2021, Lemma 7.2): the weight is Λ(n)(n/x)^a log(x/n). It is not cosh, and there is no optimality claim.
-- **Kernel optimality** (Proposition 7): no prior statement found. Its scope is positive-definite kernels. LLS's |K| framework admits general kernels; whether one beats c* there is open (the trivial bound is ≥ 1/(4 sinh a)).
+- **Kernel optimality** (Proposition 8): no prior statement found. Its scope is positive-definite kernels only.
+- **Correction (2026-11-27).** c* is *not* the limit of the method. Convolution squares f ⋆ f (Prop 12) use the same positivity
+  step and give c(L) = 1/(1 − e^{−L/2}) → 1. Every kernel has c ≥ 1 (Prop 13, an elementary Fourier identity), with equality in
+  the limit for the classical weight Λ(n) log(x/n). Novelty of Prop 13: none claimed. It is a sharp point evaluation, and CMQR's
+  one-sided C(∞) = 1 has the same extremal. The modest new content is the observation that convolution squares fit the positivity
+  method and reach the limit, which makes explicit constants near 1 possible.
 - **Hanke repository**: not found publicly. The same-name repo by UyNewNas only defines GRH.
 - **Overall**: modest novelty. The explicit theorem is new as stated but close to known machinery (LLS §6). The optimality lemma appears new but is short. The end-to-end formal verification and certificate are the most distinctive part.
