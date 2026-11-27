@@ -111,3 +111,11 @@ log) and sharpened the prior-art picture. Checked here:
 - **BKMT (arXiv:2607.08261)**: O(ε⁻² log|G|) weighted sparsifiers for every abelian Cayley graph. With Alon–Roichman this makes clear
   that small cardinality is not a novelty claim; ours are the small integer cutoff, explicit constants uniform in q, the access model
   (no factorization of q), and the formal verification.
+
+## Prop 17 priority check (2026-11-27)
+- Closest prior work: BCOS §9.2 (off-axis point evaluation in PW^p; our general finite-window problem, without K ≥ 0, is exactly
+  that problem at y = π/L) and Hörmander–Bernhardsson (real points: L¹ point evaluation is not attained by squares). CMQR's
+  EP1 with A = ∞ is the infinite-window, sign-changing version.
+- So **Prop 15 is in BCOS §9.2** (asymptotic sharpness included) — credited, no novelty. **Prop 17** is a certified off-axis
+  instance (y = π/4) of a known phenomenon, with the nonnegative-spectrum constraint our application needs: **modest**. Prop 18
+  (majorant realization) is a simple observation (Fejér approximation) that removes the need for zero counting.

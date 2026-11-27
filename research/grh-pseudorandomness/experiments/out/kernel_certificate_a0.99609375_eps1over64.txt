@@ -1,0 +1,5 @@
+witness: kernel_lp_a0.99609375.tsv, window length 255/64, 79 integer node values (max 10^6), D = 796180167, N = 262144
+certified (piecewise linear): c(K) <= [1.109204765, 1.109204765]
+smoothing eps = 1/64: C^infinity kernel on window length 4, c <= [1.117904366, 1.117904366]
+convolution-square optimum on that window, 1/(1-e^(-L/2)) >= [1.156517643, 1.156517643]
+strict separation certified: True

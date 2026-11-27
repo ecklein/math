@@ -114,7 +114,10 @@ The inequality is a sharp point evaluation for functions whose Fourier transform
 least-non-residue problem, Carneiro, Milinovich, Quesada-Herrera and Ramos \cite{cmqr2024} find the limiting constant $C(\infty)=1$, with
 the same extremal function, by a different (dual) argument. Lamzouri, Li and Soundararajan
 \cite[\S6.1]{lls2015} already note a limitation of their (one-sided) method, from the pointwise bound
-$\tilde K(u)\le\frac1{2\pi}\int\abs{K(it)}dt$. We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
+$\tilde K(u)\le\frac1{2\pi}\int\abs{K(it)}dt$. Most directly, Brevig, Chirre, Ortega-Cerd\`a and Seip \cite[\S9.2]{bcos2024} use the same
+$H^1$ point-evaluation bound, $e^{-\pi y}\abs{f(iy)}\le\norm f_1/(4\pi y)$ for $f$ in the Paley--Wiener space $PW^1$, and show it is
+asymptotically sharp as $y\to\infty$ with $f$ close to $(y-iz)^{-2}$, our extremal kernel after a change of variables (see below).
+We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
 that the constant $1$ is the exact limit of the explicit-formula method for prime-supported small-bias measures. This is a limit of
 the method, not a lower bound for the true bias.
 
@@ -189,24 +192,73 @@ quadrature: $\abs P$ is $D$-Lipschitz with $D=\sum_j\abs{j-c}\abs{k_j}$ for any 
 spaced points differs from its mean by at most $\pi D/(2N)$.
 
 \begin{proposition}[computer-assisted; \lean{experiments/kernel_certificate.py}]\label{prop:separation}
-There is a nonnegative piecewise-linear kernel $K$ supported in an interval of length $4$ with support-normalized constant
+\leavevmode
+\begin{enumerate}
+\item There is a nonnegative piecewise-linear kernel $K$ supported in an interval of length $4$ with support-normalized constant
 \[
   c(K)=e^{T/2}\,\frac{\frac1{2\pi}\int\abs{\hat K}}{\int K(u)e^{u/2}du}\le1.1082<1.1565<\frac1{1-e^{-2}},
 \]
-where $T$ is the top of its support. So on windows of length $4$ the optimum over nonnegative kernels is strictly smaller than
-the optimum over convolution squares (Proposition~\ref{prop:convsq}).
+where $T$ is the top of its support.
+\item There is a nonnegative $C^\infty$ kernel supported in an interval of length exactly $4$ with $c\le1.1180$.
+\end{enumerate}
+So on windows of length $4$ the optimum over nonnegative kernels, smooth or not, is strictly smaller than the optimum over
+convolution squares (Proposition~\ref{prop:convsq}).
 \end{proposition}
 \begin{proof}
-The witness is the LP solution at $a=1$ ($h=\frac1{20}$, $79$ interior nodes), rounded to nonnegative integers. By
+(1) The witness is the LP solution at $a=1$ ($h=\frac1{20}$, $79$ interior nodes), rounded to nonnegative integers. By
 Lemma~\ref{lem:periodize}, $c(K)$ is an explicit finite expression up to the quadrature error. The script encloses every quantity in
 outward-rounded interval arithmetic (mpmath) with $N=2^{18}$ quadrature points and checks the inequality. An external reviewer
 supplied an independent integer-interval certificate for a different rounding of the same solution, which gives $c(K)<1.1377$.
+
+(2) Smoothing preserves the margin. Let $K\ge0$ be supported in $[T-L',T]$ and let $\varphi\in C^\infty_c$ be nonnegative with
+$\operatorname{supp}\varphi\subseteq[-\varepsilon,0]$ and $\int\varphi=1$, as in \cite[\S2.2]{cmqr2024}. Then $K_\varepsilon=K*\varphi$ is $C^\infty$, nonnegative and
+supported in $[T-L'-\varepsilon,T]$, with the same top. Since $\abs{\hat\varphi}\le1$ on $\R$, $\int\abs{\hat K_\varepsilon}\le\int\abs{\hat K}$, and
+$\int K_\varepsilon(u)e^{u/2}du=\int K(u)e^{u/2}du\cdot\int\varphi(v)e^{v/2}dv\ge e^{-\varepsilon/2}\int K(u)e^{u/2}du$. Hence $c(K_\varepsilon)\le e^{\varepsilon/2}c(K)$.
+Apply this with $\varepsilon=\frac1{64}$ to the LP solution on a window of length $L'=4-\frac1{64}$ ($a=\frac{255}{256}$), certified in the same
+way with $c(K)\le1.1093$.
 \end{proof}
 
-This is a computer-assisted result, not a Lean theorem. The witness is not $C^2$, so it does not enter the explicit-formula theorems
-directly: a smoothing argument keeping the strict margin is still needed. It is also not a convolution square, so using it in a bias
-bound requires controlling its zero sum by explicit zero counting, as in \cite{lls2015}, rather than by positivity. We have not
-done either. We have not yet checked the literature for this specific separation.
+\begin{proposition}[majorants; general part informal, instance computer-assisted]\label{prop:majorant}
+Let $K\ge0$ be a kernel for which the explicit formula applies, and $\delta>0$. There is a compactly supported positive-definite $M$ with
+$\hat M\ge\abs{\hat K}$ on $\R$ and $M(0)\le\frac1{2\pi}\int\abs{\hat K}+\delta$. Consequently the positivity method, with $M$ in place of
+$f*\tilde f$ in Section~\ref{sec:optimality}.1, gives leading coefficient at most $c(K)+e^{T/2}\delta/\int K(u)e^{u/2}du$, with no zero counting.
+For the witness of part (2) of Proposition~\ref{prop:separation}, a positive-definite majorant supported in $[-8.02,8.02]$ gives the
+certified positivity constant $c\le1.1482<1.1565$, after the same smoothing.
+\end{proposition}
+\begin{proof}
+Take $K$ piecewise linear with step $h$, as in Lemma~\ref{lem:periodize}, and $M$ even and piecewise linear with the same step and node
+values $q_0,\dots,q_n$. Then $\hat M(t)=h\hat\Lambda(th)Q(th)$ with $Q(\theta)=q_0+2\sum_{j\ge1}q_j\cos j\theta$, so $\hat M\ge\abs{\hat K}$ on $\R$ if and only if
+$Q\ge\abs P$ on the circle, and $M(0)=q_0$. Since $\abs P$ is even and continuous, its Fej\'er means $\sigma_n$ converge to it uniformly, and
+$Q=\sigma_n+\norm{\sigma_n-\abs P}_\infty$ is an admissible cosine polynomial with $q_0\to\frac1{2\pi}\int\abs P=\frac1{2\pi}\int\abs{\hat K}$. Then $\hat M\ge0$, so $M$ is
+positive definite. Under GRH the zeros have real ordinates, so $\abs{\sum_\gamma\hat K_y(\gamma)}\le\sum_\gamma\abs{\hat K(\gamma)}\le\sum_\gamma\hat M(\gamma)$, and the
+explicit formula for $M$ evaluates the right side; its leading term is $M(0)\log(q/\pi)$. For smoothness, replace $(K,M)$ by
+$(K*\varphi*\varphi,\,M*\varphi*\tilde\varphi)$: then $\hat M\abs{\hat\varphi}^2\ge\abs{\hat K}\abs{\hat\varphi}^2$ and $M*\varphi*\tilde\varphi(0)\le M(0)$. For the instance, the script solves an
+LP for $q$ ($n=160$), adds $2.5\%$ to $q_0$, rounds to rationals, and certifies $Q-\abs P\ge0$ on the whole circle with interval arithmetic and a
+Lipschitz bound ($N=2^{19}$ points).
+\end{proof}
+
+\paragraph{Relation to point evaluation in Paley--Wiener spaces.}
+Drop the condition $K\ge0$ and let $K$ be supported in a window of length $L$. Centring the window and rescaling the frequency
+variable turn $f=\hat K$ into a function $h$ in $PW^1$ (exponential type $\pi$), with
+\[
+  \inf_K c(K)=\frac{(2\pi)^2}{L\,e^{L/4}}\Bigl(\sup_{0\ne h\in PW^1}\frac{\abs{h(iy)}}{\norm h_1}\Bigr)^{-1},\qquad y=\frac\pi L .
+\]
+So the general finite-window problem is the norm of point evaluation off the real axis in $PW^1$. Brevig, Chirre, Ortega-Cerd\`a and
+Seip \cite[\S9.2]{bcos2024} pose it, following Korevaar, and prove the limit $y\to\infty$, which corresponds to our Proposition~\ref{prop:barrier}.
+Squares of $PW^2$ functions correspond to convolution squares, and Proposition~\ref{prop:convsq} is the $PW^2$ reproducing-kernel bound. At
+real points it is classical that $L^1$ point evaluation in $PW^1$ is not attained by squares (Hörmander and Bernhardsson; see
+\cite{bcos2024}). Proposition~\ref{prop:separation} is a certified instance of the same phenomenon at the non-real point $y=\pi/4$, under
+the additional constraint that the spectrum is nonnegative ($K\ge0$), which our application needs. We found no statement of this
+instance in \cite{bcos2024,cmqr2024,lls2015}. In the problem (EP1) of \cite{cmqr2024} with $A=\infty$, $\hat F$ may change sign and has no fixed
+window. It is a modest addition, and a literature search cannot rule out an earlier statement.
+
+\paragraph{What remains.}
+The certificates are computer-assisted, not Lean-checked. A Lean version would need the periodization identity, which needs
+$\sum_m\hat\Lambda(\theta+2\pi m)=1$, and a reformulation of the quadrature that the kernel can check without \lean{native_decide}; see
+Section~\ref{sec:limits}. Turning Proposition~\ref{prop:majorant} into an explicit bias theorem needs the formal positivity lemmas of
+Theorem~\ref{thm:convclosed} for a general positive-definite majorant, and explicit lower-order terms for a majorant supported in
+$[-8,8]$. The possible gain is small: the leading coefficient drops from $1.162$ (the formal convolution-square kernel at $A=\frac94$) to
+about $1.11$, at most about a $9\%$ smaller cutoff before the larger small-prime and gamma terms of the wider majorant are counted.
 
 \begin{remark}
 The inequality of Lemma~\ref{lem:ranktwo} is formalized; its equality case is not. Its specialization to $L^2[-a,a]$, the factorization theorem, Propositions~\ref{prop:convsq}

@@ -57,7 +57,7 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   bias ≤ 0.4566, support n ≤ 48400). After changing any of these, recheck the statement, the
   numbers in Cor 7 (numB ≤ 236.6, denB ≥ 555.8, bias ≤ 0.4257, support n ≤ 166253) and Table 2 in
   `experiments.tex`.
-- **Numbering.** Paper numbering (Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Prop 8, Cor 9, Thm 10, Cor 11, Props 14–15, Lemma 16, Prop 17; a remark takes number 5) is used in `README.md`. Corrected 2026-11-27: earlier docs said Thm 5/Cor 6/Prop 7/Cor 8.
+- **Numbering.** Paper numbering (Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Prop 8, Cor 9, Thm 10, Cor 11, Props 14–15, Lemma 16, Props 17–18; a remark takes number 5) is used in `README.md`. Corrected 2026-11-27: earlier docs said Thm 5/Cor 6/Prop 7/Cor 8.
   Update both if the numbering changes.
 - **Audit list.** Every new headline theorem gets a `#print axioms` line in `verification/Axioms.lean`.
   Record the counts in `verification/README.md` (currently: 31 theorems, 32 project modules replayed,
@@ -82,8 +82,11 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   ≤ 0.0004, end-node slope jumps included; quadrature error unbounded). Never call these "exact" or certified. For a < 1 the discretization is unreliable.
 - **Certified separation (computer-assisted, 2026-11-27).** At window length 4 a nonnegative piecewise-linear kernel has
   c ≤ 1.10814 < 1/(1 − e^{−2}) (`experiments/kernel_certificate.py`, mpmath intervals; reviewer's integer certificate gives
-  < 1.1377). Key tool: periodization, (1/2π)∫|K̂| = mean |P| exactly for triangle bases. Not Lean; not yet smoothed; priority
-  unchecked. Uncertified LP numbers (`kernel_lp.py`) are separate and stay labelled exploratory.
+  < 1.1377). Key tool: periodization, (1/2π)∫|K̂| = mean |P| exactly for triangle bases. Smoothed: C^∞ kernel on window
+  exactly 4 with c ≤ 1.1180 (Prop 17(2)). Majorant route (Prop 18): positivity with a PD majorant M, M̂ ≥ |K̂|, ⇔ Q ≥ |P| on the
+  circle; certified c ≤ 1.1482 with supp M ⊆ [−8.02, 8.02], so **no zero counting is needed**. Not Lean. Priority: Prop 15 is in
+  BCOS §9.2; Prop 17 is an off-axis, K ≥ 0 instance of Hörmander–Bernhardsson (modest). Uncertified LP numbers (`kernel_lp.py`,
+  `majorant_lp.py`) stay labelled exploratory.
 - **Cutoff vs cardinality.** Our barrier and certificates concern the cutoff X = max supp μ, not |supp μ| or seed length.
 - **Prop 8 / rank-two lemma (fixed 2026-11-27).** State Prop 8 without dividing (∫k e^{u/2} ≤ (a + sinh a)k(0)); the ratio needs
   ∫k e^{u/2} > 0. The lemma's equality case needs α/‖α‖ ≠ −β/‖β‖, and only the inequality is formal.

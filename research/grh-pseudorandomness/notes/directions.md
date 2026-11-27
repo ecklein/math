@@ -163,3 +163,9 @@ Direction "finite-window extremal problem" now has a certified witness (c ≤ 1.
 certificate (periodization lemma + interval quadrature); (3) smoothing to C² keeping the margin, within the same window;
 (4) explicit zero-sum estimate (zero counting for L(s, χ), uniform in q) to turn it into a bias theorem, and compare with 48400;
 (5) lower bounds for C(L) and its dependence on L (dual certificates).
+
+## Update (2026-11-27, later): Prop 17 caveats
+Done: priority check (BCOS §9.2, Hörmander–Bernhardsson, CMQR), smoothing (C^∞ on window 4, c ≤ 1.1180), majorant route (no zero
+counting; certified c ≤ 1.1482 with supp M ⊆ [−8.02, 8.02]). Remaining, as separate tasks: (a) Lean-checkable certificate (SOS route +
+formal periodization); (b) Lean positivity lemmas for a general PD majorant, then an explicit certificate with the LP kernel (≤ ~9%
+smaller cutoff than 48400 at best); (c) certified lower bounds for C(L) via CMQR's dual EP2 / BCOS methods.

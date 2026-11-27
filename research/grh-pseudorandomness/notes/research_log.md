@@ -156,3 +156,22 @@ fixed number of fair bits; now rejection (expected cost) or r attempts with expl
 non-asymptotic inequality Num/Den ≥ log(q/π)/√X for every kernel with a PD majorant, restricted to bounds of the shape of Thms 4/10.
 **Prior work.** Basu–Kothari–Meka–Tudose, arXiv:2607.08261 (v2), Thm 1.5: O(ε⁻² log|G|)-generator ε-sparsifiers of weighted abelian
 Cayley graphs, randomized poly(|G|, ε⁻¹). Cited in related work: small cardinality alone is not distinctive.
+
+## 2026-11-27 — closing the Prop 17 caveats (PR #7)
+- **Priority check.** Read CMQR (arXiv:2404.08380 v2) EP1/EP2 and Thm 4: their A = ∞ problem allows sign-changing F̂ with no fixed
+  window (Thm 4(i): C_c^∞ suffices, window not fixed); no nonnegative fixed-window version. Read BCOS (Brevig–Chirre–Ortega-Cerdà–
+  Seip, J. Anal. Math. 153 (2024)) §9.2: point evaluation at iy in PW^p, posed following Korevaar; they prove the y → ∞ limit with
+  the same H¹ bound and extremal (y − iz)^{−2}. Change of variables: without K ≥ 0, inf c(K) on a window L equals
+  (2π)²/(L e^{L/4}) / C₁(π/L), C₁(y) = sup |h(iy)|/‖h‖₁ over PW¹. So Prop 15 is in BCOS §9.2 (now credited) and Prop 17 is an
+  off-axis, nonnegative-spectrum instance of the Hörmander–Bernhardsson phenomenon (L¹ point evaluation not attained by squares).
+  Modest; no statement of this instance found in CMQR, BCOS, LLS.
+- **Smoothing (done).** K_ε = K * φ, φ ≥ 0 on [−ε, 0]: c(K_ε) ≤ e^{ε/2} c(K), same top (cf. CMQR §2.2). LP on window 4 − 1/64
+  certified c ≤ 1.10921; after smoothing, a C^∞ kernel on window exactly 4 has c ≤ 1.11791 < 1.15652.
+- **Zero counting (avoided).** Positivity needs only a PD compactly supported M with M̂ ≥ |K̂|. With the same grid step, this is
+  Q ≥ |P| on the circle for a cosine polynomial Q, and M(0) = q₀ → mean|P| (Fejér). Exploratory LP (`majorant_lp.py`): c_major =
+  1.163, 1.110, 1.104, 1.104 for supp M ⊆ [−4, 4], [−8, 8], [−16, 16], [−32, 32]. Certified instance (n = 160, supp M ⊆ [−8.02, 8.02],
+  2.5% slack, N = 2¹⁹, after smoothing): c ≤ 1.1482 < 1.1565. No zero counting needed; the payoff for the explicit certificate is at
+  most ~9% in cutoff (1.162 → ~1.11) before the wider majorant's lower-order terms.
+- **Lean (not done; assessed).** 2^18–2^19 interval evaluations are infeasible in the kernel without native_decide. Route: an exact
+  algebraic certificate (cosine polynomial R ≥ |P| with a rational SOS/Fejér–Riesz certificate for R² − |P|²) plus a formal
+  periodization lemma (needs Σ_m sinc²((θ + 2πm)/2) = 1). Proposed as a separate task.
