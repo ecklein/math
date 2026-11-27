@@ -97,8 +97,8 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   sampling/complexity section.
 - **Paper:** a complete 19-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
   is not in the paper yet.
-- **Git:** merged to `main` via PRs #1–#2 (2026-11-27). Current work on branch `conv-square-kernel` (not yet committed
-  or pushed as of the last update).
+- **Git:** merged to `main` via PRs #1–#3 (2026-11-27). PR #3 (`conv-square-kernel`, merge commit `e0bfa3d`) brought
+  the optimality correction, the conv-square certificate, the vendored sources, the author name and the Use of AI statement.
 
 ## Open tasks (most useful first)
 See `notes/directions.md` for the ranked research directions.
