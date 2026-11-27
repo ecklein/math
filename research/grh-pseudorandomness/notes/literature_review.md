@@ -96,3 +96,4 @@ confirmed. Nothing marked [S] or [M] may be cited in the paper until opened and 
 - **[S]** Lamzouri–Li–Soundararajan, Corrigendum, Math. Comp. 86 (2017), no. 307, 2551–2554, doi:10.1090/mcom/3261: Crossref metadata only; content taken from v3.
 - **[O]** Jao–Miller–Venkatesan, arXiv:0811.0647v2 (HTML), J. Number Theory 129 (2009) 1491–1504: Thm 1.1 (unnormalized eigenvalues O(n x^{1/2} log(xq)), degree 2 li(x) + O(·)); §1 remark on unconditional expansion for almost all q via Garaev.
 - **[S]** Garaev, Character sums in short intervals and the multiplication table modulo a large prime, Monatsh. Math. 148 (2006) 127–138, Thm 3: seen only as JMV's reference.
+- **[O]** Basu–Kothari–Meka–Tudose, *Optimal Sparsifiers for Abelian Cayley Graphs*, arXiv:2607.08261 v2 (3 Nov 2026), abstract and Thm 1.5 (HTML): O(ε⁻² log|G|)-generator ε-Cayley sparsifiers, randomized poly(|G|, ε⁻¹) time.

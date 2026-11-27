@@ -28,9 +28,13 @@ generator for $\Gq$ with seed length
 \[
   s=2\log_2\log q+2\log_2(1/\varepsilon)+\log_2(1/\delta)+O(1)
 \]
-(the $O(1)$ absorbs the leading constant and the prime-power density). Each sample then costs one table lookup. The lower bound for any $\varepsilon$-biased set in a group of order $\varphi(q)$ is
-$\log_2\log q+2\log_2(1/\varepsilon)-O(\log\log(1/\varepsilon))$ \cite{alonroichman1994,naornaor1993}. The
-factor $2$ in front of $\log_2\log q$ is the $(\log q)^2$ barrier of Section~\ref{sec:limits}.
+(the $O(1)$ absorbs the leading constant and the prime-power density). Each sample then costs one table lookup. The factor $2$ in front of $\log_2\log q$ comes from the $(\log q)^2$ cutoff barrier of
+Section~\ref{sec:limits} and is a limit of the method, not of the problem. For comparison, by Alon and Roichman
+\cite{alonroichman1994} a random multiset of $O(\log\varphi(q)/\varepsilon^2)$ elements of $\Gq$ is $\varepsilon$-biased with high probability, so
+seed length $\log_2\log q+2\log_2(1/\varepsilon)+O(1)$ is achievable non-constructively, though such a set has no small-integer
+description independent of $q$. We do not state a lower bound: any lower bound must
+come with a range of $\varepsilon$ (the whole group has bias $0$ and seed length $\log_2\varphi(q)$), and bounds for uniform sets and
+for weighted distributions differ.
 
 \paragraph{Non-units and $q$-obliviousness.}
 A single table that does not depend on $q$ is also possible. Let $p$ be the ideal unfiltered distribution on $W$ (exact weights,
@@ -54,11 +58,21 @@ bias exceeds the certified bias by at most $3\tau/(1-\pi_q-\tau)+2(\pi_q+\tau)^r
 $4\cdot10^{-6}$ for Corollary~\ref{cor:convcert}. In either form one table serves all moduli $q\le2^{64}$.
 
 \paragraph{Expander walks.}
-By Corollary~\ref{cor:cert}, the random walk on $\Gq$ that multiplies by an independent sample at each step has
-second eigenvalue at most $\frac12$ for every $q\le2^{64}$. The standard expander-walk Chernoff and hitting
-bounds \cite{hlw2006} therefore apply to walks on $\Gq$ driven by these samples. A walk of length $t$ from a
-uniform start uses $\log_2\varphi(q)+t\,s$ random bits instead of $(t+1)\log_2\varphi(q)$. Drawing the uniform
-start does require sampling $\Gq$, e.g.\ by rejection with gcd tests.
+Let $\mu$ be the certified measure on $\Gq$ and $P$ the walk that multiplies by an independent sample of $\mu$ at each step. In
+general $\mu(g)\ne\mu(g^{-1})$, so $P$ is neither symmetric nor reversible. Since $\Gq$ is abelian, $P$ is still a normal operator
+on $L^2(\Gq)$ with eigenvalues $\hat\mu(\chi)=\sum_g\mu(g)\chi(g)$, so Corollary~\ref{cor:cert} gives $\norm{P-J}\le\frac12$ in operator norm
+($J$ the projection onto constants). The expander-walk Chernoff and hitting bounds we cite \cite{hlw2006} are stated for
+reversible walks, so we apply them to the symmetrized measure $\mu_{\rm sym}(g)=\frac12(\mu(g)+\mu(g^{-1}))$. Its eigenvalues are
+$\operatorname{Re}\hat\mu(\chi)$, which are real and no larger in modulus than $\abs{\hat\mu(\chi)}$, so $\mu_{\rm sym}$ inherits every bias bound.
+To sample it, draw $n$ from $\mu$ and a fair bit, and output $n$ or $n^{-1}\bmod q$; the inverse is computed by the extended
+Euclidean algorithm and is in general not a small integer.
+
+A walk of length $t$ uses $ts$ bits for its steps, plus whatever the start costs. An exactly uniform start cannot be drawn with
+a fixed number of fair bits when $\varphi(q)$ is not a power of $2$. By rejection (draw $\lceil\log_2q\rceil$ bits, accept if the integer
+$m$ satisfies $1\le m<q$ and $\gcd(m,q)=1$) it costs $\lceil\log_2q\rceil$ bits per attempt and at most $2q/\varphi(q)=O(\log\log q)$
+attempts on average. Alternatively, stop after $r$ attempts and output $1$ if all fail. This uses a fixed $r\lceil\log_2q\rceil$ bits, and
+the start is within $\delta_0=(1-\varphi(q)/(2q))^r$ of uniform in total variation, which adds at most $\delta_0$ to every probability
+estimate for the walk.
 
 \paragraph{What this is not.}
 These are statistical guarantees against multiplicative characters of $\Gq$. They give no

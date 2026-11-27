@@ -122,8 +122,11 @@ $X$ is the top of the support.
   $c\ge e^a/(a+\sinh a)\ge c^*=2/a_*^2=1.22363\ldots$, where $a_*=1.27846\ldots$ is the root of $a=1+e^{-a}$.
 \item \emph{(Achievability.)} For every $\delta\in(0,1]$ there are a fixed smooth nonnegative convolution-square kernel and a
   $q_0(\delta)$ such that for all $q\ge q_0(\delta)$, all $\varepsilon\in(0,1]$ and all $X\ge(1+\delta)\log^2q/\varepsilon^2$, the
-  measure with support up to $X$ has $\bias\le\varepsilon$. Conversely, by Part~1, for $X\le(1-\delta)\log^2q/\varepsilon^2$ the bound
-  produced by the method exceeds $\varepsilon$ once $q$ is large.
+  measure with support up to $X$ has $\bias\le\varepsilon$. Conversely, let $K\ge0$ be any kernel with a positive-definite majorant $M$, and
+  let $\mathrm{Num}/\mathrm{Den}$ be the bound of the shape of Theorems~\ref{thm:sharp} and~\ref{thm:convclosed} that it produces. Then
+  $\mathrm{Num}/\mathrm{Den}\ge\log(q/\pi)/\sqrt X$ whenever $\mathrm{Den}>0$. So for $X\le(1-\delta)\log^2q/\varepsilon^2$ this bound exceeds
+  $\varepsilon$ as soon as $\log(q/\pi)>(1-\delta)^{1/2}\log q$, uniformly in $K$, its window and $\varepsilon$. This converse covers only
+  bounds of this shape; it is not an impossibility theorem for other ways of controlling the zero sum.
 \end{enumerate}
 For the formally verified kernel $f_a$ (positive-definite, transition width $1/64$), Theorem~\ref{thm:closed} gives leading
 coefficient at most $e^a(\sinh a+a)/(\sinh a'+a')^2$, which equals $1.2626$ at $a=a_*$ and $1.2964$ at $a=1$.
@@ -169,6 +172,6 @@ For every $1\le q\le2^{64}$ and every nontrivial Dirichlet character $\chi$ modu
 \[
   \bias_\chi\bigl(S^\square_q(y),w^\square_{9/4,y}\bigr)\le\tfrac12 .
 \]
-(The proof gives $\mathrm{num}^\square_B\le65.7$ and $\mathrm{den}^\square_B\ge143.9$, hence bias $\le0.4566$.) The support is $3.4$ times
+(The proof gives $\mathrm{num}^\square_B\le65.7$ and $\mathrm{den}^\square_B\ge143.9$, hence bias $\le0.4566$.) The cutoff is $3.4$ times
 smaller than in Corollary~\ref{cor:cert}.
 \end{corollary}

@@ -1,0 +1,4 @@
+witness: 79 nonnegative integer node values (max 10^6), D = 796899904, N = 262144
+certified: c(K) <= [1.108135968, 1.108135968]
+convolution-square optimum 1/(1-e^-2) >= [1.156517643, 1.156517643]
+strict separation certified: True

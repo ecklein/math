@@ -20,7 +20,7 @@ Natural measures of this kind are supported on primes. Under the generalized Rie
 Dirichlet $L$-functions, the primes $p\le x$ form an expanding generating set of $\Gq$ once $x$ is a
 little larger than $(\log q)^2$. This is the case $K=\mathbb{Q}$ of Jao, Miller and Venkatesan
 \cite{jmv2009}, whose nontrivial eigenvalues are $O(x^{1/2}\log(xq))$ with absolute but unspecified
-constants. Unconditionally, no polylogarithmic-support construction of this kind is known for $\Gq$.
+constants. Unconditionally, no construction of this kind with polylogarithmic cutoff is known for $\Gq$.
 One would imply a polylogarithmic bound for the least character non-residue, which is far beyond
 current unconditional methods.
 
@@ -60,9 +60,9 @@ We prove explicit, fully formalized spectral bounds for prime Cayley graphs on $
   $1\le q\le2^{64}$ and every nontrivial $\chi$ modulo $q$, the measure above with $a=1$ and
   $y=2\log150$ has bias at most $1/2$.} It is supported on prime powers $n\le166253$ coprime to $q$.
   The same guarantee from Theorem~\ref{thm:A} would need $N\approx10^{16}$. With a convolution-square kernel
-  (Theorem~\ref{thm:convclosed}, Corollary~\ref{cor:convcert}, also formal) the support drops to $n\le48400$.
+  (Theorem~\ref{thm:convclosed}, Corollary~\ref{cor:convcert}, also formal) the cutoff drops to $n\le48400$.
 \item \textbf{The leading constant of the method} (Propositions~\ref{prop:opt}, \ref{prop:convsq}, \ref{prop:barrier}
-  and Corollary~\ref{cor:asymp}; informal). Write the leading term as $c\log q/\sqrt X$, with $X$ the top of the support.
+  and Corollary~\ref{cor:asymp}; informal). Write the leading term as $c\log q/\sqrt X$, with $X$ the cutoff (top of the support).
   Among positive-definite kernels $k=f*\tilde f$ with $\operatorname{supp}f\subseteq[-a,a]$, the $\cosh$ kernel
   $f\propto\cosh(t/2)\mathbf 1_{[-a,a]}$ is optimal, and optimizing over $a$ gives $c^*=2/a_*^2\approx1.2236$, where
   $a_*\approx1.2785$ is the root of $a=1+e^{-a}$. Convolution squares $f*f$, which are not even, satisfy the same
@@ -93,7 +93,7 @@ explicit formula \cite{zeta23}. Our two-sided bounds use the same positivity ine
 \cite{grhmiller}, in a different (spectral) way.
 
 \subsection{Scope}
-We do not improve the exponent $2$ in the $(\log q)^2$ support barrier (Section~\ref{sec:limits}):
+We do not improve the exponent $2$ in the $(\log q)^2$ cutoff barrier (Section~\ref{sec:limits}):
 doing so is at least as hard as improving the GRH bound for the least prime non-residue. We make no
 cryptographic claims. Empirical statistics in Section~\ref{sec:experiments} are evidence about typical
 behaviour; they are not proofs.

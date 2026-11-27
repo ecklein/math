@@ -138,3 +138,21 @@ Also: cite the corrected LLS Lemma 6.1 (v3 + corrigendum, new bib entry `llscorr
   Fixed; the tail bounds are now ≤ 0.0004 (the "≤ 0.0002" above was too small); the truncated ratios are unchanged. The q-oblivious
   sampler paragraph now separates the ideal sampler from the finite-bit one and propagates the table error τ through conditioning,
   TV ≤ 3τ/(2(1 − π_q − τ)), and through the failure probability, π_q + τ per attempt.
+
+## 2026-11-27 — second external review (main @ 9a9ae8a): a certified separation, and five more fixes
+**New result (computer-assisted).** The reviewer observed that for piecewise-linear K on an equally spaced grid, periodizing
+sinc² gives (1/2π)∫|K̂| = mean of |P(θ)| over [0, 2π) exactly (no tail), and supplied an integer-interval certificate that the
+rounded a = 1 LP kernel has c(K) < 1.137621 < 1/(1 − e^{−2}) = 1.15652 (convolution-square optimum, window 4). Checked here:
+read the script (pure integer/rational intervals; Lipschitz quadrature error πD/(2N) with midpoint cells; mass lower bound;
+factor e for the top of the support) and re-ran it (reproduced). Wrote an independent certificate
+(`experiments/kernel_certificate.py`, mpmath intervals, different rounding, N = 2¹⁸): **c(K) ≤ 1.10814**. Paper: Lemma
+(periodization) and Prop (separation), labelled computer-assisted. Open: smoothing to C², zero-counting route, Lean check,
+priority check.
+**Fixes.** (1) limitations conflated cutoff with cardinality: now distinguishes cutoff / cardinality / seed length, and the
+least-prime implication is phrased via the cutoff. (2) the seed-length "lower bound for any ε-biased set" had no ε range and was
+miscited; removed, replaced by the Alon–Roichman upper bound for comparison. (3) the walk is not reversible in general; operator
+norm via normality, and the cited Chernoff/hitting bounds applied to μ_sym = (μ + μ∘inv)/2. (4) exact uniform start cannot use a
+fixed number of fair bits; now rejection (expected cost) or r attempts with explicit TV error. (5) Cor 9 converse: now an exact,
+non-asymptotic inequality Num/Den ≥ log(q/π)/√X for every kernel with a PD majorant, restricted to bounds of the shape of Thms 4/10.
+**Prior work.** Basu–Kothari–Meka–Tudose, arXiv:2607.08261 (v2), Thm 1.5: O(ε⁻² log|G|)-generator ε-sparsifiers of weighted abelian
+Cayley graphs, randomized poly(|G|, ε⁻¹). Cited in related work: small cardinality alone is not distinctive.

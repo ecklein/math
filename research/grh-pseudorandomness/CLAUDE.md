@@ -2,7 +2,7 @@
 
 Project state and working notes. The general process is in `../../CLAUDE.md`. **Update this file
 whenever results, statements, commands, status or open tasks change.** Last updated: 2026-11-27
-(external-review fixes to informal claims, merged via PR #5).
+(second external review: certified separation at L = 4, five more fixes; branch `grh-review-2`).
 
 ## What this project is
 Explicit, formally verified bias bounds (equivalently, second-eigenvalue bounds) for prime Cayley graphs
@@ -57,7 +57,7 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   bias ≤ 0.4566, support n ≤ 48400). After changing any of these, recheck the statement, the
   numbers in Cor 7 (numB ≤ 236.6, denB ≥ 555.8, bias ≤ 0.4257, support n ≤ 166253) and Table 2 in
   `experiments.tex`.
-- **Numbering.** Paper numbering (Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Prop 8, Cor 9, Thm 10, Cor 11, Props 14–15; a remark takes number 5) is used in `README.md`. Corrected 2026-11-27: earlier docs said Thm 5/Cor 6/Prop 7/Cor 8.
+- **Numbering.** Paper numbering (Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Prop 8, Cor 9, Thm 10, Cor 11, Props 14–15, Lemma 16, Prop 17; a remark takes number 5) is used in `README.md`. Corrected 2026-11-27: earlier docs said Thm 5/Cor 6/Prop 7/Cor 8.
   Update both if the numbering changes.
 - **Audit list.** Every new headline theorem gets a `#print axioms` line in `verification/Axioms.lean`.
   Record the counts in `verification/README.md` (currently: 31 theorems, 32 project modules replayed,
@@ -80,6 +80,11 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 - **Non-positive-definite kernels (exploratory, uncertified, `experiments/kernel_lp.py`).** LP solutions give
   c ≈ 1.104, 1.047, 1.025, 1.006, 1.001 at a = 1, a*, 1.5, 2, 3 (truncated quadrature at T = 4000 plus a TV(K′) tail bound
   ≤ 0.0004, end-node slope jumps included; quadrature error unbounded). Never call these "exact" or certified. For a < 1 the discretization is unreliable.
+- **Certified separation (computer-assisted, 2026-11-27).** At window length 4 a nonnegative piecewise-linear kernel has
+  c ≤ 1.10814 < 1/(1 − e^{−2}) (`experiments/kernel_certificate.py`, mpmath intervals; reviewer's integer certificate gives
+  < 1.1377). Key tool: periodization, (1/2π)∫|K̂| = mean |P| exactly for triangle bases. Not Lean; not yet smoothed; priority
+  unchecked. Uncertified LP numbers (`kernel_lp.py`) are separate and stay labelled exploratory.
+- **Cutoff vs cardinality.** Our barrier and certificates concern the cutoff X = max supp μ, not |supp μ| or seed length.
 - **Prop 8 / rank-two lemma (fixed 2026-11-27).** State Prop 8 without dividing (∫k e^{u/2} ≤ (a + sinh a)k(0)); the ratio needs
   ∫k e^{u/2} > 0. The lemma's equality case needs α/‖α‖ ≠ −β/‖β‖, and only the inequality is formal.
 - **JMV normalization.** Their Thm 1.1 is unnormalized: O(x^{1/2} log(xq)), degree ≈ 2 li(x).

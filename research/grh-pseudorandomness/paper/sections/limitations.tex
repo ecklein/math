@@ -1,13 +1,21 @@
 \section{Limitations and open problems}\label{sec:limits}
 
+\paragraph{Cutoff, cardinality and seed length.}
+Three sizes of a measure $\mu$ on prime powers must be kept apart: its \emph{cutoff} $X=\max\operatorname{supp}\mu$, its
+\emph{cardinality} $\abs{\operatorname{supp}\mu}$, and the \emph{seed length} (or entropy) needed to sample it. Our theorems and the
+barrier below concern the cutoff certified by the explicit-formula method. A measure with cutoff $X$ has cardinality at most about
+$X/\log X$, but thinning or reweighting can make the cardinality much smaller while keeping the cutoff, and a small set can contain
+very large primes.
+
 \paragraph{The $(\log q)^2$ barrier.}
 Every prime-supported construction analysed through the explicit formula has guaranteed bias
-$\asymp\log q/\sqrt X$. The reason is that about $(\log q)/2\pi$ zeros per unit height can conspire;
-spreading the weight over scales changes this only by constants. An $\varepsilon$-biased prime set of size
-$(\log q)^{2-\delta}$ for all $q$ would improve the GRH bound for the least prime outside a subgroup, which is
-open \cite{lls2015,cmqr2024}. Montgomery's $\Omega(\log q\log\log q)$ \cite{montgomery1971} limits what is
-possible even in principle. Empirically, typical moduli behave like random sets (Section~\ref{sec:experiments}),
-with support $\asymp\log q\log X/\varepsilon^2$.
+$\asymp\log q/\sqrt X$ in terms of its cutoff $X$. The reason is that about $(\log q)/2\pi$ zeros per unit height can conspire;
+spreading the weight over scales changes this only by constants. A measure on primes with cutoff $(\log q)^{2-\delta}$ and bias
+$<1$ for all $q$ and all $\chi\ne\chi_0$ would put a prime $\le(\log q)^{2-\delta}$ outside every proper subgroup of $\Gq$, since its
+support cannot lie in the kernel of any nontrivial character. That would improve the GRH bound for the least prime outside a
+subgroup, which is open \cite{lls2015,cmqr2024}. Montgomery's $\Omega(\log q\log\log q)$ \cite{montgomery1971} limits what is
+possible even in principle. Empirically, typical moduli behave like random sets (Section~\ref{sec:experiments}): a random set of
+cardinality $\asymp\log q\log X/\varepsilon^2$ is typically $\varepsilon$-biased.
 
 \paragraph{What is formal and what is not.}
 Theorems~\ref{thm:A}, \ref{thm:sharp}, \ref{thm:closed} and Corollaries~\ref{cor:A}, \ref{cor:cert} are formal.
@@ -26,9 +34,9 @@ does not contain a proof of the main inequality \cite{rubinsteinpage}.
 \begin{enumerate}
 \item Formalize Propositions~\ref{prop:opt}, \ref{prop:convsq} and~\ref{prop:barrier}, and certify further instances,
   e.g.\ $q\le2^{1024}$ or $\varepsilon=10^{-2}$.
-\item Determine the optimal nonnegative kernel on a window of finite length $L$. Exploratory, uncertified numerics suggest that
-  it beats convolution squares (Section~\ref{sec:optimality}); proving this needs certified primal and dual bounds. Using such a
-  kernel also needs explicit zero counting for $L(s,\chi)$, uniform in $q$, in place of positivity.
+\item Determine the optimal nonnegative kernel on a window of finite length $L$. At $L=4$ it strictly beats convolution squares
+  (Proposition~\ref{prop:separation}, computer-assisted); certified lower bounds, the dependence on $L$, smoothing, and a Lean
+  check of the certificate remain open. Using such a kernel in a bias bound also needs explicit zero counting for $L(s,\chi)$, uniform in $q$, in place of positivity.
 \item Extend to other groups whose characters are Dirichlet characters, such as quotients of $\Gq$ and abelian
   Galois groups over $\mathbb Q$. For nonabelian groups, e.g.\ $\mathrm{Aff}(\Z/q\Z)$, combine with zig-zag or
   semidirect-product arguments.

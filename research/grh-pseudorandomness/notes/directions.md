@@ -156,3 +156,10 @@ corrected (Section 6, with a dated note).
    then formal operator-norm and mixing consequences.
 4. **One distribution for all moduli**: support/entropy needed for a single integer distribution whose conditioning on units is
    small-biased for every q ≤ Q, against q-dependent weights; adversarial moduli.
+
+## Update (2026-11-27, second review): separation certified at L = 4
+Direction "finite-window extremal problem" now has a certified witness (c ≤ 1.10814 < 1.15652 at L = 4;
+`experiments/kernel_certificate.py`). Next steps, in order: (1) priority check; (2) Lean check of the finite-period
+certificate (periodization lemma + interval quadrature); (3) smoothing to C² keeping the margin, within the same window;
+(4) explicit zero-sum estimate (zero counting for L(s, χ), uniform in q) to turn it into a bias theorem, and compare with 48400;
+(5) lower bounds for C(L) and its dependence on L (dual certificates).

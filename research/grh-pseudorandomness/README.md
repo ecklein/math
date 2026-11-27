@@ -21,6 +21,7 @@ hypotheses are discharged by the GRH proof. Audited axioms: `propext`, `Classica
 | Cor 9 | informal | limit of the method: every kernel has leading constant c ≥ 1 (Prop 15); convolution squares (Prop 14) reach 1 + δ |
 | Thm 10 | `GRHPseudo.Main.bias_convSq_closed` | closed-form bias bound for the convolution-square kernel K_A = f_A ⋆ f_A (window [x e^{−2A}, x]), all q, A ≥ 1/32, R > 0, y > 2A |
 | Cor 11 | `GRHPseudo.Main.bias_le_half_of_le_two_pow_64_convSq` | for every q ≤ 2⁶⁴ and χ ≠ χ₀: a fixed measure on prime powers n ≤ 48400 has bias ≤ 1/2 (3.4× smaller support than Cor 7) |
+| Prop 17 | computer-assisted: `experiments/kernel_certificate.py` | on windows of length 4 a nonnegative kernel has leading constant c ≤ 1.1082 < 1/(1 − e^{−2}), beating every convolution square (interval-arithmetic certificate; not Lean) |
 
 **Correction (2026-11-27).** Earlier versions said the cosh kernel is optimal "within the positivity method".
 That was wrong: convolution squares f ⋆ f use the same positivity step and do better. See Section 6 of the paper.
