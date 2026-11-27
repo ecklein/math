@@ -88,17 +88,18 @@ Inputs: zeta-23-lean's `EF_lit_chi_L` (primitive χ, q > 1) and `EF_lit_zetaZero
 to our pin (`lean/Zeta23/`). grh-miller's `Ankeny.lean` supplies the positivity and gamma-side
 lemmas. GRH enters via `DirichletLZerosOnLine` (`LFunction_eq_zero_re`), RH via `riemannHypothesis`.
 
-D1. *Twist.* For `k_y(u) = k(u − y)`: `paperFT k_y z = exp(i z y) · paperFT k z`. Status: open.
+D1. *Twist.* For `k_y(u) = k(u − y)`: `paperFT k_y z = exp(i z y) · paperFT k z`. **lean-done** (`Sharp.paperFT_twist`).
 D2. *Two-sided positivity.* For primitive χ mod q > 1, real f ∈ C_c², supp f ⊆ [−a, a],
     k = weilTest f f, y > 2a, under GRH:
     `|Σ_n Λ(n) χ(n) k(log n − y)/√n| ≤ Re literatureRHSchi(k) + |twisted gamma term|`.
     Proof: EF at k_y; the χ̄-leg vanishes since −log n − y < −2a; `|Σ m e^{iγy}|f̂|²| ≤ Σ m|f̂|²`
-    = EF at k. Status: open.
+    = EF at k. **lean-done (conditional on zeros-on-line)** (`Sharp.norm_primeSide_twist_le`).
 D3. *Gamma side.* `Re literatureRHSchi(k) ≤ k(0) log(q/π) + 2 Σ_{n ≤ e^{2a}} Λ(n)|k(log n)|/√n
-    + G(f)`, with G explicit via `integral_normSq_paperFT_mul_le`. Status: open.
+    + G(f)`, with G explicit via `integral_normSq_paperFT_mul_le`. **lean-done** (`Sharp.GammaBounds`: twisted side ≤ I(5)/2π with the log q part killed by Fourier inversion; untwisted ≤ k(0)log(q/π) + I(1/2)/2π; ζ analogues).
 D4. *Main term from RH.* `Σ_n Λ(n) k(log n − y)/√n ≥ e^{y/2} ∫ k(u)e^{u/2} du − (lower order)`,
-    via `EF_lit` for ζ, the same positivity, and the pole term `paperFT k_y (−i/2)`. Status: open.
+    via `EF_lit` for ζ, the same positivity, and the pole term `paperFT k_y (−i/2)`. **lean-done (conditional on RH)** (`Sharp.primeSideZeta_twist_eq`).
 D5. *Imprimitive reduction.* On n coprime to q, χ = χ* (primitive inducing character, conductor
-    q* | q, q* > 1). Status: open.
+    q* | q, q* > 1). **lean-done** (inside `Sharp.bias_sharp`, via `primitiveCharacter_apply_of_isCoprime`).
 D6. *Assembly.* Bias of μ(n) ∝ Λ(n) k(log(n/x))/√n on units mod q, with the cosh test function
-    `testFnN a` (smoothed cutoff, transition width 1/64). Status: open.
+    `testFnN a` (smoothed cutoff, transition width 1/64). **lean-done (Layer 1)**: `Sharp.bias_sharp` proves bias ≤ `sharpNum/sharpDen`.
+D7. *Layer 2 (open).* Closed-form bounds on the constants in `sharpNum/sharpDen`: an A(a) lower bound, B(a) = 2A(a) (or an upper bound), I(B) ≤ (C₀²+C₁²)(J + Bπ), J ≤ π(log 4 + 1/√2), and the small-prime sum. Then a machine-checked numeric certificate for chosen (q, ε).

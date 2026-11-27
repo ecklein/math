@@ -81,3 +81,11 @@ Novelty here is mostly in packaging; T3 is a corollary section, not the headline
 deliverable. T1(b) is a short, self-contained, fully formalizable lemma (finite-dimensional
 Cauchy–Schwarz, apart from the Krein factorization step, which we state as a hypothesis on k
 of the form f ⋆ f̃). T2 is second.
+
+
+## Status update (2026-11-26, later)
+- **T1(a) Layer 1 is proved in Lean** (`GRHPseudo.Sharp.bias_sharp`, conditional on zeros-on-line + RH, both supplied by the GRH proof). For the smoothed cosh kernel it shows bias ≤ Num/Den, with leading term k_a(0) log q / (√x A(a)).
+- **Evaluated constants** (numerical quadrature, `experiments/sharp_certified.py`): bias ≤ 1/2 at q = 2⁶⁴ is certified with support X ≈ 3.5·10⁴, against ≈ 9.7·10¹⁵ for Theorem B. At ε = 0.01: 4.7·10⁷ against 5.6·10¹⁹.
+- **With closed-form constant bounds** (`experiments/sharp_formal_params.py`, the form Layer 2 would formalize): X ≈ 7·10⁵ at q = 2⁶⁴, ε = 1/2.
+- **Consistency check**: the evaluated bound dominates the exact FFT bias in 8/8 cases (ratio 0.03–0.27; `experiments/sharp_check.py`).
+- **T1(b)** (optimality of the cosh kernel within the method): the abstract rank-two inequality is formal; the L²[−a,a] instance is not.

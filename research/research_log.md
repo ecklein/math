@@ -57,3 +57,27 @@
 - The formal constants are poor: certifying bias 1/2 at q = 2⁶⁴ needs N ≈ 10¹⁶.
 - The sharp T1(a) route would need about 8·10⁴. This motivates porting zeta-23-lean's explicit formula, or a sharper log-derivative argument, e.g. Hadamard three-circles in place of the 1/ε² loss.
 - J = ∫ log(4+|t|)/(1+t²) ≈ 5.6262 (numerical); π(log 4 + 1/√2) ≈ 6.577 is an easy analytic upper bound, not yet formalized.
+
+## 2026-11-26 — sharpening the constants
+
+**Diagnosis.** The ≈10¹² loss in Theorem B came mostly from Borel–Carathéodory's 1/ε² (a log²N factor), which is intrinsic to the pointwise L'/L route. The fix is the explicit formula with positivity.
+
+**Port.** zeta-23-lean's 120-module explicit-formula closure moved from Mathlib 51e6992e to 56a00585 with about 20 local fixes, across four rebuild rounds:
+- the removed `linear_combination'` tactic file (vendored from old Mathlib);
+- `fun_prop` and `Nat.floor` measurability;
+- `field_simp` normal forms;
+- `Finset.prod_le_prod` → `prod_le_prod₀` and `prod_le_one` → `prod_le_one₀`;
+- `logDeriv_mul` / `logDeriv_prod` on pointwise lambdas (fold first);
+- `positivity` behind `id`;
+- `autoImplicit` for this library.
+
+Every fix is marked `-- port (Mathlib 56a00585)`. A whole-environment axiom listing shows only Lean core axioms.
+
+**New formal results.** All are conditional only on zeros-on-line and RH; axioms are the standard three.
+- `Sharp.norm_primeSide_twist_le`: two-sided positivity.
+- `Sharp.primeSideZeta_twist_eq`: main term from RH.
+- `Sharp.GammaBounds`: explicit gamma sides, including a two-sided digamma bound.
+- `Sharp.FiniteSums`.
+- `Sharp.bias_sharp`.
+
+**Result.** Certified support drops by about 10¹¹ (numerically evaluated constants). A closed-form Layer 2 is still to be formalized.

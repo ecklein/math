@@ -1,4 +1,5 @@
 import GRHPseudo.MainTheorems.Unconditional
+import GRHPseudo.AnalyticNumberTheory.Sharp.Assembly
 import GRHPseudo.Pseudorandomness.RankTwo
 
 -- GRH dependency, as used here
@@ -18,3 +19,10 @@ import GRHPseudo.Pseudorandomness.RankTwo
 #print axioms GRHPseudo.Main.bias_conditional
 #print axioms GRHPseudo.Main.primeCharSum
 #print axioms GRHPseudo.Main.bias_primeMeasure
+-- sharp route (explicit formula + positivity)
+#print axioms Zeta23.ThmE.EF_lit_chi_L
+#print axioms Zeta23.WeilEF.EF_lit_zetaZeroConfig
+#print axioms GRHPseudo.Sharp.norm_primeSide_twist_le
+#print axioms GRHPseudo.Sharp.primeSideZeta_twist_eq
+#print axioms GRHPseudo.Sharp.norm_gammaSide_twist_le
+#print axioms GRHPseudo.Sharp.bias_sharp

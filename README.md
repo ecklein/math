@@ -14,8 +14,17 @@ The sharp-constant result T1(a)/(b) and the paper are in progress.
   nonprincipal χ mod q. That is an explicit bound on every nontrivial eigenvalue of the weighted
   prime-power Cayley graph on (Z/qZ)^×.
 
-Axioms: `propext, Classical.choice, Quot.sound` only (`verification/axioms.log`). The constants are
-weak: certifying bias 1/2 at q = 2⁶⁴ needs N ≈ 10¹⁶ (`experiments/formal_bound_params.py`).
+- **Theorem C (sharp)** `GRHPseudo.Sharp.bias_sharp`: the explicit formula plus positivity, with the
+  cosh kernel. For every q, every nonprincipal χ mod q, every a ≥ 0 and y > 2a, the sample space of
+  units n ≤ e^{y+2a} with weights Λ(n) k_a(log n − y)/√n has bias ≤ `sharpNum/sharpDen`. The leading
+  term is k_a(0) log q/(√x A(a)). The hypotheses (zeros on the line, RH) are supplied by the GRH proof.
+
+Axioms: `propext, Classical.choice, Quot.sound` only (`verification/axioms.log`); the whole
+environment contains only Lean core axioms (`verification/env-axioms.log`).
+
+**Constants.** Theorem B needs N ≈ 10¹⁶ to certify bias 1/2 at q = 2⁶⁴. Theorem C, with its
+constants evaluated numerically, needs X ≈ 3.5·10⁴ (`experiments/sharp_certified.py`). Closed-form
+bounds on those constants, i.e. a fully formal certificate, are not done yet.
 
 ## Layout
 - `research/` — audit (`grh_audit.md`), literature review, candidates (`conjectures.md`),
@@ -26,6 +35,7 @@ weak: certifying bias 1/2 at q = 2⁶⁴ needs N ≈ 10¹⁶ (`experiments/forma
     and the discharge module (`GRHPseudo.grh`, needs the full GRH build).
   - `GRHPseudo/AnalyticNumberTheory/` — growth of L, Borel–Carathéodory, log-derivative bound.
   - `GRHPseudo/Pseudorandomness/` — bias, Cayley eigenvalue identity, rank-two extremal inequality.
+- `lean/Zeta23/` — Weil explicit formula library (zeta-23-lean), ported to our Mathlib pin.
 - `experiments/` — exact bias computations via FFT over the discrete-log isomorphism.
 - `verification/` — dependency fetch script, axiom audits.
 - `paper/` — (not started).
