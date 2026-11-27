@@ -132,11 +132,12 @@ lemma re_primeSideZeta_kern_nonneg (a : ℝ) : 0 ≤ (primeSideZeta (kern a)).re
 
 variable {q : ℕ} [NeZero q]
 
-/-- **Sharp bias theorem (Layer 1).** -/
-theorem bias_sharp (hZ : GRHMiller.DirichletLZerosOnLine) (hRH : RiemannHypothesis)
-    {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {a y : ℝ} (ha : 0 ≤ a) (hy : 2 * a < y)
-    (hden : 0 < sharpDen q a y) :
-    bias (sampleSpace q a y) (wt a y) χ ≤ sharpNum q a y / sharpDen q a y := by
+/-- **Sharp bounds (Layer 1):** the character sum is at most `sharpNum` and the mass is at least
+`sharpDen`. -/
+theorem sharp_charSum_mass (hZ : GRHMiller.DirichletLZerosOnLine) (hRH : RiemannHypothesis)
+    {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {a y : ℝ} (ha : 0 ≤ a) (hy : 2 * a < y) :
+    ‖charSum (sampleSpace q a y) (wt a y) χ‖ ≤ sharpNum q a y ∧
+      sharpDen q a y ≤ mass (sampleSpace q a y) (wt a y) := by
   set f := testF a with hfdef
   have hf : ContDiff ℝ 2 f := contDiff_testF a
   have hfs : HasCompactSupport f := hasCompactSupport_testF a
@@ -251,6 +252,14 @@ theorem bias_sharp (hZ : GRHMiller.DirichletLZerosOnLine) (hRH : RiemannHypothes
     have hpole0 : (poleSide k).re = (paperFT k (I / 2)).re + (paperFT k (-I / 2)).re := by
       unfold poleSide; rw [Complex.add_re]
     linarith
+  exact ⟨hnum, hmass⟩
+
+/-- **Sharp bias theorem (Layer 1).** -/
+theorem bias_sharp (hZ : GRHMiller.DirichletLZerosOnLine) (hRH : RiemannHypothesis)
+    {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {a y : ℝ} (ha : 0 ≤ a) (hy : 2 * a < y)
+    (hden : 0 < sharpDen q a y) :
+    bias (sampleSpace q a y) (wt a y) χ ≤ sharpNum q a y / sharpDen q a y := by
+  obtain ⟨hnum, hmass⟩ := sharp_charSum_mass hZ hRH hχ ha hy
   exact bias_le_of_bounds _ _ _ hnum hden hmass
 
 end GRHPseudo.Sharp

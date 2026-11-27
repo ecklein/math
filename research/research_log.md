@@ -81,3 +81,15 @@ Every fix is marked `-- port (Mathlib 56a00585)`. A whole-environment axiom list
 - `Sharp.bias_sharp`.
 
 **Result.** Certified support drops by about 10¹¹ (numerically evaluated constants). A closed-form Layer 2 is still to be formalized.
+
+## 2026-11-26 — Layer 2: closed-form constants and a machine-checked certificate
+
+- **Refactor.** Layer 1 now exports `sharp_charSum_mass` (numerator and mass bounds separately).
+- **New modules.**
+  - `Sharp/KernelBounds.lean`: grh-miller's decay lemma, vendored. The factorization A = F₊F₋ comes from `paperFT_weilTest` at ∓i/2, and loses only about 2% against the true A, versus 4.4× for a pointwise bound.
+  - `Sharp/ConstBounds.lean`.
+  - `Sharp/Certificate.lean`: `bias_closed`.
+  - `Sharp/Certificate64.lean`: numerics from Mathlib's `exp_one_gt_d9`/`lt_d9`, `pi_gt_d6`/`lt_d6` and `log_two_lt_d9`.
+- **Certificate numbers.** numB ≤ 236.6 and denB ≥ 555.8, so bias ≤ 0.4257.
+- **Unconditional statements.** `GRHPseudo.Main.bias_sharp_closed` and `GRHPseudo.Main.bias_le_half_of_le_two_pow_64`, discharged by `LFunction_eq_zero_re` and `riemannHypothesis` from the compact edition.
+- **Audit.** 23 audited theorems use the standard three axioms only; the environment has no axioms outside Lean core.

@@ -22,9 +22,15 @@ The sharp-constant result T1(a)/(b) and the paper are in progress.
 Axioms: `propext, Classical.choice, Quot.sound` only (`verification/axioms.log`); the whole
 environment contains only Lean core axioms (`verification/env-axioms.log`).
 
-**Constants.** Theorem B needs N ≈ 10¹⁶ to certify bias 1/2 at q = 2⁶⁴. Theorem C, with its
-constants evaluated numerically, needs X ≈ 3.5·10⁴ (`experiments/sharp_certified.py`). Closed-form
-bounds on those constants, i.e. a fully formal certificate, are not done yet.
+- **Certificate (unconditional)** `GRHPseudo.Main.bias_le_half_of_le_two_pow_64`: for every
+  1 ≤ q ≤ 2⁶⁴ and every nonprincipal χ mod q, the measure on units n ≤ 166253 with weights
+  Λ(n) k₁(log n − 2 log 150)/√n has bias ≤ 1/2. Equivalently, every nontrivial eigenvalue of that
+  weighted Cayley graph on (ℤ/qℤ)^× has modulus ≤ 1/2. The closed-form general version is
+  `GRHPseudo.Main.bias_sharp_closed`.
+
+**Constants.** For bias ≤ 1/2 at q ≤ 2⁶⁴: Theorem B needs N ≈ 10¹⁶; the machine-checked
+certificate uses support ≤ 1.7·10⁵. With numerically evaluated (not formal) constants, Theorem C
+gives ≈ 3.5·10⁴ (`experiments/sharp_certified.py`).
 
 ## Layout
 - `research/` — audit (`grh_audit.md`), literature review, candidates (`conjectures.md`),

@@ -17,3 +17,7 @@
 'GRHPseudo.Sharp.primeSideZeta_twist_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'GRHPseudo.Sharp.norm_gammaSide_twist_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'GRHPseudo.Sharp.bias_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GRHPseudo.Sharp.bias_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GRHPseudo.Main.zerosOnLine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GRHPseudo.Main.bias_sharp_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GRHPseudo.Main.bias_le_half_of_le_two_pow_64' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -26,3 +26,8 @@ import GRHPseudo.Pseudorandomness.RankTwo
 #print axioms GRHPseudo.Sharp.primeSideZeta_twist_eq
 #print axioms GRHPseudo.Sharp.norm_gammaSide_twist_le
 #print axioms GRHPseudo.Sharp.bias_sharp
+-- Layer 2: closed-form constants and the q ≤ 2^64 certificate
+#print axioms GRHPseudo.Sharp.bias_closed
+#print axioms GRHPseudo.Main.zerosOnLine
+#print axioms GRHPseudo.Main.bias_sharp_closed
+#print axioms GRHPseudo.Main.bias_le_half_of_le_two_pow_64

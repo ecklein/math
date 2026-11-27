@@ -102,4 +102,9 @@ D5. *Imprimitive reduction.* On n coprime to q, χ = χ* (primitive inducing cha
     q* | q, q* > 1). **lean-done** (inside `Sharp.bias_sharp`, via `primitiveCharacter_apply_of_isCoprime`).
 D6. *Assembly.* Bias of μ(n) ∝ Λ(n) k(log(n/x))/√n on units mod q, with the cosh test function
     `testFnN a` (smoothed cutoff, transition width 1/64). **lean-done (Layer 1)**: `Sharp.bias_sharp` proves bias ≤ `sharpNum/sharpDen`.
-D7. *Layer 2 (open).* Closed-form bounds on the constants in `sharpNum/sharpDen`: an A(a) lower bound, B(a) = 2A(a) (or an upper bound), I(B) ≤ (C₀²+C₁²)(J + Bπ), J ≤ π(log 4 + 1/√2), and the small-prime sum. Then a machine-checked numeric certificate for chosen (q, ε).
+D7. *Layer 2.* **lean-done.**
+  - `KernelBounds`: ‖k_a(u)‖ ≤ sinh a + a cosh a on |u| ≤ 2a. A = F₊F₋ ≥ (sinh a′ + a′)², B = 2F₊F₋ ≤ 2(sinh a + a)², with a′ = a − 1/64.
+  - `ConstBounds`: I(B) ≤ C(a)(6 + Bπ) (J ≤ 6); SP ≤ 2K(2/e)(⌊e^{2a}⌋+1); U ≤ K e^{a−y/2} log q log₂M.
+  - `Certificate`: `bias_closed`, giving bias ≤ numB/denB in closed form.
+  - `Certificate64`: bias ≤ 1/2 for every q ≤ 2⁶⁴, with a = 1 and y = 2 log 150 (support n ≤ 166253), using only Mathlib's certified bounds on e, π and log 2.
+
