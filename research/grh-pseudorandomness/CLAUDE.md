@@ -95,8 +95,8 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 - **Formal core only:** Prop 8 (the abstract rank-two inequality `inner_mul_inner_le`).
 - **Informal:** the L²[−a,a] instance of Prop 8, the factorization theorem, Props 12–13 (convolution squares, barrier), Cor 9, and the
   sampling/complexity section.
-- **Paper:** a complete 19-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author names are a placeholder
-  (`[Author names to be added]`). The repository URL is not in the paper yet.
+- **Paper:** a complete 19-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
+  is not in the paper yet.
 - **Git:** merged to `main` via PRs #1–#2 (2026-11-27). Current work on branch `conv-square-kernel` (not yet committed
   or pushed as of the last update).
 
@@ -110,7 +110,7 @@ See `notes/directions.md` for the ranked research directions.
 3. Tighten the closed forms further: apply `Ilog_div_le_sharp` to the cosh closed form too; a sharper SP bound
    using the actual Λ(n); formalize Props 14–15.
 4. Run Comparator against a Mathlib-only statement file; run nanoda/lean4lean replay.
-5. Paper: add author names and the repository URL. Fill in CMQR's volume and pages once assigned
+5. Paper: add the repository URL. Fill in CMQR's volume and pages once assigned
    (Math. Comp., doi:10.1090/mcom/4154).
 6. Research questions: the optimal nonnegative kernel on a finite window (LP beats conv squares; needs explicit
    zero counting); extend to quotients of G_q and abelian Galois groups; nonabelian groups via zig-zag

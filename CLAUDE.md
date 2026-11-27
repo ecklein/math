@@ -115,6 +115,8 @@ scripts and the small result tables (`experiments/out/*.tsv`) that the paper cit
 
 ## Papers
 
+- The author of every paper is **Ethan Klein** (`\author{Ethan Klein}`). Add no other authors, affiliation or email
+  unless asked; credit tools and libraries in the acknowledgements instead.
 - Use `paper/` with `main.tex` (amsart), `sections/*.tex` and `references.bib`. Commit the compiled
   `main.pdf`; ignore auxiliary files.
 - Every formal claim names its Lean declaration. Statements must match the Lean definitions exactly:
