@@ -66,3 +66,16 @@ corollaries only, clearly attributed.**
 ## Rejected
 T4 (universal (log q)^{1+o(1)} support) is out of reach (see F1). SLP squareness as a headline
 result is known (F5).
+
+## Update (2026-11-27): targeted prior-art re-check
+
+- **Lamzouri–Li–Soundararajan, Lemma 6.1** (arXiv:1309.3595, §6 "Asymptotic bounds"; read in full text).
+  - Under GRH, for general kernels K and non-principal χ: Re Σ Λ(n)χ(n)n^{−1/2}K̃(n/x) = θ(1+o(1))(log q/2π)∫|K(it)|dt + O(1 + log q log x/√x).
+  - The principal character gives K(1/2)√x.
+  - This is the **asymptotic, per-character form of our Theorem 4's leading term**. Our contribution there is narrowed to: fully explicit constants with no o(1), the |·| (not Re) form, the explicit mass bound via RH, the closed form, the certificate, and the formalization.
+  - Their §6.2 kernel is the indicator case f = 1_{[−α,α]}.
+- **Ernvall-Hytönen–Palojärvi**, Math. Comp. 91 (2022). This is an explicit GRH bound for ψ(x;q,a), uniform in q. A bias bound follows mechanically but with much weaker constants at x ≈ (log q)^{2+δ}. They do not state it.
+- **Bach**, as presented by McGown–Treviño (Contemp. Math. 775, 2021, Lemma 7.2): the weight is Λ(n)(n/x)^a log(x/n). It is not cosh, and there is no optimality claim.
+- **Kernel optimality** (Proposition 7): no prior statement found. Its scope is positive-definite kernels. LLS's |K| framework admits general kernels; whether one beats c* there is open (the trivial bound is ≥ 1/(4 sinh a)).
+- **Hanke repository**: not found publicly. The same-name repo by UyNewNas only defines GRH.
+- **Overall**: modest novelty. The explicit theorem is new as stated but close to known machinery (LLS §6). The optimality lemma appears new but is short. The end-to-end formal verification and certificate are the most distinctive part.

@@ -56,6 +56,18 @@ In particular, if $\mathrm{Den}>0$ then $\bias_\chi(S_q(a,y),w_{a,y})\le\mathrm{
 The leading term of $\mathrm{Num}/\mathrm{Den}$ is $k_a(0)\log q/(\sqrt x\,A(a))$. All remaining terms are
 either independent of $q$ or $O(\log q\log x/\sqrt x)$.
 
+\begin{remark}
+This leading term agrees with the asymptotic Lemma~6.1 of Lamzouri--Li--Soundararajan \cite{lls2015} (see
+Section~\ref{sec:related}). Theorem~\ref{thm:sharp} adds the following:
+\begin{itemize}
+\item every lower-order term is explicit, with no $o(1)$;
+\item the numerator bounds $\abs{\sum w\chi}$ itself, not just its real part, and holds for all $\chi\ne\chi_0$, primitive or not;
+\item the mass bound is explicit, obtained from the explicit formula for $\zeta$ under RH;
+\item the whole statement is machine-checked.
+\end{itemize}
+The explicit form makes small certificates possible: with an $o(1)$ one cannot conclude anything at any specific $q$.
+\end{remark}
+
 \subsection{Closed form}
 Let $K(a)=\sinh a+a\cosh a$, $C(a)=(4\sinh\frac a2)^2+(2\sinh\frac a2+2\cosh\frac a2)^2$,
 $U_B=K(a)e^{a-y/2}\log q\,\lfloor\log_2M\rfloor$, and

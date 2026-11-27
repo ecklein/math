@@ -34,6 +34,10 @@ confirmed. Nothing marked [S] or [M] may be cited in the paper until opened and 
 - Kandhil–Languasco–Moree, arXiv:2607.14515 (2026) [O, abstract]: improvements under GRH plus
   pair correlation, so still conditional.
 
+- Lamzouri–Li–Soundararajan, §6 Lemma 6.1 [O, full text]: an asymptotic GRH bound for Σ Λ(n)χ(n)n^{−1/2}K̃(n/x) with general kernels. It gives the leading term of our sharp theorem per character, up to 1 + o(1).
+- Ernvall-Hytönen–Palojärvi, Math. Comp. 91 (2022) 1317–1365, doi:10.1090/mcom/3691 [O]: explicit GRH bounds for ψ(x;q,a), uniform in q.
+- McGown–Treviño, *The least quadratic non-residue*, Contemp. Math. 775 (2021) 205–231 [O]: exposition of Bach's method, with weight Λ(n)(n/x)^a log(x/n).
+
 ## 3. Expanders and small-bias sets
 - Jao–Miller–Venkatesan, *Expander graphs based on GRH with an application to elliptic curve
   cryptography*, J. Number Theory 129 (2009) 1491–1504; arXiv:0811.0647 [O]. Cayley graph on a
