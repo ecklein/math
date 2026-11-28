@@ -2,7 +2,7 @@
 
 Project state and working notes. The general process is in `../../CLAUDE.md`. **Update this file
 whenever results, statements, commands, status or open tasks change.** Last updated: 2026-11-27
-(window-4 separation made formal, branch `kernel-window4-formal` stacked on `grh-review-2`).
+(PRs #7 and #8 merged to `main`: Prop 17/18 caveats closed, window-4 separation formal).
 
 ## What this project is
 Explicit, formally verified bias bounds (equivalently, second-eigenvalue bounds) for prime Cayley graphs
@@ -111,11 +111,14 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 - **Formal core only:** Prop 8 (the abstract rank-two inequality `inner_mul_inner_le`).
 - **Informal:** the L²[−a,a] instance of Prop 8, the factorization theorem, Props 12–13 (convolution squares, barrier), Cor 9, and the
   sampling/complexity section.
-- **Paper:** a complete 20-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
+- **Paper:** a complete 24-page draft that compiles cleanly; optimality claims corrected 2026-11-27 (dated note in §6). Author: Ethan Klein. The repository URL
   is not in the paper yet.
-- **Git:** merged to `main` via PRs #1–#5 (2026-11-27). PR #3 (merge `e0bfa3d`): optimality correction, conv-square
+- **Git:** merged to `main` via PRs #1–#8 (2026-11-27). PR #3 (merge `e0bfa3d`): optimality correction, conv-square
   certificate, vendored sources, author name, Use of AI statement. PR #5 (merge `114d6b7`): fixes to informal claims after an
   external review (Prop 8, rank-two lemma, Prop 14, LP labels, sampler, Cor 9, JMV normalization, LLS corrigendum).
+  PR #7 (merge `e846241`): second external review, certified separation at L = 4 (Props 17–18), smoothing, majorant
+  route, priority check (BCOS, Hörmander–Bernhardsson). PR #8 (merge `3a1ad51`, into PR #7's branch): Lean
+  `KernelSeparation` (Prop 17(1) with 9/8, Prop 18 instance). PRs #4 and #6 were CLAUDE.md status updates.
 
 ## Open tasks (most useful first)
 See `notes/directions.md` for the ranked research directions.
