@@ -1,0 +1,5 @@
+witness: kernel_lp_a1.0.tsv, window length 4, 79 integer node values (max 10^6), D = 796899904, N = 262144
+certified (piecewise linear): c(K) <= [1.108135968, 1.108135968]
+no smoothing (eps = 0)
+convolution-square optimum on that window, 1/(1-e^(-L/2)) >= [1.156517643, 1.156517643]
+strict separation certified: True

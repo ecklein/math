@@ -1,0 +1,8 @@
+witness: kernel_lp_a0.99609375.tsv, window length 255/64, 79 integer node values (max 10^6), D = 796180167, N = 524288
+certified (piecewise linear): c(K) <= [1.107151304, 1.107151304]
+smoothing eps = 1/64: C^infinity kernel on window length 4, c <= [1.115834799, 1.115834799]
+convolution-square optimum on that window, 1/(1-e^(-L/2)) >= [1.156517643, 1.156517643]
+strict separation certified: True
+majorant: degree n = 160, supp M in [-8211/1024, 8211/1024], certified min(Q - |P|) >= [21002.1, 21002.1] (> 0: True)
+positivity constant with majorant (after smoothing eps = 1/64): c <= [1.1481711, 1.1481711]
+majorant separation certified: True

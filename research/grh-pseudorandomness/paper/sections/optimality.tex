@@ -114,7 +114,10 @@ The inequality is a sharp point evaluation for functions whose Fourier transform
 least-non-residue problem, Carneiro, Milinovich, Quesada-Herrera and Ramos \cite{cmqr2024} find the limiting constant $C(\infty)=1$, with
 the same extremal function, by a different (dual) argument. Lamzouri, Li and Soundararajan
 \cite[\S6.1]{lls2015} already note a limitation of their (one-sided) method, from the pointwise bound
-$\tilde K(u)\le\frac1{2\pi}\int\abs{K(it)}dt$. We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
+$\tilde K(u)\le\frac1{2\pi}\int\abs{K(it)}dt$. Most directly, Brevig, Chirre, Ortega-Cerd\`a and Seip \cite[\S9.2]{bcos2024} use the same
+$H^1$ point-evaluation bound, $e^{-\pi y}\abs{f(iy)}\le\norm f_1/(4\pi y)$ for $f$ in the Paley--Wiener space $PW^1$, and show it is
+asymptotically sharp as $y\to\infty$ with $f$ close to $(y-iz)^{-2}$, our extremal kernel after a change of variables (see below).
+We do not claim novelty for Proposition~\ref{prop:barrier}. Its content for us is
 that the constant $1$ is the exact limit of the explicit-formula method for prime-supported small-bias measures. This is a limit of
 the method, not a lower bound for the true bias.
 
@@ -141,8 +144,13 @@ $\varepsilon\log(1/\varepsilon)\le1/e$. Hence
   =\varepsilon\,\frac{c_K}{\lambda}\Bigl(1+O_K\Bigl(\frac{\log\log q}{\log q}\Bigr)\Bigr),
 \]
 again uniformly in $\varepsilon$, because $\varepsilon\le1$ multiplies the lower-order terms of the denominator. Since
-$c_K/\lambda<(1+\delta/3)(1+\delta)^{-1/2}<1$ for $\delta\in(0,1]$, the right side is at most $\varepsilon$ once $q\ge q_0(\delta)$. The converse
-follows from Part~1: the method's bound is at least $(1-o(1))\log q/\sqrt X\ge(1-o(1))\varepsilon(1-\delta)^{-1/2}$.
+$c_K/\lambda<(1+\delta/3)(1+\delta)^{-1/2}<1$ for $\delta\in(0,1]$, the right side is at most $\varepsilon$ once $q\ge q_0(\delta)$. For the converse, every term of $\mathrm{Num}$ other than $M(0)\log(q/\pi)$ is nonnegative, and $\mathrm{Den}\le\sqrt x\int K(u)e^{u/2}du$
+because every other term of $\mathrm{Den}$ is subtracted and nonnegative. With $X=xe^{T}$ the cutoff and $c=e^{T/2}M(0)/\int K(u)e^{u/2}du$,
+\[
+  \frac{\mathrm{Num}}{\mathrm{Den}}\ge\frac{M(0)\log(q/\pi)}{\sqrt x\int K(u)e^{u/2}du}=\frac{c\log(q/\pi)}{\sqrt X}\ge\frac{\log(q/\pi)}{\sqrt X},
+\]
+by Proposition~\ref{prop:barrier} and $M(0)=\frac1{2\pi}\int\hat M\ge\frac1{2\pi}\int\abs{\hat K}$. This holds for every such kernel and every $q$, $X$,
+with no asymptotic error; for $X\le(1-\delta)\log^2q/\varepsilon^2$ it gives $\mathrm{Num}/\mathrm{Den}\ge\varepsilon\log(q/\pi)/((1-\delta)^{1/2}\log q)$.
 \end{proof}
 
 \subsection{General nonnegative kernels: numerics}
@@ -163,9 +171,118 @@ nonnegative, LP (exploratory, uncertified) & $1.104$ & $1.047$ & $1.025$ & $1.00
 \bottomrule
 \end{tabular}
 \end{center}
-These kernels are not convolution squares, so for them the zero sum has to be bounded through zero counting, as in \cite{lls2015},
-and not by positivity. We have not made that route explicit, and a rigorous strict improvement over convolution squares at a fixed
-$L$ would need certified upper and lower bounds for this extremal problem.
+At one window length the improvement is certified.
+
+\begin{lemma}[periodization; second identity formal]\label{lem:periodize}
+Let $h>0$, $u_j=u_0+jh$ for $0\le j\le m$, $k_j\in\R$, and $K(u)=\sum_jk_j\Lambda((u-u_j)/h)$ with $\Lambda(s)=\max(0,1-\abs s)$. Put
+$P(\theta)=\sum_jk_je^{ij\theta}$. Then
+\[
+  \frac1{2\pi}\int_\R\abs{\hat K(t)}\,dt=\frac1{2\pi}\int_0^{2\pi}\abs{P(\theta)}\,d\theta,\qquad
+  \int_\R K(u)e^{u/2}du=h\Bigl(\frac{\sinh(h/4)}{h/4}\Bigr)^2\sum_jk_je^{u_j/2}.
+\]
+\end{lemma}
+\begin{proof}
+$\hat\Lambda(\tau)=(\sin(\tau/2)/(\tau/2))^2$, so $\hat K(t)=h\,\hat\Lambda(th)\,e^{itu_0}P(th)$. Substitute $\theta=th$ and fold $\R$ onto
+$[0,2\pi)$: since $\abs P$ has period $2\pi$ and $\sum_{m\in\mathbb Z}\hat\Lambda(\theta+2\pi m)=\sin^2(\theta/2)\sum_m(\theta/2+\pi m)^{-2}=1$, the
+first identity follows. The second is $\hat K(-\frac i2)$ with $\hat\Lambda(-\frac{ih}2)=(\sinh(h/4)/(h/4))^2$.
+\end{proof}
+In Lean, $\hat\Lambda(z)=(2-e^{iz}-e^{-iz})/z^2$ for $z\ne0$ (\lean{paperFT_tri}), $\hat K(z)=h\hat\Lambda(hz)e^{izu_0}P(e^{izh})$ for complex $z$
+(\lean{paperFT_pwl}), and the second identity (\lean{GRHPseudo.KernelSeparation.integral_pwl_mul_exp}) are formal. The first identity, which needs $\sum_m\hat\Lambda(\theta+2\pi m)=1$, is not; the
+formal results below use the inequality of Proposition~\ref{prop:majorant} instead.
+
+The identity is classical in substance; its use here is that it removes the infinite tail. The mean of $\abs P$ is then a finite
+quadrature: $\abs P$ is $D$-Lipschitz with $D=\sum_j\abs{j-c}\abs{k_j}$ for any real $c$, so the average of $\abs P$ over $N$ equally
+spaced points differs from its mean by at most $\pi D/(2N)$.
+
+\begin{proposition}[part (1) with constant $\frac98$ formal; sharper constants computer-assisted]\label{prop:separation}
+\leavevmode
+\begin{enumerate}
+\item There is a nonnegative piecewise-linear kernel $K$ supported in an interval of length $4$ with support-normalized constant
+\[
+  c(K)=e^{T/2}\,\frac{\frac1{2\pi}\int\abs{\hat K}}{\int K(u)e^{u/2}du}\le1.1082<1.1565<\frac1{1-e^{-2}},
+\]
+where $T$ is the top of its support. For the same $K$, $c(K)\le\frac98<\frac1{1-e^{-2}}$ is formal
+(\lean{GRHPseudo.KernelSeparation.window4_kernel_beats_convSq}).
+\item There is a nonnegative $C^\infty$ kernel supported in an interval of length exactly $4$ with $c\le1.1180$.
+\end{enumerate}
+The constants $1.1082$ and $1.1180$ are certified by \lean{experiments/kernel_certificate.py}. So on windows of length $4$ the optimum over nonnegative kernels, smooth or not, is strictly smaller than the optimum over
+convolution squares (Proposition~\ref{prop:convsq}).
+\end{proposition}
+\begin{proof}
+(1) The witness is the LP solution at $a=1$ ($h=\frac1{20}$, $79$ interior nodes), rounded to nonnegative integers. By
+Lemma~\ref{lem:periodize}, $c(K)$ is an explicit finite expression up to the quadrature error. The script encloses every quantity in
+outward-rounded interval arithmetic (mpmath) with $N=2^{18}$ quadrature points and checks the inequality. An external reviewer
+supplied an independent integer-interval certificate for a different rounding of the same solution, which gives $c(K)<1.1377$.
+
+(2) Smoothing preserves the margin. Let $K\ge0$ be supported in $[T-L',T]$ and let $\varphi\in C^\infty_c$ be nonnegative with
+$\operatorname{supp}\varphi\subseteq[-\varepsilon,0]$ and $\int\varphi=1$, as in \cite[\S2.2]{cmqr2024}. Then $K_\varepsilon=K*\varphi$ is $C^\infty$, nonnegative and
+supported in $[T-L'-\varepsilon,T]$, with the same top. Since $\abs{\hat\varphi}\le1$ on $\R$, $\int\abs{\hat K_\varepsilon}\le\int\abs{\hat K}$, and
+$\int K_\varepsilon(u)e^{u/2}du=\int K(u)e^{u/2}du\cdot\int\varphi(v)e^{v/2}dv\ge e^{-\varepsilon/2}\int K(u)e^{u/2}du$. Hence $c(K_\varepsilon)\le e^{\varepsilon/2}c(K)$.
+Apply this with $\varepsilon=\frac1{64}$ to the LP solution on a window of length $L'=4-\frac1{64}$ ($a=\frac{255}{256}$), certified in the same
+way with $c(K)\le1.1093$.
+\end{proof}
+
+\begin{proposition}[majorants; general part informal, instances computer-assisted and formal]\label{prop:majorant}
+Let $K\ge0$ be a kernel for which the explicit formula applies, and $\delta>0$. There is a compactly supported positive-definite $M$ with
+$\hat M\ge\abs{\hat K}$ on $\R$ and $M(0)\le\frac1{2\pi}\int\abs{\hat K}+\delta$. Consequently the positivity method, with $M$ in place of
+$f*\tilde f$ in Section~\ref{sec:optimality}.1, gives leading coefficient at most $c(K)+e^{T/2}\delta/\int K(u)e^{u/2}du$, with no zero counting.
+For the witness of part (2) of Proposition~\ref{prop:separation}, a positive-definite majorant supported in $[-8.02,8.02]$ gives the
+certified positivity constant $c\le1.1482<1.1565$, after the same smoothing. For the (unsmoothed) witness of part (1), an even
+positive-definite majorant supported in $[-5.05,5.05]$ with $\hat M\ge\abs{\hat K}$ on all of $\R$ and $e^{T/2}M(0)\le\frac98\int K(u)e^{u/2}du$ is
+formal (\lean{GRHPseudo.KernelSeparation.kernel4_majorant}).
+\end{proposition}
+\begin{proof}
+Take $K$ piecewise linear with step $h$, as in Lemma~\ref{lem:periodize}, and $M$ even and piecewise linear with the same step and node
+values $q_0,\dots,q_n$. Then $\hat M(t)=h\hat\Lambda(th)Q(th)$ with $Q(\theta)=q_0+2\sum_{j\ge1}q_j\cos j\theta$, so $\hat M\ge\abs{\hat K}$ on $\R$ if and only if
+$Q\ge\abs P$ on the circle, and $M(0)=q_0$. Since $\abs P$ is even and continuous, its Fej\'er means $\sigma_n$ converge to it uniformly, and
+$Q=\sigma_n+\norm{\sigma_n-\abs P}_\infty$ is an admissible cosine polynomial with $q_0\to\frac1{2\pi}\int\abs P=\frac1{2\pi}\int\abs{\hat K}$. Then $\hat M\ge0$, so $M$ is
+positive definite. Under GRH the zeros have real ordinates, so $\abs{\sum_\gamma\hat K_y(\gamma)}\le\sum_\gamma\abs{\hat K(\gamma)}\le\sum_\gamma\hat M(\gamma)$, and the
+explicit formula for $M$ evaluates the right side; its leading term is $M(0)\log(q/\pi)$. For smoothness, replace $(K,M)$ by
+$(K*\varphi*\varphi,\,M*\varphi*\tilde\varphi)$: then $\hat M\abs{\hat\varphi}^2\ge\abs{\hat K}\abs{\hat\varphi}^2$ and $M*\varphi*\tilde\varphi(0)\le M(0)$. For the instance, the script solves an
+LP for $q$ ($n=160$), adds $2.5\%$ to $q_0$, rounds to rationals, and certifies $Q-\abs P\ge0$ on the whole circle with interval arithmetic and a
+Lipschitz bound ($N=2^{19}$ points).
+\end{proof}
+
+\paragraph{The formal certificate.}
+The Lean proofs of the constant $\frac98$ in Propositions~\ref{prop:separation} and~\ref{prop:majorant} avoid quadrature. Write
+$P(w)=\sum_jk_jw^j$ for the witness of Proposition~\ref{prop:separation}(1) (the same $79$ integers, $h=\frac1{20}$, $u_j=-2+(j+1)h$). A script
+(\lean{experiments/kernel_sos_certificate.py}) produces integer polynomials $R$ of degree $100$ and $G$ of degree $200$ and $D=100$ such that
+\[
+  \abs{R(w)^2}^2-D^2\abs{P(w)}^2-\abs{G(w)}^2=E(w),\qquad \abs w=1,
+\]
+where the cosine polynomial $E(w)=E_0+2\sum_{m\ge1}E_m\operatorname{Re}w^m$ is coefficient-dominated, $E_0\ge2\sum_{m\ge1}\abs{E_m}$. The coefficients of
+$E$ are integer autocorrelations, and the Lean kernel checks the dominance by evaluation in about ten seconds (\lean{decide +kernel}, not
+\lean{native_decide}; \lean{certOK_data}). Hence $D\abs P\le\abs R^2$ on the circle (\lean{certOK_sound}). With $c_m=\sum_jr_jr_{j+m}$, the even
+piecewise-linear $M$ with node values $M(mh)=c_{\abs m}/D$ has $\hat M(t)=(h/D)\hat\Lambda(th)\abs{R(e^{ith})}^2\ge\abs{\hat K(t)}$ for every real
+$t$, and $\frac1{2\pi}\int\hat M=M(0)=\sum_jr_j^2/D$ by Fourier inversion for $\Lambda$ at the integers (Mathlib's inversion theorem,
+\lean{integral_paperFT_mul_cexp}). So $\frac1{2\pi}\int\abs{\hat K}\le\sum_jr_j^2/D$ (\lean{integral_norm_paperFT_pwl_le}). The mass is bounded
+below with the second identity of Lemma~\ref{lem:periodize}, $\sinh x\ge x$, $e^{1/40}\ge1+\frac1{40}+\frac1{3200}$ and $e<2.7182818286$. This gives
+$c(K)\le1.1238$, which the statement rounds to $\frac98$; and $\frac98<1/(1-e^{-2})$ is equivalent to $e^2<9$. The Lean statement assumes nothing about
+$K$: it asserts that $K$ is continuous, nonnegative and supported in $[-2,2]$, that $\abs{\hat K}$ is integrable, that $\int K(u)e^{u/2}du>0$, and
+$e\cdot\frac1{2\pi}\int\abs{\hat K}\le\frac98\int K(u)e^{u/2}du$. The degree $100$ costs about $1\%$ over the LP optimum for this $K$; the smoothed kernel of
+part (2) and the sharper constants remain computer-assisted.
+
+\paragraph{Relation to point evaluation in Paley--Wiener spaces.}
+Drop the condition $K\ge0$ and let $K$ be supported in a window of length $L$. Centring the window and rescaling the frequency
+variable turn $f=\hat K$ into a function $h$ in $PW^1$ (exponential type $\pi$), with
+\[
+  \inf_K c(K)=\frac{(2\pi)^2}{L\,e^{L/4}}\Bigl(\sup_{0\ne h\in PW^1}\frac{\abs{h(iy)}}{\norm h_1}\Bigr)^{-1},\qquad y=\frac\pi L .
+\]
+So the general finite-window problem is the norm of point evaluation off the real axis in $PW^1$. Brevig, Chirre, Ortega-Cerd\`a and
+Seip \cite[\S9.2]{bcos2024} pose it, following Korevaar, and prove the limit $y\to\infty$, which corresponds to our Proposition~\ref{prop:barrier}.
+Squares of $PW^2$ functions correspond to convolution squares, and Proposition~\ref{prop:convsq} is the $PW^2$ reproducing-kernel bound. At
+real points it is classical that $L^1$ point evaluation in $PW^1$ is not attained by squares (Hörmander and Bernhardsson; see
+\cite{bcos2024}). Proposition~\ref{prop:separation} is a certified instance of the same phenomenon at the non-real point $y=\pi/4$, under
+the additional constraint that the spectrum is nonnegative ($K\ge0$), which our application needs. We found no statement of this
+instance in \cite{bcos2024,cmqr2024,lls2015}. In the problem (EP1) of \cite{cmqr2024} with $A=\infty$, $\hat F$ may change sign and has no fixed
+window. It is a modest addition, and a literature search cannot rule out an earlier statement.
+
+\paragraph{What remains.}
+Formal: the separation with the constant $\frac98$ and its majorant (above). Computer-assisted only: the constants $1.1082$, $1.1180$ and
+$1.1482$, the smoothing of Proposition~\ref{prop:separation}(2), and the first identity of Lemma~\ref{lem:periodize}. Turning Proposition~\ref{prop:majorant} into an explicit bias theorem needs the formal positivity lemmas of
+Theorem~\ref{thm:convclosed} for a general positive-definite majorant, and explicit lower-order terms for a majorant supported in
+$[-8,8]$. The possible gain is small: the leading coefficient drops from $1.162$ (the formal convolution-square kernel at $A=\frac94$) to
+about $1.11$, at most about a $9\%$ smaller cutoff before the larger small-prime and gamma terms of the wider majorant are counted.
 
 \begin{remark}
 The inequality of Lemma~\ref{lem:ranktwo} is formalized; its equality case is not. Its specialization to $L^2[-a,a]$, the factorization theorem, Propositions~\ref{prop:convsq}

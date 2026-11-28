@@ -1,0 +1,7 @@
+window 4.0: c(K) = 1.1040 (general-kernel value of the witness); conv-square optimum 1.1565
+n	S=(n+1)h	c_major(n)  [exploratory LP]
+40	2.05	1.4226
+80	4.05	1.1625
+160	8.05	1.1100
+320	16.05	1.1044
+640	32.05	1.1040

@@ -96,3 +96,8 @@ confirmed. Nothing marked [S] or [M] may be cited in the paper until opened and 
 - **[S]** Lamzouri–Li–Soundararajan, Corrigendum, Math. Comp. 86 (2017), no. 307, 2551–2554, doi:10.1090/mcom/3261: Crossref metadata only; content taken from v3.
 - **[O]** Jao–Miller–Venkatesan, arXiv:0811.0647v2 (HTML), J. Number Theory 129 (2009) 1491–1504: Thm 1.1 (unnormalized eigenvalues O(n x^{1/2} log(xq)), degree 2 li(x) + O(·)); §1 remark on unconditional expansion for almost all q via Garaev.
 - **[S]** Garaev, Character sums in short intervals and the multiplication table modulo a large prime, Monatsh. Math. 148 (2006) 127–138, Thm 3: seen only as JMV's reference.
+- **[O]** Basu–Kothari–Meka–Tudose, *Optimal Sparsifiers for Abelian Cayley Graphs*, arXiv:2607.08261 v2 (3 Nov 2026), abstract and Thm 1.5 (HTML): O(ε⁻² log|G|)-generator ε-Cayley sparsifiers, randomized poly(|G|, ε⁻¹) time.
+- **[O]** Carneiro–Milinovich–Quesada-Herrera–Ramos, arXiv:2404.08380 v2: EP1 (C(A), A ∈ [0, ∞]), EP2 (dual), Thm 4 (C_c^∞ suffices; C(0) = 2, C(∞) = 1), §2.2 smoothing. Text extracted from the PDF.
+- **[O]** Brevig–Chirre–Ortega-Cerdà–Seip, *Point evaluation in Paley–Wiener spaces*, J. Anal. Math. 153 (2024) 595–670, doi:10.1007/s11854-024-0338-z (Crossref-verified); read arXiv v4, esp. §9.2 (point evaluation on the imaginary axis, (9.2), Conjecture 9.3).
+- **[O]** Quesada-Herrera, *Fourier optimization and consequences of GRH*, arXiv:2411.05095 (survey of CMQR's EP).
+- **[S]** Hörmander–Bernhardsson, An extension of Bohr's inequality (1993); Korevaar, Nieuw Arch. Wiskunde (2) 23 (1949) 55–62; Bondarenko–Ortega-Cerdà–Radchenko–Seip, arXiv:2504.05205: seen via BCOS's bibliography and search results only; cite via BCOS.

@@ -101,3 +101,21 @@ log) and sharpened the prior-art picture. Checked here:
 - **Framing.** The project is an explicit, formally verified refinement of classical GRH constructions (JMV, LLS). Neither the
   expander construction nor the limiting constant 1 should be advertised as new. The most distinctive parts are the explicit bounds
   and the Lean certificates (n ≤ 48400 for all q ≤ 2⁶⁴); no matching prior result was found, which does not establish priority.
+
+## Second external review (2026-11-27)
+- **Certified separation (new candidate result).** At window length 4, a nonnegative piecewise-linear kernel has c ≤ 1.10814
+  < 1/(1 − e^{−2}) (Prop. "separation", computer-assisted, two independent interval certificates). This is the first rigorous
+  statement that general nonnegative kernels beat convolution squares at a fixed window. The periodization identity is classical in
+  substance. **Priority not yet checked**: search CMQR, Carneiro et al. Fourier-optimization papers, and Beurling–Selberg-type
+  extremal literature for the one-sided-support, ∫|K̂| / ∫K e^{u/2} problem before claiming it.
+- **BKMT (arXiv:2607.08261)**: O(ε⁻² log|G|) weighted sparsifiers for every abelian Cayley graph. With Alon–Roichman this makes clear
+  that small cardinality is not a novelty claim; ours are the small integer cutoff, explicit constants uniform in q, the access model
+  (no factorization of q), and the formal verification.
+
+## Prop 17 priority check (2026-11-27)
+- Closest prior work: BCOS §9.2 (off-axis point evaluation in PW^p; our general finite-window problem, without K ≥ 0, is exactly
+  that problem at y = π/L) and Hörmander–Bernhardsson (real points: L¹ point evaluation is not attained by squares). CMQR's
+  EP1 with A = ∞ is the infinite-window, sign-changing version.
+- So **Prop 15 is in BCOS §9.2** (asymptotic sharpness included) — credited, no novelty. **Prop 17** is a certified off-axis
+  instance (y = π/4) of a known phenomenon, with the nonnegative-spectrum constraint our application needs: **modest**. Prop 18
+  (majorant realization) is a simple observation (Fejér approximation) that removes the need for zero counting.

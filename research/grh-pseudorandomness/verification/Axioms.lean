@@ -1,4 +1,5 @@
 import GRHPseudo.MainTheorems.Unconditional
+import GRHPseudo.KernelSeparation.Majorant4
 import GRHPseudo.AnalyticNumberTheory.Sharp.Assembly
 import GRHPseudo.Pseudorandomness.RankTwo
 
@@ -40,3 +41,15 @@ import GRHPseudo.Pseudorandomness.RankTwo
 #print axioms GRHPseudo.Main.bias_convSq_sharp
 #print axioms GRHPseudo.Main.bias_convSq_closed
 #print axioms GRHPseudo.Main.bias_le_half_of_le_two_pow_64_convSq
+-- window-4 kernel separation (paper Lemma 16 part 2, Prop 17(1) with constant 9/8, Prop 18 instance)
+#print axioms GRHPseudo.KernelSeparation.certOK_sound
+#print axioms GRHPseudo.KernelSeparation.certOK_data
+#print axioms GRHPseudo.KernelSeparation.paperFT_tri
+#print axioms GRHPseudo.KernelSeparation.integral_paperFT_mul_cexp
+#print axioms GRHPseudo.KernelSeparation.paperFT_pwl
+#print axioms GRHPseudo.KernelSeparation.integral_pwl_mul_exp
+#print axioms GRHPseudo.KernelSeparation.integral_norm_paperFT_pwl_le
+#print axioms GRHPseudo.KernelSeparation.kernel4_separation
+#print axioms GRHPseudo.KernelSeparation.nine_eighths_lt_convSq_window4
+#print axioms GRHPseudo.KernelSeparation.window4_kernel_beats_convSq
+#print axioms GRHPseudo.KernelSeparation.kernel4_majorant

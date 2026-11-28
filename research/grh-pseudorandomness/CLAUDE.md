@@ -2,7 +2,7 @@
 
 Project state and working notes. The general process is in `../../CLAUDE.md`. **Update this file
 whenever results, statements, commands, status or open tasks change.** Last updated: 2026-11-27
-(external-review fixes to informal claims, merged via PR #5).
+(window-4 separation made formal, branch `kernel-window4-formal` stacked on `grh-review-2`).
 
 ## What this project is
 Explicit, formally verified bias bounds (equivalently, second-eigenvalue bounds) for prime Cayley graphs
@@ -33,6 +33,7 @@ are in `README.md`; the paper is in `paper/main.pdf`.
 | `AnalyticNumberTheory/Sharp/{ConvKernel,ConvAssembly,ConvCertificate}` (namespace `Sharp.Conv`) | conv-square kernel K_A = f_A ⋆ f_A; Thm 10 (`bias_closed`), Cor 11 (`A = 9/4`, `R = 12`, `y220 = 2 log 220`) |
 | `Pseudorandomness/{Bias,RankTwo,PrimeMeasure}` | bias, eigenvalue identity, rank-two lemma, Cor 3 |
 | `MainTheorems/{Conditional,Unconditional}` | headline statements |
+| `KernelSeparation/{Poly,Triangle,Kernel,Data,Window4,Majorant4}` | window-4 separation: integer SOS certificate (`certOK`, `decide +kernel`), Λ̂ and inversion, Lemma 16(2), Prop 17(1) with 9/8 (`window4_kernel_beats_convSq`), Prop 18 instance (`kernel4_majorant`) |
 | `Vendor/{Schoenfeld,GRHMiller}` | adapted code (see `ATTRIBUTION.md`) |
 | `Zeta23/` (lean_lib) | Weil explicit formula, 120 modules ported from Mathlib `51e6992e`; diff in `verification/zeta23-port.diff` |
 
@@ -57,10 +58,10 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
   bias ≤ 0.4566, support n ≤ 48400). After changing any of these, recheck the statement, the
   numbers in Cor 7 (numB ≤ 236.6, denB ≥ 555.8, bias ≤ 0.4257, support n ≤ 166253) and Table 2 in
   `experiments.tex`.
-- **Numbering.** Paper numbering (Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Prop 8, Cor 9, Thm 10, Cor 11, Props 14–15; a remark takes number 5) is used in `README.md`. Corrected 2026-11-27: earlier docs said Thm 5/Cor 6/Prop 7/Cor 8.
+- **Numbering.** Paper numbering (Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Prop 8, Cor 9, Thm 10, Cor 11, Props 14–15, Lemma 16, Props 17–18; a remark takes number 5) is used in `README.md`. Corrected 2026-11-27: earlier docs said Thm 5/Cor 6/Prop 7/Cor 8.
   Update both if the numbering changes.
 - **Audit list.** Every new headline theorem gets a `#print axioms` line in `verification/Axioms.lean`.
-  Record the counts in `verification/README.md` (currently: 31 theorems, 32 project modules replayed,
+  Record the counts in `verification/README.md` (currently: 42 theorems, 38 project modules replayed,
   120 Zeta23 modules replayed).
 - **Experiments.** `experiments/closed_form_params.py` mirrors `numB`/`denB` exactly, and
   `experiments/convsq_formal_params.py` / `convsq_certificate_check.py` mirror `Conv.numB`/`denB`; change them together.
@@ -80,6 +81,17 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 - **Non-positive-definite kernels (exploratory, uncertified, `experiments/kernel_lp.py`).** LP solutions give
   c ≈ 1.104, 1.047, 1.025, 1.006, 1.001 at a = 1, a*, 1.5, 2, 3 (truncated quadrature at T = 4000 plus a TV(K′) tail bound
   ≤ 0.0004, end-node slope jumps included; quadrature error unbounded). Never call these "exact" or certified. For a < 1 the discretization is unreliable.
+- **Certified separation (computer-assisted, 2026-11-27).** At window length 4 a nonnegative piecewise-linear kernel has
+  c ≤ 1.10814 < 1/(1 − e^{−2}) (`experiments/kernel_certificate.py`, mpmath intervals; reviewer's integer certificate gives
+  < 1.1377). Key tool: periodization, (1/2π)∫|K̂| = mean |P| exactly for triangle bases. Smoothed: C^∞ kernel on window
+  exactly 4 with c ≤ 1.1180 (Prop 17(2)). Majorant route (Prop 18): positivity with a PD majorant M, M̂ ≥ |K̂|, ⇔ Q ≥ |P| on the
+  circle; certified c ≤ 1.1482 with supp M ⊆ [−8.02, 8.02], so **no zero counting is needed**. These constants are not Lean.
+  **Formal (2026-11-27):** for the same unsmoothed K, c ≤ 9/8 (formal numerics ≈ 1.1238) via an integer SOS certificate
+  D|P| ≤ |R|² (deg R = 100, D = 100) and Fourier inversion for Λ; the degree-100 majorant (supp ⊆ [−5.05, 5.05]) is the Prop 18
+  instance. Lemma 16's first identity is NOT formal (not needed). Regenerate `Data.lean` with `experiments/kernel_sos_certificate.py`. Priority: Prop 15 is in
+  BCOS §9.2; Prop 17 is an off-axis, K ≥ 0 instance of Hörmander–Bernhardsson (modest). Uncertified LP numbers (`kernel_lp.py`,
+  `majorant_lp.py`) stay labelled exploratory.
+- **Cutoff vs cardinality.** Our barrier and certificates concern the cutoff X = max supp μ, not |supp μ| or seed length.
 - **Prop 8 / rank-two lemma (fixed 2026-11-27).** State Prop 8 without dividing (∫k e^{u/2} ≤ (a + sinh a)k(0)); the ratio needs
   ∫k e^{u/2} > 0. The lemma's equality case needs α/‖α‖ ≠ −β/‖β‖, and only the inequality is formal.
 - **JMV normalization.** Their Thm 1.1 is unnormalized: O(x^{1/2} log(xq)), degree ≈ 2 li(x).
@@ -93,8 +105,9 @@ Replaying the 120 `Zeta23` modules (loop over `Zeta23/MODULES.txt`) takes much l
 
 ## Status
 - **Formal, unconditional:** Thm 2, Cor 3, Thm 4, Thm 6, Cor 7, Thm 10, Cor 11 (and `bias_convSq_sharp`). Axioms
-  are the standard three; the environment has core axioms only; `leanchecker` passes 32/32 project and 120/120
+  are the standard three; the environment has core axioms only; `leanchecker` passes 38/38 project and 120/120
   Zeta23 modules.
+- **Formal, no GRH needed:** Lemma 16 (second identity), Prop 17(1) with constant 9/8, Prop 18 instance (`GRHPseudo.KernelSeparation`).
 - **Formal core only:** Prop 8 (the abstract rank-two inequality `inner_mul_inner_le`).
 - **Informal:** the L²[−a,a] instance of Prop 8, the factorization theorem, Props 12–13 (convolution squares, barrier), Cor 9, and the
   sampling/complexity section.
@@ -116,6 +129,7 @@ See `notes/directions.md` for the ranked research directions.
 4. Run Comparator against a Mathlib-only statement file; run nanoda/lean4lean replay.
 5. Paper: add the repository URL. Fill in CMQR's volume and pages once assigned
    (Math. Comp., doi:10.1090/mcom/4154).
-6. Research questions: the optimal nonnegative kernel on a finite window (LP beats conv squares; needs explicit
-   zero counting); extend to quotients of G_q and abelian Galois groups; nonabelian groups via zig-zag
+6. Research questions: the optimal nonnegative kernel on a finite window (LP beats conv squares, formal at L = 4; an explicit
+   bias theorem needs positivity lemmas for a general PD majorant, no zero counting); optionally formalize Prop 17(2) smoothing
+   and Lemma 16(1); extend to quotients of G_q and abelian Galois groups; nonabelian groups via zig-zag
    (`notes/directions.md`).

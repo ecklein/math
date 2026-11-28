@@ -156,3 +156,21 @@ corrected (Section 6, with a dated note).
    then formal operator-norm and mixing consequences.
 4. **One distribution for all moduli**: support/entropy needed for a single integer distribution whose conditioning on units is
    small-biased for every q ≤ Q, against q-dependent weights; adversarial moduli.
+
+## Update (2026-11-27, second review): separation certified at L = 4
+Direction "finite-window extremal problem" now has a certified witness (c ≤ 1.10814 < 1.15652 at L = 4;
+`experiments/kernel_certificate.py`). Next steps, in order: (1) priority check; (2) Lean check of the finite-period
+certificate (periodization lemma + interval quadrature); (3) smoothing to C² keeping the margin, within the same window;
+(4) explicit zero-sum estimate (zero counting for L(s, χ), uniform in q) to turn it into a bias theorem, and compare with 48400;
+(5) lower bounds for C(L) and its dependence on L (dual certificates).
+
+## Update (2026-11-27, later): Prop 17 caveats
+Done: priority check (BCOS §9.2, Hörmander–Bernhardsson, CMQR), smoothing (C^∞ on window 4, c ≤ 1.1180), majorant route (no zero
+counting; certified c ≤ 1.1482 with supp M ⊆ [−8.02, 8.02]). Remaining, as separate tasks: (a) Lean-checkable certificate (SOS route +
+formal periodization); (b) Lean positivity lemmas for a general PD majorant, then an explicit certificate with the LP kernel (≤ ~9%
+smaller cutoff than 48400 at best); (c) certified lower bounds for C(L) via CMQR's dual EP2 / BCOS methods.
+
+## Update (2026-11-27, Lean): window-4 separation formal
+Task (a) done with a different route: an exact integer SOS certificate for D|P| ≤ |R|² plus Fourier inversion for Λ (no periodization
+identity needed). Formal: Prop 17(1) with constant 9/8 and the Prop 18 instance (`GRHPseudo.KernelSeparation`). Remaining: (b), (c),
+and optionally formal smoothing (Prop 17(2)) and Lemma 16's first identity.

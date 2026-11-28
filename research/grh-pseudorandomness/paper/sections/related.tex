@@ -48,10 +48,13 @@ rh-prime-error project \cite{rhprimeerror}, concern $\zeta$. We reuse code from 
 Random multisets of $O(\log\abs G/\varepsilon^2)$ elements are $\varepsilon$-biased in any finite group
 \cite{alonroichman1994}. Explicit near-optimal constructions exist for $\mathbb F_2^n$ \cite{tashma2017}. For
 explicitly given abelian groups, Jalan and Moshkovitz \cite{jalanmoshkovitz2021} construct near-optimal
-expanders deterministically in time polynomial in $\abs G$. These constructions need the group structure
-and run in time $\operatorname{poly}(\abs G)=\operatorname{poly}(q)$. Prime-based sets need neither the
-factorization of $q$ nor a description of $\Gq$, and their elements are small integers independent of
-$q$; the price is support $\asymp(\log q)^2/\varepsilon^2$ rather than $\log q/\varepsilon^2$. For
+expanders deterministically in time polynomial in $\abs G$. Basu, Kothari, Meka and Tudose
+\cite{bkmt2026} show that every weighted Cayley graph of a finite abelian group $G$ has an $\varepsilon$-spectral sparsifier with
+$O(\varepsilon^{-2}\log\abs G)$ generators, computable in randomized time $\operatorname{poly}(\abs G,\varepsilon^{-1})$. So small cardinality
+alone is not a distinctive feature. These constructions need the group structure and run in time
+$\operatorname{poly}(\abs G)=\operatorname{poly}(q)$. Prime-based measures need neither the factorization of $q$ nor a description of
+$\Gq$, their elements are small integers independent of $q$, and here their constants are explicit and formally verified; the
+price is cutoff $\asymp(\log q)^2/\varepsilon^2$, against cardinality $O(\log q/\varepsilon^2)$ for the random and sparsified sets. For
 background on expanders see \cite{hlw2006}; for small-bias spaces, \cite{naornaor1993}.
 
 \paragraph{Algorithmic consequences already in the literature.}

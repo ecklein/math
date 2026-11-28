@@ -21,6 +21,9 @@ hypotheses are discharged by the GRH proof. Audited axioms: `propext`, `Classica
 | Cor 9 | informal | limit of the method: every kernel has leading constant c ≥ 1 (Prop 15); convolution squares (Prop 14) reach 1 + δ |
 | Thm 10 | `GRHPseudo.Main.bias_convSq_closed` | closed-form bias bound for the convolution-square kernel K_A = f_A ⋆ f_A (window [x e^{−2A}, x]), all q, A ≥ 1/32, R > 0, y > 2A |
 | Cor 11 | `GRHPseudo.Main.bias_le_half_of_le_two_pow_64_convSq` | for every q ≤ 2⁶⁴ and χ ≠ χ₀: a fixed measure on prime powers n ≤ 48400 has bias ≤ 1/2 (3.4× smaller support than Cor 7) |
+| Lemma 16 | second identity: `GRHPseudo.KernelSeparation.integral_pwl_mul_exp`; first identity informal | periodization for triangle bases: (1/2π)∫\|K̂\| = mean \|P\| (informal), ∫K e^{u/2} = h (sinh(h/4)/(h/4))² Σ kⱼ e^{uⱼ/2} (formal) |
+| Prop 17 | (1) with constant 9/8: `GRHPseudo.KernelSeparation.window4_kernel_beats_convSq`; sharper constants computer-assisted (`experiments/kernel_certificate.py`) | on windows of length 4 a nonnegative kernel has leading constant c ≤ 9/8 < 1/(1 − e^{−2}) ≈ 1.1565 (formal), beating every convolution square; c ≤ 1.1082, and a C^∞ kernel with c ≤ 1.1180, by interval arithmetic (not Lean) |
+| Prop 18 | instance for the Prop 17(1) kernel: `GRHPseudo.KernelSeparation.kernel4_majorant`; general part informal | positivity with a band-limited PD majorant M (M̂ ≥ \|K̂\|) reaches the general-kernel constant, so no zero counting is needed; formal: M even, supp M ⊆ [−5.05, 5.05], M̂ ≥ \|K̂\| on ℝ, e·M(0) ≤ (9/8)∫K e^{u/2}; computer-assisted: c ≤ 1.1482 after smoothing, supp M ⊆ [−8.02, 8.02] |
 
 **Correction (2026-11-27).** Earlier versions said the cosh kernel is optimal "within the positivity method".
 That was wrong: convolution squares f ⋆ f use the same positivity step and do better. See Section 6 of the paper.
@@ -36,6 +39,7 @@ the leading term of Theorem 4 is, asymptotically, Lemma 6.1 of Lamzouri–Li–S
   - `GRHPseudo/AnalyticNumberTheory/` — Borel–Carathéodory route (Thm 2) and `Sharp/` (Thms 4, 6, 10; Cors 7, 11).
   - `GRHPseudo/Pseudorandomness/` — bias, Cayley eigenvalues, rank-two inequality, Cor 3.
   - `GRHPseudo/MainTheorems/` — conditional and unconditional statements.
+  - `GRHPseudo/KernelSeparation/` — window-4 kernel separation (Lemma 16 part 2, Prop 17(1) with 9/8, Prop 18 instance); exact integer sum-of-squares certificate checked by `decide +kernel`.
   - `GRHPseudo/Vendor/` — adapted code (see [`ATTRIBUTION.md`](ATTRIBUTION.md)).
   - `Zeta23/` — the Weil explicit formula library (zeta-23-lean), ported to our Mathlib pin.
 - [`experiments/`](experiments/) — exact bias computations (FFT over discrete logs) and constant evaluations.

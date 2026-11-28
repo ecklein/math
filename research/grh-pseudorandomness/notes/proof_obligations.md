@@ -114,3 +114,15 @@ D8. *Convolution-square kernel* (added 2026-11-27). **lean-done.**
   - `ConvKernel`: f_A = e^{t/2}S(64(t+A))S(−64t); 0 ≤ K_A ≤ A e^{u/2}, supp K_A ⊆ [−2A, 0]; |M_A(u)| ≤ e^{−|u|/2}, M_A(0) ≤ 1 − e^{−A}; F₊ ∈ [e^{−1/64} − e^{−A+1/64}, 1], F₋ ≤ A; ∫|f_A'| ≤ 3.
   - `ConvAssembly`: `Conv.bias_sharp`. `ConvCertificate`: `Conv.bias_closed`; certificate A = 9/4, R = 12, y = 2 log 220.
 D9. *Props 14–15* (Cauchy–Schwarz optimality of e^{t/2} among conv squares; the barrier c ≥ 1). **informal-done**, numerically checked (`experiments/barrier_check.py`).
+D10. *Window-4 kernel separation* (added 2026-11-27, branch `kernel-window4-formal`). Module `KernelSeparation/`.
+  - (a) `Poly`: integer list polynomials, autocorrelation identity |a(w)|² = cosForm(acf a)(w) on |w| = 1; certificate check
+    `certOK` and its soundness `certOK_sound` (D|P| ≤ |R|² from |R²|² − D²|P|² − |G|² coefficient-dominated). **lean-done.**
+  - (b) `Triangle`: Λ̂(z) = (2 − e^{iz} − e^{−iz})/z² (`paperFT_tri`); Fourier inversion in the paper convention
+    (`integral_paperFT_mul_cexp`, from Mathlib's `Continuous.fourierInv_fourier_eq`); ∫Λ̂(τ)e^{inτ}dτ = 2π[n = 0]. **lean-done.**
+  - (c) `Kernel`: K̂ = hΛ̂(hz)e^{izu₀}P(e^{izh}) (`paperFT_pwl`); Lemma 16 second identity (`integral_pwl_mul_exp`); majorant bound
+    ∫|K̂| ≤ 2π Σr²/D (`integral_norm_paperFT_pwl_le`). **lean-done.**
+  - (d) Lemma 16 first identity (∫|K̂| = ∫₀^{2π}|P|, needs Σ_m Λ̂(θ + 2πm) = 1). **informal-done**; not needed by (e)–(f).
+  - (e) `Data`, `Window4`: certificate (deg R = 100, deg G = 200, D = 100) checked by `decide +kernel` (~10 s); Prop 17(1) with
+    constant 9/8 (`kernel4_separation`, `window4_kernel_beats_convSq`; formal bound ≈ 1.1238 before rounding). **lean-done.**
+  - (f) `Majorant4`: Prop 18 instance, even PD majorant, supp ⊆ [−101/20, 101/20], M̂ ≥ |K̂| on ℝ (`kernel4_majorant`). **lean-done.**
+  - (g) Prop 17(2) (smoothing, C^∞) and the constants 1.1082 / 1.1180 / 1.1482. **computer-assisted only.**

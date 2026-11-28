@@ -34,10 +34,11 @@ Module & Content\\
 \lean{Sharp/ConvKernel}, \lean{ConvAssembly}, \lean{ConvCertificate} & Theorem~\ref{thm:convclosed}, Corollary~\ref{cor:convcert}\\
 \lean{Pseudorandomness/*} & bias, Lemma~\ref{lem:eigen}, Lemma~\ref{lem:ranktwo}, Corollary~\ref{cor:A}\\
 \lean{MainTheorems/Conditional}, \lean{Unconditional} & the statements of Section~\ref{sec:results}\\
+\lean{KernelSeparation/*} & Lemma~\ref{lem:periodize} (second identity), Propositions~\ref{prop:separation}(1) and~\ref{prop:majorant} (constant $\frac98$)\\
 \bottomrule
 \end{tabular}
 \end{center}
-Our own code is about $4400$ lines in $27$ files. A further $2200$ lines are vendored, with attribution, from
+Our own code is about $5600$ lines in $33$ files. A further $2200$ lines are vendored, with attribution, from
 \cite{grhmiller,schoenfeldlean,rhprimeerror} and the readable GRH edition.
 
 \subsection{Porting the explicit formula}
@@ -61,9 +62,9 @@ None of the changes alters a statement.
 \toprule
 Check & Result\\
 \midrule
-\lean{#print axioms}, 31 theorems including all of Section~\ref{sec:results} & \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}\\
+\lean{#print axioms}, 42 theorems including all of Section~\ref{sec:results} & \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}\\
 all axioms in the environment (Mathlib, GRH proof, port, ours) & Lean core only\\
-\lean{leanchecker} replay, 32 project modules & all pass\\
+\lean{leanchecker} replay, 38 project modules & all pass\\
 \lean{leanchecker} replay, 120 ported modules & all pass\\
 source scan for \lean{sorry}, \lean{axiom}, \lean{native_decide} & none\\
 \bottomrule

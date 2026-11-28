@@ -60,7 +60,7 @@ convolution-square kernel (the $\cosh$ kernel needs $n\le166253$). We also deter
 limit of the method. Among positive-definite kernels the $\cosh$ kernel is optimal, with support-normalized
 leading constant $c^*=2/a_*^2\approx1.2236$, where $a_*\approx1.2785$ is the root of $a=1+e^{-a}$. Convolution squares
 use the same positivity step and do better. An elementary Fourier identity shows that no kernel gets below $1$, and
-this barrier is attained in the limit by the classical weight $\Lambda(n)\log(x/n)$. So the method needs support
+this barrier is attained in the limit by the classical weight $\Lambda(n)\log(x/n)$. So the method needs cutoff
 $(1+o(1))\log^2q/\varepsilon^2$ for bias $\varepsilon$, and no less.
 A cruder Borel--Carath\'eodory bound is also formalized, and we ported a 120-module Lean library
 for the Weil explicit formula to the Mathlib version of the GRH proof.
