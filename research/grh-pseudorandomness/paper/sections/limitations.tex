@@ -35,13 +35,11 @@ does not contain a proof of the main inequality \cite{rubinsteinpage}.
 \item Formalize Propositions~\ref{prop:opt}, \ref{prop:convsq} and~\ref{prop:barrier}, and certify further instances,
   e.g.\ $q\le2^{1024}$ or $\varepsilon=10^{-2}$.
 \item Determine the optimal nonnegative kernel on a window of finite length $L$. At $L=4$ it strictly beats convolution squares,
-  also among $C^\infty$ kernels and through positivity with a majorant (Propositions~\ref{prop:separation} and~\ref{prop:majorant},
-  computer-assisted). Certified lower bounds (for instance from the dual problem (EP2) of \cite{cmqr2024}) and the dependence on $L$
-  remain open. So does a Lean check. The interval certificate evaluates $\abs P$ at $2^{18}$ points, which is far beyond what Lean's
-  kernel can evaluate without \lean{native_decide} (forbidden here). A Lean-checkable certificate would instead verify an exact
-  algebraic inequality, e.g.\ a cosine polynomial $R\ge\abs P$ certified by a rational sum-of-squares (Fej\'er--Riesz) decomposition of
-  $R^2-\abs P^2$, together with a formal proof of Lemma~\ref{lem:periodize}. An explicit bias theorem from such a kernel would need the
-  positivity lemmas for a general majorant (Proposition~\ref{prop:majorant}), but no explicit zero counting.
+  also among $C^\infty$ kernels and through positivity with a majorant (Propositions~\ref{prop:separation} and~\ref{prop:majorant};
+  formal with the constant $\frac98$ for a piecewise-linear kernel, computer-assisted for the sharper constants and the $C^\infty$
+  kernel). Certified lower bounds (for instance from the dual problem (EP2) of \cite{cmqr2024}) and the dependence on $L$
+  remain open. An explicit bias theorem from such a kernel would need the positivity lemmas for a general majorant
+  (Proposition~\ref{prop:majorant}), but no explicit zero counting.
 \item Extend to other groups whose characters are Dirichlet characters, such as quotients of $\Gq$ and abelian
   Galois groups over $\mathbb Q$. For nonabelian groups, e.g.\ $\mathrm{Aff}(\Z/q\Z)$, combine with zig-zag or
   semidirect-product arguments.

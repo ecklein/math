@@ -20,6 +20,12 @@ GRHPseudo.AnalyticNumberTheory.Sharp.Twist: leanchecker exit 0
 GRHPseudo.AnalyticNumberTheory.Sharp.TwoSided: leanchecker exit 0
 GRHPseudo.GRH.Discharge: leanchecker exit 0
 GRHPseudo.GRH.Interface: leanchecker exit 0
+GRHPseudo.KernelSeparation.Data: leanchecker exit 0
+GRHPseudo.KernelSeparation.Kernel: leanchecker exit 0
+GRHPseudo.KernelSeparation.Majorant4: leanchecker exit 0
+GRHPseudo.KernelSeparation.Poly: leanchecker exit 0
+GRHPseudo.KernelSeparation.Triangle: leanchecker exit 0
+GRHPseudo.KernelSeparation.Window4: leanchecker exit 0
 GRHPseudo.MainTheorems.Conditional: leanchecker exit 0
 GRHPseudo.MainTheorems.Unconditional: leanchecker exit 0
 GRHPseudo.Pseudorandomness.Bias: leanchecker exit 0

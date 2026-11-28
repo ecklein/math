@@ -88,6 +88,10 @@ Follow these phases. Later ones often send you back to earlier ones.
     hit heartbeat timeouts.
   - Floors and `Nat.log`: bound with `Nat.floor_lt` and `Nat.log_lt_of_lt_pow`. Rewrite `2 ^ 18` to a
     numeral before calling `omega`.
+  - Exact certificates without `native_decide`: write a structurally recursive checker on `List ℤ` and prove it with
+    `decide +kernel` (kernel GMP arithmetic). About 5·10⁴ big-integer multiply-adds take ~10 s. Prefer certificates
+    whose check is a polynomial identity plus coefficient dominance (e.g. an integer sum-of-squares) over grid evaluation.
+  - `ring` cannot normalize inside `cexp` arguments up to commutativity; use `ring_nf` there.
 - **Build hygiene.** Use `lake build --no-build <targets>` to see whether anything is stale, for example
   after moving directories. `import Mathlib` files compile slowly while another big build runs.
 

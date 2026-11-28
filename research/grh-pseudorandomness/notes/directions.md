@@ -169,3 +169,8 @@ Done: priority check (BCOS §9.2, Hörmander–Bernhardsson, CMQR), smoothing (C
 counting; certified c ≤ 1.1482 with supp M ⊆ [−8.02, 8.02]). Remaining, as separate tasks: (a) Lean-checkable certificate (SOS route +
 formal periodization); (b) Lean positivity lemmas for a general PD majorant, then an explicit certificate with the LP kernel (≤ ~9%
 smaller cutoff than 48400 at best); (c) certified lower bounds for C(L) via CMQR's dual EP2 / BCOS methods.
+
+## Update (2026-11-27, Lean): window-4 separation formal
+Task (a) done with a different route: an exact integer SOS certificate for D|P| ≤ |R|² plus Fourier inversion for Λ (no periodization
+identity needed). Formal: Prop 17(1) with constant 9/8 and the Prop 18 instance (`GRHPseudo.KernelSeparation`). Remaining: (b), (c),
+and optionally formal smoothing (Prop 17(2)) and Lemma 16's first identity.
