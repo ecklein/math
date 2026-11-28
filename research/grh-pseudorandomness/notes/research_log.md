@@ -175,3 +175,20 @@ Cayley graphs, randomized poly(|G|, ε⁻¹). Cited in related work: small cardi
 - **Lean (not done; assessed).** 2^18–2^19 interval evaluations are infeasible in the kernel without native_decide. Route: an exact
   algebraic certificate (cosine polynomial R ≥ |P| with a rational SOS/Fejér–Riesz certificate for R² − |P|²) plus a formal
   periodization lemma (needs Σ_m sinc²((θ + 2πm)/2) = 1). Proposed as a separate task.
+
+## 2026-11-27 — window-4 separation made formal (branch `kernel-window4-formal`, stacked on `grh-review-2`)
+- **Route.** Instead of formalizing the periodization identity and a 2¹⁸-point quadrature, bound ∫|K̂| from above by a majorant:
+  with D|P| ≤ |R|² on the circle, |K̂(t)| = hΛ̂(th)|P| ≤ (h/D)Λ̂(th)|R(e^{ith})|² = M̂(t), and (1/2π)∫M̂ = M(0) = Σr²/D by Fourier
+  inversion for Λ at the integers (Mathlib's inversion theorem). This needs no Mittag-Leffler identity and gives Prop 18's
+  instance for free.
+- **Certificate** (`experiments/kernel_sos_certificate.py`). LP majorant Q of degree 100 (+0.2% on q₀), spectral factor R (cepstral,
+  FFT), rounded at scale σ = 10 (D = σ² = 100); T = |R²|² − D²|P|² computed exactly; spectral factor G of T − δ, rounded; residual
+  E = T − |G|² coefficient-dominated (E₀ ≥ 2Σ|E_m|). Sizes: R 101 four-digit integers, G 201 eight-digit integers.
+- **Cost.** `decide +kernel` evaluates the check (≈ 5·10⁴ big-integer multiply-adds over lists) in about 10 s; a wrong D (1000) is
+  rejected. No `native_decide`.
+- **Result (formal).** `window4_kernel_beats_convSq`: the a = 1 LP kernel (same 79 integers as `kernel_certificate.py`) has
+  e·(1/2π)∫|K̂| ≤ (9/8)∫K e^{u/2}; 9/8 < 1/(1 − e^{−2}) ⟺ e² < 9. Formal numerics give ≈ 1.1238 (1% above the degree-160 LP value;
+  the informal 1.1082 is sharper). `kernel4_majorant`: even PD majorant with supp ⊆ [−5.05, 5.05], M̂ ≥ |K̂| on ℝ.
+- **Not done.** Lemma 16's first identity (needs Σ_m sinc²((θ + 2πm)/2) = 1; Mathlib has the cot series only on the upper half-plane
+  via `iteratedDerivWithin_cot_pi_mul_eq_mul_tsum_div_pow`); Prop 17(2) smoothing; the sharper constants. None is needed for the
+  formal statements.
